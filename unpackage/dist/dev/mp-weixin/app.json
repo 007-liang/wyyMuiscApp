@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "网抑云音乐",
+    "enablePullDownRefresh": true,
+    "navigationStyle": "custom"
+  },
+  "usingComponents": {}
+}
