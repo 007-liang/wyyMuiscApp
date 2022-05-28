@@ -4,11 +4,32 @@
 		"style": {
 			"navigationBarTitleText": "首页"
 		}
+	}, {
+		"path": "pages/my/my",
+		"style": {
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+
 	}],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
+		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "网抑云音乐",
 		"enablePullDownRefresh": true,
 		"navigationStyle": "custom"
+	},
+	"tabBar": {
+		"custom": true,
+		"list": [{
+		  "pagePath": "pages/index/index",
+		  "iconPath": "static/雷达 (2).png",
+		  "selectedIconPath": "static/雷达 (2).png",
+		  "text": "首页"
+		}, {
+		  "pagePath": "pages/my/my",
+		  "iconPath": "static/home.png",
+		  "selectedIconPath": "static/home (1).png",
+		  "text": "我的"
+		}]
 	}
 }

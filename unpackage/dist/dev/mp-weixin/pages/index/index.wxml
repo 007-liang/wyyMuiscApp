@@ -1,1 +1,1 @@
-<view class="content"><text>Holle World</text></view>
+<view class="content"><side-menu-and-search u-i="1053d8c6-0" bind:__l="__l"></side-menu-and-search><text>Holle World</text></view>

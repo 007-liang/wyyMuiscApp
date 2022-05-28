@@ -4,10 +4,22 @@ const _sfc_main = {
   data() {
     return {};
   },
-  onLoad() {
-  },
-  methods: {}
+  onShow() {
+    if (typeof this.getTabBar === "function" && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0
+      });
+    }
+  }
 };
+if (!Array) {
+  const _easycom_sideMenuAndSearch2 = common_vendor.resolveComponent("sideMenuAndSearch");
+  _easycom_sideMenuAndSearch2();
+}
+const _easycom_sideMenuAndSearch = () => "../../components/sideMenuAndSearch/sideMenuAndSearch.js";
+if (!Math) {
+  _easycom_sideMenuAndSearch();
+}
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {};
 }
