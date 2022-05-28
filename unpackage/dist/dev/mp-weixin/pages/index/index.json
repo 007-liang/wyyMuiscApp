@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "首页",
-  "usingComponents": {}
+  "usingComponents": {
+    "side-menu-and-search": "../../components/sideMenuAndSearch/sideMenuAndSearch"
+  }
 }

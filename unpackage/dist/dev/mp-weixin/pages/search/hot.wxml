@@ -1,0 +1,1 @@
+<view class="search-hot-navbar"><view wx:for="{{a}}" wx:for-item="item" wx:key="b" bindtap="{{item.c}}" class="{{[item.d && 'active']}}">{{item.a}}</view></view><view class="search-hot-detail"><view class="search-hot-categorys"><view wx:for="{{b}}" wx:for-item="item" wx:key="c"><text>{{item.a}}</text><text>{{item.b}}</text></view></view></view>

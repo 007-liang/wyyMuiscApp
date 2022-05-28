@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "strict": true,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "baseUrl": "./",
+        "allowJs": true,
+        "paths": {
+            "@/*": ["./*"]
+        },
+    },
+    "vueCompilerOptions": {
+        "experimentalDisableTemplateSupport": true
+    }
+}

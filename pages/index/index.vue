@@ -1,5 +1,6 @@
 <template>
 	<view class="content">
+		<sideMenuAndSearch></sideMenuAndSearch>
 		<text>Holle World</text>
 	</view>
 </template>
@@ -11,20 +12,22 @@
 				
 			}
 		},
-		onLoad() {
-
+		onShow() {
+			if (typeof this.getTabBar === 'function' &&
+		        this.getTabBar()) {
+		        this.getTabBar().setData({
+		          selected: 0
+		        })
+		      }
 		},
-		methods: {
-
-		}
 	}
 </script>
 
 <style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
+.content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
 </style>

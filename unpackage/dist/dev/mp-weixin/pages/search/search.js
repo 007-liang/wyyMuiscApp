@@ -1,20 +1,21 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
 const history = () => "./history.js";
+const hot = () => "./hot.js";
 const _sfc_main = {
   components: {
-    history
+    history,
+    hot
   },
   data() {
     return {};
-  },
-  setup(context) {
   },
   methods: {}
 };
 if (!Array) {
   const _component_history = common_vendor.resolveComponent("history");
-  _component_history();
+  const _component_hot = common_vendor.resolveComponent("hot");
+  (_component_history + _component_hot)();
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {};

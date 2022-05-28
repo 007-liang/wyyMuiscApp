@@ -1,6 +1,5 @@
 <template>
-	<!-- 侧边菜单和搜索框 -->
-	<view :style="{ height: statusBarHight }"></view>
+	<paddingTop></paddingTop>
 	<view> 搜索 </view>
 </template>
 
@@ -10,11 +9,8 @@
 		data() {
 			return {
 				statusBarHight: 0,
-			};
+			}
 		},
-		created() {
-			this.statusBarHight = uni.getSystemInfoSync().statusBarHeight;
-		}
 	}
 </script>
 

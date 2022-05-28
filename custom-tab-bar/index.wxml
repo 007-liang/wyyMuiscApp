@@ -1,0 +1,18 @@
+<cover-view class="nav-bar-box">
+	<navigator 
+		wx:for="{{list}}" 
+		wx:key="index" 
+		url="{{ item.pagePath }}"
+		switchTab="{{ item.pagePath }}"
+		data-path="{{item.pagePath}}" 
+		data-index="{{index}}" 
+		open-type="switchTab"
+		class="nav-bar {{ index === selected ? 'nav-bar-selected' : '' }}"
+	>
+		<cover-image 
+			src="{{ index === selected ? item.selectedIconPath : item.iconPath }}" 
+			class="nav-bar-icon"
+		></cover-image>
+		<cover-view class="nav-bar-text">{{ item.text }}</cover-view>
+	</navigator>
+</cover-view>
