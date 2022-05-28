@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/search/search",
     "pages/index/index",
     "pages/my/my",
     "pages/login/login"
@@ -7,8 +8,7 @@
   "window": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "网抑云音乐",
-    "enablePullDownRefresh": true,
-    "navigationStyle": "custom"
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "custom": true,

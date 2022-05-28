@@ -1,0 +1,15 @@
+.search-box.data-v-4cedc0c6 {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+.search-box .iconfont.data-v-4cedc0c6 {
+  margin-left: 10px;
+  font-size: 16px;
+}
+input.data-v-4cedc0c6 {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  flex: 1;
+  margin-right: 10px;
+}

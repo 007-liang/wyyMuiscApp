@@ -1,0 +1,40 @@
+.search-history {
+  padding: 10px;
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  box-sizing: border-box;
+}
+.search-history-tagsbox {
+  overflow: hidden;
+  position: relative;
+  flex: 1;
+}
+.search-history-tagsbox::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 60px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), #ffffff);
+}
+.search-history-tags {
+  display: flex;
+  flex-wrap: nowrap;
+  column-gap: 10px;
+  overflow-x: scroll;
+}
+.search-history-tags::-webkit-scrollbar {
+  display: none;
+}
+.search-history-tags .search-history-tag {
+  padding: 10px 12px;
+  background-color: #f2f2f2;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.search-history-del {
+  font-size: 24px;
+  color: #999;
+}

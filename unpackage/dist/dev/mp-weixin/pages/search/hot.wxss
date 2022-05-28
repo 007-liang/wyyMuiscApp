@@ -1,0 +1,10 @@
+.search-hot-navbar {
+  display: flex;
+  column-gap: 30px;
+  padding: 10px;
+  color: #999;
+  font-size: 16px;
+}
+.search-hot-navbar view.active {
+  color: #333;
+}
