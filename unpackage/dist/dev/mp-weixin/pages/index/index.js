@@ -3,13 +3,6 @@ var common_vendor = require("../../common/vendor.js");
 const _sfc_main = {
   data() {
     return {};
-  },
-  onShow() {
-    if (typeof this.getTabBar === "function" && this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 0
-      });
-    }
   }
 };
 if (!Array) {

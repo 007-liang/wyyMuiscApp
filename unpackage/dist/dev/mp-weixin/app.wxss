@@ -1,21 +1,16 @@
-
-	/*每个页面公共css */
+/*每个页面公共css */
 @font-face {
-		font-family: 'iconfont';
-		/* project id 3434140 */
-		src: url('');
-		src: url('?#iefix') format('embedded-opentype'),
-			url('//at.alicdn.com/t/font_3434140_od0bcfeygf.woff2') format('woff2'),
-			url('//at.alicdn.com/t/font_3434140_od0bcfeygf.woff') format('woff'),
-			url('//at.alicdn.com/t/font_3434140_od0bcfeygf.ttf') format('truetype'),
-			url('#iconfont') format('svg');
+  font-family: 'iconfont';
+  /* Project id 3434140 */
+  src: url('//at.alicdn.com/t/font_3434140_bot144ya9m.woff2?t=1653749261283') format('woff2'), url('//at.alicdn.com/t/font_3434140_bot144ya9m.woff?t=1653749261283') format('woff'), url('//at.alicdn.com/t/font_3434140_bot144ya9m.ttf?t=1653749261283') format('truetype');
 }
 .iconfont {
-		font-family: "iconfont" !important;
-		font-size: 16px;
-		font-style: normal;
-		-webkit-font-smoothing: antialiased;
-		-webkit-text-stroke-width: 0.2px;
-		-moz-osx-font-smoothing: grayscale;
+  display: inline;
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
 }
 page{--status-bar-height:25px;--top-window-height:0px;--window-top:0px;--window-bottom:0px;--window-left:0px;--window-right:0px;--window-magin:0px}[data-c-h="true"]{display: none !important;}

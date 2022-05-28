@@ -1,0 +1,1 @@
+<navigator url="/pages/login/login" open-type="navigate" hover-class="none" class="login-bar" animation-type="fade-in"><view class="user-avatar"><view class="iconfont"></view></view><view><text class="login-name"> 立即登录 </text><view class="iconfont"></view></view></navigator>

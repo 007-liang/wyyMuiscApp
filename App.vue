@@ -12,20 +12,17 @@
 	}
 </script>
 
-<style>
+<style lang="less">
 	/*每个页面公共css */
 	@font-face {
-		font-family: 'iconfont';
-		/* project id 3434140 */
-		src: url('');
-		src: url('?#iefix') format('embedded-opentype'),
-			url('//at.alicdn.com/t/font_3434140_od0bcfeygf.woff2') format('woff2'),
-			url('//at.alicdn.com/t/font_3434140_od0bcfeygf.woff') format('woff'),
-			url('//at.alicdn.com/t/font_3434140_od0bcfeygf.ttf') format('truetype'),
-			url('#iconfont') format('svg');
+	  font-family: 'iconfont';  /* Project id 3434140 */
+	  src: url('//at.alicdn.com/t/font_3434140_bot144ya9m.woff2?t=1653749261283') format('woff2'),
+	       url('//at.alicdn.com/t/font_3434140_bot144ya9m.woff?t=1653749261283') format('woff'),
+	       url('//at.alicdn.com/t/font_3434140_bot144ya9m.ttf?t=1653749261283') format('truetype');
 	}
-
+	
 	.iconfont {
+		display: inline;
 		font-family: "iconfont" !important;
 		font-size: 16px;
 		font-style: normal;
@@ -33,4 +30,19 @@
 		-webkit-text-stroke-width: 0.2px;
 		-moz-osx-font-smoothing: grayscale;
 	}
+	
+	// 主题红
+	@theme-color: #DB2C1F;
+
+	// 圆角边框
+	@border-radius: 8px;
+
+	// 图标背景渐变颜色 (default是默认颜色)
+	@iconfont-default: #CFCFCF;
+	@iconfont-shallow: #FF9090;
+	@iconfont-deep: #FF3A3A;
+	
+	// 导航栏下划线渐变颜色
+	@nav-line-start: #FF3C3C;
+	@nav-line-end: #FCA2A2;
 </style>

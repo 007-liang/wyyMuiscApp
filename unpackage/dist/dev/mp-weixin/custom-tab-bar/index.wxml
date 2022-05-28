@@ -7,12 +7,14 @@
 		data-path="{{item.pagePath}}" 
 		data-index="{{index}}" 
 		open-type="switchTab"
+		hover-class="none"
+		animation-type="slide-in-right"
 		class="nav-bar {{ index === selected ? 'nav-bar-selected' : '' }}"
 	>
-		<cover-image 
-			src="{{ index === selected ? item.selectedIconPath : item.iconPath }}" 
-			class="nav-bar-icon"
-		></cover-image>
+		<cover-view class="nav-bar-icon">
+			<cover-image src="{{ index === selected ? item.selectedIconPath : item.iconPath }}"
+			></cover-image>
+		</cover-view>
 		<cover-view class="nav-bar-text">{{ item.text }}</cover-view>
 	</navigator>
 </cover-view>

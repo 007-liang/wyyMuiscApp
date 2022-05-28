@@ -1,0 +1,10 @@
+page {
+  background-color: #eeeeee;
+  padding: 0 15rpx;
+}
+.login-bar {
+  display: flex;
+  padding: 40rpx 30rpx;
+  height: 150rpx;
+  align-items: center;
+}
