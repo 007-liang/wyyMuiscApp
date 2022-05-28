@@ -1,14 +1,25 @@
 {
-	"pages": [{
-		"path": "pages/index/index",
-		"style": {
-			"navigationBarTitleText": "首页"
+	"pages": [
+		{
+            "path" : "pages/search/search",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        },
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
 		}
-	}],
+    ],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
+		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "网抑云音乐",
-		"enablePullDownRefresh": true,
-		"navigationStyle": "custom"
+		"enablePullDownRefresh": true
+		// "navigationStyle": "custom"
 	}
 }

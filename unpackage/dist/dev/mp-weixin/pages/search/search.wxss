@@ -1,0 +1,9 @@
+
+.search-box.data-v-4cedc0c6 {
+		display: flex;
+}
+input.data-v-4cedc0c6 {
+		padding: 10px;
+		border-bottom: 1px solid #ddd;
+		flex: 1;
+}

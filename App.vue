@@ -14,4 +14,7 @@
 
 <style>
 	/*每个页面公共css */
+	body {
+		font-family: "微软雅黑 Light";
+	}
 </style>

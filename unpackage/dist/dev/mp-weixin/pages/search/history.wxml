@@ -1,0 +1,1 @@
+<view class="search-history"> 历史 <scroll-view class="search-history-tags"><view wx:for="{{a}}" wx:for-item="item" class="search-history-tag">{{item.a}}</view></scroll-view><view class="search-history-del"></view></view>
