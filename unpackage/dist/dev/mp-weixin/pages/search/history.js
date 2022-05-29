@@ -1,26 +1,22 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
-var utils_localstorage = require("../../utils/localstorage.js");
-var utils_symbols = require("../../utils/symbols.js");
+var store_storeSearch = require("../../store/store-search.js");
+require("../../utils/localstorage.js");
+require("../../utils/symbols.js");
 require("../../utils/request.js");
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   setup(__props) {
-    const history = common_vendor.ref(utils_localstorage.getLocalStorage(utils_symbols.search_history_localstorage) || [
-      "So Far Away",
-      "\u5B64\u52C7\u8005",
-      "\u53CD\u65B9\u5411\u7684\u949F",
-      "C"
-    ]);
+    const searchStore = store_storeSearch.useSearchStore();
     return (_ctx, _cache) => {
       return {
-        a: common_vendor.f(common_vendor.unref(history), (item, k0, i0) => {
+        a: common_vendor.f(common_vendor.unref(searchStore).history, (item, k0, i0) => {
           return {
             a: common_vendor.t(item),
             b: item,
-            c: common_vendor.o(($event) => _ctx.clickHistoryTag(item))
+            c: common_vendor.o(($event) => common_vendor.unref(searchStore).input_keyword(item))
           };
         }),
-        b: common_vendor.unref(history).length > 0
+        b: common_vendor.unref(searchStore).history.length > 0
       };
     };
   }

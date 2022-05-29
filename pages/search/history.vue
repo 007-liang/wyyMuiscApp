@@ -1,21 +1,13 @@
 <script lang="ts" setup>
-import {
-	getLocalStorage,
-    search_history_localstorage,
-    setLocalStorage,
-} from "@/utils";
-import { ref } from "vue";
-import type { Ref } from "vue";
-const history = ref(getLocalStorage(search_history_localstorage) || [
-    "So Far Away",
-    "孤勇者",
-    "反方向的钟",
-    "C"
-]) as Ref<string[]>;
+import { useSearchStore } from "@/store";
+const searchStore = useSearchStore();
 </script>
 
 <template>
-	<view class="search-history" v-show="history.length > 0">
+	<view
+        class="search-history"
+        v-show="searchStore.history.length > 0"
+    >
 		历史
 
         <view class="search-history-tagsbox">
@@ -26,9 +18,9 @@ const history = ref(getLocalStorage(search_history_localstorage) || [
             >
                 <view
                     class="search-history-tag"
-                    v-for="item in history"
+                    v-for="item in searchStore.history"
                     :key="item"
-                    @click="clickHistoryTag(item)"
+                    @click="searchStore.input_keyword(item)"
                 >
                     {{item}}
                 </view>

@@ -36,6 +36,7 @@ page {
     -moz-osx-font-smoothing: grayscale;
 }
 
+// 左右侧 渐变 渐隐渐现内容
 .left-gradient-background,
 .right-gradient-background {
     content: "";
@@ -43,7 +44,7 @@ page {
     top: 0;
     width: 100rpx;
     height: 100%;
-
+    pointer-events: none;
 }
 
 .left-gradient-background {

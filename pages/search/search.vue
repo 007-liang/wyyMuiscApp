@@ -1,7 +1,21 @@
+<script lang="ts" setup>
+import history from "@/pages/search/history.vue";
+import hot from "@/pages/search/hot.vue";
+import music from "@/pages/search/music.vue";
+import hotSings from "@/pages/search/hot-sings.vue";
+import { useSearchStore } from "@/store";
+const searchStore = useSearchStore();
+</script>
+
 <template>
 	<view class="search-box">
         <text class="iconfont">&#xe68d;</text>
-		<input type="text" placeholder="搜索内容" class="">
+		<input
+            type="text"
+            placeholder="搜索内容"
+            class=""
+            v-model="searchStore.search_keyword"
+        >
 	</view>
 	<history /> <!-- 历史搜索 -->
     <hot /> <!-- 热搜榜单 -->
@@ -9,12 +23,6 @@
     <hotSings />
 </template>
 
-<script lang="ts" setup>
-import history from "@/pages/search/history.vue";
-import hot from "@/pages/search/hot.vue";
-import music from "@/pages/search/music.vue";
-import hotSings from "@/pages/search/hot-sings.vue";
-</script>
 
 <style scoped lang="less">
 	.search-box {
