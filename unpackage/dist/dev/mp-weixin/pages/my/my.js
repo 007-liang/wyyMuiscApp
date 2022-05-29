@@ -3,15 +3,17 @@ var common_vendor = require("../../common/vendor.js");
 const _sfc_main = {
   data() {
     return {};
-  },
-  onShow() {
-    if (typeof this.getTabBar === "function" && this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 1
-      });
-    }
   }
 };
+if (!Array) {
+  const _easycom_paddingTop2 = common_vendor.resolveComponent("paddingTop");
+  const _component_notLoginBar = common_vendor.resolveComponent("notLoginBar");
+  (_easycom_paddingTop2 + _component_notLoginBar)();
+}
+const _easycom_paddingTop = () => "../../components/paddingTop/paddingTop.js";
+if (!Math) {
+  _easycom_paddingTop();
+}
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {};
 }

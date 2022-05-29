@@ -1,5 +1,6 @@
 {
-  "navigationBarTitleText": "",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "padding-top": "../../components/paddingTop/paddingTop"
+  }
 }

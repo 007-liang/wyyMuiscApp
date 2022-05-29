@@ -12,7 +12,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 /*每个页面公共css */
 @font-face {
     font-family: 'iconfont';  /* Project id 3434140 */
@@ -63,4 +63,19 @@ page {
         rgb(255, 255, 255)
     );
 }
+	
+// 主题红
+@theme-color: #DB2C1F;
+
+// 圆角边框
+@border-radius: 8px;
+
+// 图标背景渐变颜色 (default是默认颜色)
+@iconfont-default: #CFCFCF;
+@iconfont-shallow: #FF9090;
+@iconfont-deep: #FF3A3A;
+
+// 导航栏下划线渐变颜色
+@nav-line-start: #FF3C3C;
+@nav-line-end: #FCA2A2;
 </style>

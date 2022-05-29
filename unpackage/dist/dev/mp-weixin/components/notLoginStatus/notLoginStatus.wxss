@@ -1,0 +1,23 @@
+.user-avatar {
+  box-sizing: border-box;
+  display: flex;
+  width: 100rpx;
+  height: 100rpx;
+  padding-top: 15rpx;
+  border-radius: 50%;
+  border: 2rpx solid #FFFFFF;
+  background-color: #CFCFCF;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.user-avatar .iconfont {
+  color: #FF9090;
+  font-size: 90rpx;
+}
+.login-name {
+  padding-left: 15rpx;
+  padding-right: 5rpx;
+  font-size: 26rpx;
+  font-weight: 700;
+}
