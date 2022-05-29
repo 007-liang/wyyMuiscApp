@@ -1,5 +1,5 @@
 "use strict";
-function getLocalStorage(key, is_parser = true) {
+const getLocalStorage = (key) => {
   return wx.getStorageSync(key);
-}
+};
 exports.getLocalStorage = getLocalStorage;

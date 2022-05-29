@@ -1,0 +1,32 @@
+.search-more-hot-sings {
+  padding: 40rpx;
+  text-align: center;
+}
+.search-more-hot-sings .iconfont {
+  font-size: 32rpx;
+}
+.search-hot-sing-pic {
+  width: 200rpx;
+  border-radius: 20rpx;
+}
+.search-hot-sings-scrollinner {
+  display: flex;
+  column-gap: 20rpx;
+  text-align: center;
+  overflow-x: scroll;
+}
+.search-hot-sings-scrollinner::-webkit-scrollbar {
+  display: none;
+}
+.search-hot-sings-scrollbox {
+  position: relative;
+  overflow: hidden;
+}
+.search-hot-singsbox-title {
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.search-hot-singsbox {
+  padding: 0 48rpx;
+  padding-bottom: 180rpx;
+}

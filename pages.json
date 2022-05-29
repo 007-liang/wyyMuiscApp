@@ -25,7 +25,7 @@
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "网抑云音乐",
-		"enablePullDownRefresh": true,
+		"enablePullDownRefresh": true
 		// "navigationStyle": "custom"
 	},
 	"tabBar": {
