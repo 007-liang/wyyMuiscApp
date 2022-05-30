@@ -1,0 +1,18 @@
+.login-form {
+  margin: 0 auto;
+  width: 80%;
+}
+.submit-btn {
+  color: #ffffff;
+  background-color: #f22a25;
+  box-shadow: 0px 0px 10rpx #b22727;
+  transition-property: box-shadow background-color;
+  transition-duration: 0.3s;
+}
+.submit-btn:active {
+  background-color: #d22522;
+  box-shadow: inset 0px 0px 10rpx #b22727;
+}
+.err-submit {
+  margin-top: 30rpx;
+}

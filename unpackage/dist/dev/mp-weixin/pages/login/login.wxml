@@ -1,1 +1,1 @@
-<view class="logo-box"><image class="logo" src="/static/音乐 (2).png" mode="widthFix"></image></view>
+<login-logo u-i="3a679c98-0" bind:__l="__l"></login-logo><phone-login u-i="3a679c98-1" bind:__l="__l"></phone-login>

@@ -13,6 +13,8 @@
 </script>
 
 <style lang="less">
+	@import './component.less';
+
 	/*每个页面公共css */
 	@font-face {
 	  font-family: 'iconfont';  /* Project id 3434140 */
@@ -20,6 +22,7 @@
 	       url('//at.alicdn.com/t/font_3434140_bot144ya9m.woff?t=1653749261283') format('woff'),
 	       url('//at.alicdn.com/t/font_3434140_bot144ya9m.ttf?t=1653749261283') format('truetype');
 	}
+
 	
 	.iconfont {
 		display: inline;

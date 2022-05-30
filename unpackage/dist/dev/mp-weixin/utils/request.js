@@ -14,11 +14,11 @@ function request(baseUrl, options) {
     return err;
   };
   return new Promise((resolve, reject) => {
-    options.fail = (err) => {
-      reject(err);
-    };
     options.success = (res) => {
       resolve(res);
+    };
+    options.fail = (err) => {
+      reject(err);
     };
     wx.request(options);
   }).then(success).catch(fail);

@@ -7,7 +7,7 @@
   "setting": {
     "urlCheck": false,
     "es6": true,
-    "postcss": true,
+    "postcss": false,
     "minified": true,
     "coverView": true,
     "compileHotReLoad": false,
@@ -39,21 +39,14 @@
   "appid": "wxbe602774c213318f",
   "projectname": "wyyMusic",
   "condition": {
-    "search": {
-      "current": -1,
-      "list": []
-    },
-    "conversation": {
-      "current": -1,
-      "list": []
-    },
-    "game": {
-      "current": -1,
-      "list": []
-    },
     "miniprogram": {
-      "current": -1,
-      "list": []
+      "list": [
+        {
+          "name": "login",
+          "pathName": "pages/login/login",
+          "query": ""
+        }
+      ]
     }
   },
   "editorSetting": {

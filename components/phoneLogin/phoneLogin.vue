@@ -1,6 +1,6 @@
 <template>
-    <view class="">
-        手机登录
+    <view class="login-phone-box">
+        <loginForm></loginForm>
     </view>
 </template>
 
@@ -9,5 +9,7 @@
 </script>
 
 <style lang='less'>
-
+.login-phone-box {
+	width: 100%;
+}
 </style>

@@ -1,10 +1,6 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
-const _sfc_main = {
-  data() {
-    return {};
-  }
-};
+const _sfc_main = {};
 if (!Array) {
   const _easycom_paddingTop2 = common_vendor.resolveComponent("paddingTop");
   const _easycom_notLoginBar2 = common_vendor.resolveComponent("notLoginBar");
@@ -15,7 +11,7 @@ const _easycom_notLoginBar = () => "../../components/notLoginBar/notLoginBar.js"
 if (!Math) {
   (_easycom_paddingTop + _easycom_notLoginBar)();
 }
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render(_ctx, _cache) {
   return {};
 }
 var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "G:/\u6848\u4F8B/\u5C0F\u7A0B\u5E8F/\u7F51\u6613\u4E91\u97F3\u4E50/wyyMusic/pages/my/my.vue"]]);
