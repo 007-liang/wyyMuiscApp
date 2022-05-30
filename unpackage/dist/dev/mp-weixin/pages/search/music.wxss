@@ -1,0 +1,44 @@
+.search-songsbox {
+  padding: 0 48rpx;
+}
+.search-songsbox-title {
+  font-weight: bold;
+}
+.search-song-pic {
+  width: 172rpx;
+  border-radius: 20rpx;
+}
+.search-news-song {
+  display: flex;
+  column-gap: 20rpx;
+  margin-top: 20rpx;
+}
+.search-song-detail {
+  flex: 1;
+  overflow: hidden;
+}
+.search-song-detail-subtitle {
+  color: #999;
+}
+.search-song-detail-title {
+  padding: 12rpx 0;
+}
+.search-song-detail-subtitle,
+.search-song-detail-title,
+.search-song-sings {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.search-song-sings {
+  margin-top: 12rpx;
+}
+.search-more-news-songs {
+  width: 100%;
+  text-align: center;
+  padding: 40rpx;
+  box-sizing: border-box;
+}
+.search-more-news-songs .iconfont {
+  font-size: 32rpx;
+}

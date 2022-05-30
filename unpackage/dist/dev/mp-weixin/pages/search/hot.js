@@ -15,23 +15,31 @@ const _sfc_main = common_vendor.defineComponent({
         }
       ],
       activeHotBarIndex: 0,
+      isShowDetail: false,
       hots: [],
       videos: [],
       users: []
     };
   },
-  setup() {
+  watch: {
+    isShowDetail() {
+      this.getHots();
+    }
   },
-  async created() {
-    let res = await utils_request.wxRequest({
-      url: "/search/hot"
-    });
-    this.hots = res.data.result.hots;
-    console.log(this.hots);
+  methods: {
+    async getHots() {
+      let res = await utils_request.wxRequest({
+        url: "/search/hot/detail"
+      });
+      this.hots = res.data.data;
+    }
+  },
+  created() {
+    this.getHots();
   }
 });
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return {
+  return common_vendor.e({
     a: common_vendor.f(_ctx.hotBar, (item, index, i0) => {
       return {
         a: common_vendor.t(item.title),
@@ -41,13 +49,35 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       };
     }),
     b: common_vendor.f(_ctx.hots, (item, index, i0) => {
-      return {
-        a: common_vendor.t(index + 1),
-        b: common_vendor.t(item.first),
-        c: item.first
-      };
-    })
-  };
+      return common_vendor.e({
+        a: _ctx.isShowDetail ? true : index < _ctx.hots.length / 2
+      }, (_ctx.isShowDetail ? true : index < _ctx.hots.length / 2) ? {
+        b: common_vendor.t(index + 1),
+        c: common_vendor.t(item.searchWord),
+        d: index < 3 ? 1 : ""
+      } : {}, {
+        e: item.first
+      });
+    }),
+    c: !_ctx.isShowDetail
+  }, !_ctx.isShowDetail ? {
+    d: common_vendor.o(($event) => _ctx.isShowDetail = true)
+  } : {}, {
+    e: common_vendor.f(_ctx.hots, (item, index, i0) => {
+      return common_vendor.e({
+        a: _ctx.isShowDetail ? true : index < _ctx.hots.length / 2
+      }, (_ctx.isShowDetail ? true : index < _ctx.hots.length / 2) ? {
+        b: common_vendor.t(index + 1),
+        c: common_vendor.t(item.searchWord),
+        d: index < 3 ? 1 : ""
+      } : {}, {
+        e: item.first
+      });
+    }),
+    f: !_ctx.isShowDetail
+  }, !_ctx.isShowDetail ? {
+    g: common_vendor.o(($event) => _ctx.isShowDetail = true)
+  } : {});
 }
 var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "G:/\u6848\u4F8B/\u5C0F\u7A0B\u5E8F/\u7F51\u6613\u4E91\u97F3\u4E50/wyyMusic/pages/search/hot.vue"]]);
 wx.createComponent(Component);

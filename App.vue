@@ -1,51 +1,79 @@
 <script>
-	export default {
-		onLaunch: function() {
-			console.log('App Launch')
-		},
-		onShow: function() {
-			console.log('App Show')
-		},
-		onHide: function() {
-			console.log('App Hide')
-		}
-	}
+export default {
+    onLaunch: function() {
+        // console.log('App Launch')
+    },
+    onShow: function() {
+        // console.log('App Show')
+    },
+    onHide: function() {
+        // console.log('App Hide')
+    }
+}
 </script>
 
 <style lang="less">
-	@import './component.less';
+@import './component.less';
+/*每个页面公共css */
 
-	/*每个页面公共css */
-	@font-face {
-	  font-family: 'iconfont';  /* Project id 3434140 */
-	  src: url('//at.alicdn.com/t/font_3434140_bot144ya9m.woff2?t=1653749261283') format('woff2'),
-	       url('//at.alicdn.com/t/font_3434140_bot144ya9m.woff?t=1653749261283') format('woff'),
-	       url('//at.alicdn.com/t/font_3434140_bot144ya9m.ttf?t=1653749261283') format('truetype');
-	}
+@font-face {
+    font-family: 'iconfont';  /* Project id 3434140 */
+    src: url('//at.alicdn.com/t/font_3434140_bot144ya9m.woff2?t=1653749261283') format('woff2'),
+        url('//at.alicdn.com/t/font_3434140_bot144ya9m.woff?t=1653749261283') format('woff'),
+        url('//at.alicdn.com/t/font_3434140_bot144ya9m.ttf?t=1653749261283') format('truetype');
+}
 
+.iconfont {
+    display: inline;
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+// 左右侧 渐变 渐隐渐现内容
+.left-gradient-background,
+.right-gradient-background {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100rpx;
+    height: 100%;
+    pointer-events: none;
+}
+
+.left-gradient-background {
+    left: -2rpx;
+    background: linear-gradient(
+        -90deg,
+        rgba(255, 255, 255, .0),
+        rgb(255, 255, 255)
+    );
+}
+
+.right-gradient-background {
+    right: -2rpx;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, .0),
+        rgb(255, 255, 255)
+    );
+}
 	
-	.iconfont {
-		display: inline;
-		font-family: "iconfont" !important;
-		font-size: 16px;
-		font-style: normal;
-		-webkit-font-smoothing: antialiased;
-		-webkit-text-stroke-width: 0.2px;
-		-moz-osx-font-smoothing: grayscale;
-	}
-	
-	// 主题红
-	@theme-color: #DB2C1F;
+// 主题红
+@theme-color: #DB2C1F;
 
-	// 圆角边框
-	@border-radius: 8px;
+// 圆角边框
+@border-radius: 8px;
 
-	// 图标背景渐变颜色 (default是默认颜色)
-	@iconfont-default: #CFCFCF;
-	@iconfont-shallow: #FF9090;
-	@iconfont-deep: #FF3A3A;
-	
-	// 导航栏下划线渐变颜色
-	@nav-line-start: #FF3C3C;
-	@nav-line-end: #FCA2A2;
+// 图标背景渐变颜色 (default是默认颜色)
+@iconfont-default: #CFCFCF;
+@iconfont-shallow: #FF9090;
+@iconfont-deep: #FF3A3A;
+
+// 导航栏下划线渐变颜色
+@nav-line-start: #FF3C3C;
+@nav-line-end: #FCA2A2;
 </style>

@@ -1,7 +1,7 @@
 .search-history {
-  padding: 10px;
+  padding: 20rpx 48rpx;
   display: flex;
-  column-gap: 10px;
+  column-gap: 20rpx;
   align-items: center;
   box-sizing: border-box;
 }
@@ -10,31 +10,22 @@
   position: relative;
   flex: 1;
 }
-.search-history-tagsbox::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  width: 60px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), #ffffff);
-}
 .search-history-tags {
   display: flex;
   flex-wrap: nowrap;
-  column-gap: 10px;
+  column-gap: 20rpx;
   overflow-x: scroll;
 }
 .search-history-tags::-webkit-scrollbar {
   display: none;
 }
 .search-history-tags .search-history-tag {
-  padding: 10px 12px;
+  padding: 12rpx 24rpx;
   background-color: #f2f2f2;
-  border-radius: 20px;
+  border-radius: 20rpx;
   white-space: nowrap;
 }
 .search-history-del {
-  font-size: 24px;
+  font-size: 48rpx;
   color: #999;
 }

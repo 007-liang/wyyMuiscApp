@@ -27,4 +27,21 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
+.left-gradient-background,
+.right-gradient-background {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100rpx;
+  height: 100%;
+  pointer-events: none;
+}
+.left-gradient-background {
+  left: -2rpx;
+  background: linear-gradient(-90deg, rgba(255, 255, 255, 0), #ffffff);
+}
+.right-gradient-background {
+  right: -2rpx;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), #ffffff);
+}
 page{--status-bar-height:25px;--top-window-height:0px;--window-top:0px;--window-bottom:0px;--window-left:0px;--window-right:0px;--window-magin:0px}[data-c-h="true"]{display: none !important;}
