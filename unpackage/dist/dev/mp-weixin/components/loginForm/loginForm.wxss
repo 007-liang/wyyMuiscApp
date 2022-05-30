@@ -2,17 +2,51 @@
   margin: 0 auto;
   width: 80%;
 }
-.submit-btn {
+.submit-btn,
+.code-btn {
   color: #ffffff;
   background-color: #f22a25;
   box-shadow: 0px 0px 10rpx #b22727;
   transition-property: box-shadow background-color;
   transition-duration: 0.3s;
 }
-.submit-btn:active {
+.submit-btn:active,
+.code-btn:active {
   background-color: #d22522;
   box-shadow: inset 0px 0px 10rpx #b22727;
 }
-.err-submit {
+.submit-btn {
   margin-top: 30rpx;
+}
+.vistor-login {
+  position: fixed;
+  left: 50%;
+  bottom: 10%;
+  color: #eeeeee;
+  transform: translateX(-50%);
+}
+.disabled-btn {
+  background-color: #b92020 !important;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 40rpx;
+}
+.code-btn {
+  margin: 0;
+  width: 300rpx;
+  font-size: 30rpx;
+}
+@keyframes rotateIcon {
+0% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+}
+}
+.icon-loading {
+  transform: translate(100px);
+  animation: rotateIcon 2s infinite linear;
 }

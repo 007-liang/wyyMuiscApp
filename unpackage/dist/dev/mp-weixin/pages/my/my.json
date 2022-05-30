@@ -1,6 +1,7 @@
 {
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "padding-top": "../../components/paddingTop/paddingTop"
+    "padding-top": "../../components/paddingTop/paddingTop",
+    "not-login-bar": "../../components/notLoginBar/notLoginBar"
   }
 }

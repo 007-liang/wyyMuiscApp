@@ -49,17 +49,16 @@
 		opacity: 0;
 	}
 	
-	20% {
-		opacity: 0.2;
+	40% {
+		opacity: 0.3;
 	}
 	
 	70% {
-		border-color: #f1f1f1;
+		border-color: #ffffff;
 		opacity: 0.1;
 	}
 	
 	100% {
-		border-color: #eeeeee;
 		opacity: 0;
 		width: 400rpx;
 		height: 400rpx;

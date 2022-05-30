@@ -1,5 +1,6 @@
 declare interface IFormValidate<T> {
-    validate: () => Promise<T>;
+    validate: (identifier?: string[]) => Promise<T>;
+    validateField: (identifier?: string[]) => Promise<T>;
 }
 
 declare interface IMessage {

@@ -1,7 +1,30 @@
-<script>
+<script lang="ts">
+import { useUserInfo } from './store';
+import { getLocalStorage, wxRequest } from './utils';
+
+type TUserInfo = {
+    data: CloudMusicRes & IUserInfo;
+};
 export default {
-    onLaunch: function() {
-        // console.log('App Launch')
+    async onLaunch() {
+        // 凭借本地cookie实现自动登录
+        const storeUserInfo = useUserInfo();
+        const cookie = getLocalStorage('cookie');
+        const { 
+            data: { 
+                data 
+            } 
+        } = await wxRequest<TUserInfo>({
+            url: '/login/status',
+            data: { cookie },
+        });
+        if (
+            data.code === 200 && 
+            data.profile !== null && 
+            !isNaN(data.profile.userId)
+        ) {
+            storeUserInfo.setUserInof(data);
+        }
     },
     onShow: function() {
         // console.log('App Show')
@@ -24,7 +47,7 @@ export default {
 }
 
 .iconfont {
-    display: inline;
+	display: inline-block;
     font-family: "iconfont" !important;
     font-size: 16px;
     font-style: normal;

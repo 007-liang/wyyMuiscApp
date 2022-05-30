@@ -1,5 +1,6 @@
 .is-input-border {
   color: #ffffff;
+  border-radius: 0 !important;
   border-top: none !important;
   border-left: none !important;
   border-right: none !important;
@@ -19,7 +20,7 @@
   src: url('//at.alicdn.com/t/font_3434140_bot144ya9m.woff2?t=1653749261283') format('woff2'), url('//at.alicdn.com/t/font_3434140_bot144ya9m.woff?t=1653749261283') format('woff'), url('//at.alicdn.com/t/font_3434140_bot144ya9m.ttf?t=1653749261283') format('truetype');
 }
 .iconfont {
-  display: inline;
+  display: inline-block;
   font-family: "iconfont" !important;
   font-size: 16px;
   font-style: normal;
