@@ -1,0 +1,20 @@
+.index-card-header {
+  display: flex;
+  padding: 0 0 20rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+.index-card-title {
+  font-size: 38rpx;
+  font-weight: bold;
+}
+.index-card-more {
+  font-weight: bold;
+  padding: 6rpx 16rpx;
+  border-radius: 30rpx;
+  border: 2rpx solid #ddd;
+  font-size: 24rpx;
+}
+.index-card-more .iconfont {
+  font-size: 24rpx;
+}

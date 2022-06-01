@@ -1,0 +1,13 @@
+.searchlistsbox {
+  display: flex;
+  align-items: center;
+}
+.searchlistsbox .iconfont {
+  font-size: 38rpx;
+  margin: 0 12rpx;
+}
+.searchlists-text {
+  flex: 1;
+  padding: 36rpx 4rpx;
+  border-bottom: 2rpx solid #ddd;
+}

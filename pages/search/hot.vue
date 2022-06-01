@@ -96,8 +96,13 @@ export default defineComponent({
 <style lang="less">
 .search-hot-detail {
     display: flex;
+    overflow-x: scroll;
     column-gap:  20rpx;
     padding: 36rpx 48rpx;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .search-show-detail {

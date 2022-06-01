@@ -21,6 +21,10 @@ export default {
         url('//at.alicdn.com/t/font_3434140_bot144ya9m.ttf?t=1653749261283') format('truetype');
 }
 
+.section {
+    margin: 20rpx 0;
+    background-color: white;
+}
 
 page {
     font-family: 'Microsoft YaHei Light';

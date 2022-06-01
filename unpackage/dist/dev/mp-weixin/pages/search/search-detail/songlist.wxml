@@ -1,0 +1,1 @@
+<view wx:for="{{a}}" wx:for-item="item" wx:key="e" class="songlist-box"><image mode="widthFix" src="{{item.a}}" class="songlist-pic"/><view class="songlist-content"><view class="songlist-title">{{item.b}}</view><view class="songlist-subtitle">{{item.c}} 首 by {{item.d}} 播放  次 </view></view></view>

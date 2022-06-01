@@ -11,10 +11,8 @@ const searchStore = useSearchStore();
 		历史
 
         <view class="search-history-tagsbox">
-
             <view
                 class="search-history-tags"
-                scroll-x
             >
                 <view
                     class="search-history-tag"
@@ -29,7 +27,10 @@ const searchStore = useSearchStore();
             <view class="right-gradient-background"></view>
         </view>
 		
-		<view class="search-history-del iconfont">
+		<view
+            class="search-history-del iconfont"
+            @click="searchStore.clear_history"
+        >
 			&#xe665;
 		</view>
 

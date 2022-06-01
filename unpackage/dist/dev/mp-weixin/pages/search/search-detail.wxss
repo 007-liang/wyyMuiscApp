@@ -1,0 +1,24 @@
+.search-detail-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.search-detail-comp {
+  flex: 1;
+  overflow-y: scroll;
+}
+.search-detail-nav {
+  padding: 38rpx;
+}
+.search-detail-nav.active {
+  font-weight: bold;
+}
+.search-detail-navbar {
+  display: flex;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+.search-detail-navbar::-webkit-scrollbar {
+  display: none;
+}

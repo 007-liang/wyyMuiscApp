@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "首页",
   "usingComponents": {
-    "side-menu-and-search": "../../components/sideMenuAndSearch/sideMenuAndSearch"
+    "news-songlist": "./news-songlist",
+    "banner": "./banner"
   }
 }

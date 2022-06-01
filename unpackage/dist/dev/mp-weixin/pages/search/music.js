@@ -22,7 +22,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.f(_ctx.musics, (item, k0, i0) => {
       return {
-        a: item.picUrl,
+        a: item.picUrl + "?param=80y80",
         b: common_vendor.t(item.name),
         c: common_vendor.t(item.song.album.name),
         d: common_vendor.f(item.song.artists, (item2, k1, i1) => {

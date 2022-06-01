@@ -65,3 +65,60 @@ declare interface INewsHotSings extends CloudMusicRes {
     more: boolean,
     artists: INewsHotSingsSing[]
 }
+
+declare interface ISearchKeyWordMatch {
+    alg: string,
+    feature: string,
+    keyword: string,
+    type: string,
+    lastKeyword: string,
+}
+declare interface ISearchKeyword extends CloudMusicRes {
+    // 搜索匹配的关键字
+    result: {
+        allMatch: ISearchKeyWordMatch[]
+    }
+}
+
+declare interface ISearchDetailSongsRes {
+    name: string,
+    al: {
+        name: string,
+    },
+    ar: {name: string}[]
+}
+declare interface ISearchDetailRes extends CloudMusicRes {
+    result: {
+        songCount: number,
+        songs: ISearchDetailSongsRes
+    }
+}
+
+// 搜索页歌单
+declare interface IsearchDetailSonglists {
+    name: string, // 歌单名字
+    coverImgUrl: string, // 歌单图片
+    creator: {
+        nickname: string, // 创建者名字
+    },
+    trackCount: number, // 歌单歌曲数量
+    playCount: number, // 播放次数
+}
+
+
+declare interface IsearchDetialSonglistRes extends CloudMusicRes {
+    playlists: {
+
+    }
+}
+
+declare interface IIndexNewSongsResult {
+    name: string,
+    picUrl: string,
+    playCount: number,
+    trackCount: number,
+    id: number,
+}
+declare interface IIndexNewSongs extends CloudMusicRes {
+    result: IIndexNewSongsResult[]
+}

@@ -1,0 +1,1 @@
+<view class="index-card-header"><view class="index-card-title">{{a}}</view><view class="index-card-more" bindtap="{{b}}"> 更多 <text class="iconfont">  </text></view></view>

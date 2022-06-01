@@ -1,18 +1,18 @@
 {
 	"pages": [
 		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		}, 
+		{
             "path" : "pages/search/search",
             "style": {
                 "navigationBarTitleText": "",
                 "enablePullDownRefresh": false
             }
         },
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "首页"
-			}
-		}, 
 		{
 			"path": "pages/my/my",
 			"style": {
