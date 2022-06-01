@@ -14,5 +14,5 @@
     },
     "vueCompilerOptions": {
         "experimentalDisableTemplateSupport": true
-    }
+    },
 }

@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/login/login",
     "pages/search/search",
-    "pages/my/my",
-    "pages/login/login"
+    "pages/my/my"
   ],
   "window": {
     "navigationBarTextStyle": "white",

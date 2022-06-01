@@ -2,9 +2,11 @@
   "dependencies": {
     "@dcloudio/uni-ui": "^1.4.15",
     "@types/vue": "^2.0.0",
+    "md5": "^2.3.0",
     "pinia": "^2.0.14"
   },
   "devDependencies": {
-    "@dcloudio/types": "^2.6.10"
+    "@dcloudio/types": "^2.6.10",
+    "@types/md5": "^2.3.2"
   }
 }

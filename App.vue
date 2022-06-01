@@ -1,7 +1,30 @@
-<script>
+<script lang="ts">
+import { useUserInfo } from './store';
+import { getLocalStorage, wxRequest } from './utils';
+
+type TUserInfo = {
+    data: CloudMusicRes & IUserInfo;
+};
 export default {
-    onLaunch: function() {
-        // console.log('App Launch')
+    async onLaunch() {
+        // 凭借本地cookie实现自动登录
+        const storeUserInfo = useUserInfo();
+        const cookie = getLocalStorage('cookie');
+        const { 
+            data: { 
+                data 
+            } 
+        } = await wxRequest<TUserInfo>({
+            url: '/login/status',
+            data: { cookie },
+        });
+        if (
+            data.code === 200 && 
+            data.profile !== null && 
+            !isNaN(data.profile.userId)
+        ) {
+            storeUserInfo.setUserInof(data);
+        }
     },
     onShow: function() {
         // console.log('App Show')
@@ -13,7 +36,9 @@ export default {
 </script>
 
 <style lang="less">
+@import './component.less';
 /*每个页面公共css */
+
 @font-face {
     font-family: 'iconfont';  /* Project id 3434140 */
     src: url('//at.alicdn.com/t/font_3434140_bot144ya9m.woff2?t=1653749261283') format('woff2'),
@@ -32,6 +57,7 @@ page {
 }
 
 .iconfont {
+	display: inline-block;
     font-family: "iconfont" !important;
     font-size: 16px;
     font-style: normal;

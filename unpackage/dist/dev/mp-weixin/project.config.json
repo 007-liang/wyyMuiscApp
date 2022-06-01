@@ -7,7 +7,7 @@
   "setting": {
     "urlCheck": false,
     "es6": true,
-    "postcss": true,
+    "postcss": false,
     "minified": true,
     "coverView": true,
     "lazyloadPlaceholderEnable": false,
@@ -38,7 +38,17 @@
   "libVersion": "2.24.2",
   "appid": "wxbe602774c213318f",
   "projectname": "wyyMusic",
-  "condition": {},
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "login",
+          "pathName": "pages/login/login",
+          "query": ""
+        }
+      ]
+    }
+  },
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2

@@ -1,17 +1,11 @@
+<script setup lang="ts">
+	
+</script>
+
 <template>
 	<paddingTop></paddingTop>
 	<notLoginBar></notLoginBar>
 </template>
-
-<script>
-export default {
-	data() {
-		return {
-			
-		};
-	},
-}
-</script>
 
 <style lang="less">
 page {

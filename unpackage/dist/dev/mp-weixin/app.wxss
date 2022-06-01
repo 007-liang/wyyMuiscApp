@@ -1,3 +1,18 @@
+.is-input-border {
+  color: #ffffff;
+  border-radius: 0 !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 1rpx solid #ffff f;
+  transition-property: border-top border-left border-right;
+  transition-timing-function: ease-out;
+  transition-duration: 0.2s;
+}
+.uni-error-message-text {
+  color: #fdc600 !important;
+  padding-bottom: 20rpx;
+}
 /*每个页面公共css */
 @font-face {
   font-family: 'iconfont';
@@ -13,6 +28,7 @@ page {
   font-size: 16px;
 }
 .iconfont {
+  display: inline-block;
   font-family: "iconfont" !important;
   font-size: 16px;
   font-style: normal;

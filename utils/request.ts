@@ -30,14 +30,14 @@ export function request<
         return err;
     };
     return new Promise<RequestRes<T>>((resolve, reject) => {
-        options.fail = (err) => {
-            reject(err);
-        };
         options.success = (res) => {
             resolve(res as any);
         }
+        options.fail = (err) => {
+            reject(err);
+        };
         wx.request(options)
     }).then(success).catch(fail);
-}
+};
 
 export let wxRequest: Request = request.bind(null, "http://127.0.0.1:3000");

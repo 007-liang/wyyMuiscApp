@@ -9,4 +9,8 @@ export const setLocalStorage = <T extends string | object>(
     data: T
 ) => {
     wx.setStorageSync(key, data);
-}
+};
+
+export const delLocalStorage = (key: string) => {
+    wx.removeStorageSync(key);
+};

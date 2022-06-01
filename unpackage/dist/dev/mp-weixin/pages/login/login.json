@@ -1,4 +1,7 @@
 {
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "login-logo": "../../components/loginLogo/loginLogo",
+    "phone-login": "../../components/phoneLogin/phoneLogin"
+  }
 }

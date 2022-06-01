@@ -2,14 +2,32 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports[Symbol.toStringTag] = "Module";
 var common_vendor = require("./common/vendor.js");
+require("./store/store-search.js");
+var store_storeUserInfo = require("./store/store-user-info.js");
+var utils_localstorage = require("./utils/localstorage.js");
+var utils_request = require("./utils/request.js");
+require("./utils/symbols.js");
 if (!Math) {
   "./pages/index/index.js";
+  "./pages/login/login.js";
   "./pages/search/search.js";
   "./pages/my/my.js";
-  "./pages/login/login.js";
 }
 const _sfc_main = {
-  onLaunch: function() {
+  async onLaunch() {
+    const storeUserInfo = store_storeUserInfo.useUserInfo();
+    const cookie = utils_localstorage.getLocalStorage("cookie");
+    const {
+      data: {
+        data
+      }
+    } = await utils_request.wxRequest({
+      url: "/login/status",
+      data: { cookie }
+    });
+    if (data.code === 200 && data.profile !== null && !isNaN(data.profile.userId)) {
+      storeUserInfo.setUserInof(data);
+    }
   },
   onShow: function() {
   },

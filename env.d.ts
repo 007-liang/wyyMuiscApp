@@ -112,6 +112,7 @@ declare interface IsearchDetialSonglistRes extends CloudMusicRes {
     }
 }
 
+// 首页推荐歌单
 declare interface IIndexNewSongsResult {
     name: string,
     picUrl: string,
@@ -119,6 +120,9 @@ declare interface IIndexNewSongsResult {
     trackCount: number,
     id: number,
 }
+// 首页推荐歌单
 declare interface IIndexNewSongs extends CloudMusicRes {
     result: IIndexNewSongsResult[]
 }
+
+// 首页轮播图

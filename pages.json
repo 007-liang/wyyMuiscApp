@@ -1,11 +1,26 @@
 {
+	"condition": {
+		"current": 0,
+		"list": [
+			{
+				"name": "login",
+				"path": "pages/login/login"
+			}
+		]
+	},
 	"pages": [
 		{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "首页"
 			}
-		}, 
+		},
+        {
+			"path": "pages/login/login",
+			"style": {
+				"enablePullDownRefresh": false
+			}
+		},
 		{
             "path" : "pages/search/search",
             "style": {
@@ -18,19 +33,12 @@
 			"style": {
 				"enablePullDownRefresh": false
 			}
-		}, 
-		{
-			"path": "pages/login/login",
-			"style": {
-				"enablePullDownRefresh": false
-			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "网抑云音乐",
 		"enablePullDownRefresh": true
-		// "navigationStyle": "custom"
 	},
 	"tabBar": {
 		"custom": true,
