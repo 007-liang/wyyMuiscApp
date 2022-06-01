@@ -56,6 +56,12 @@ page {
     font-size: 16px;
 }
 
+.scrollbar-none {
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
 .iconfont {
 	display: inline-block;
     font-family: "iconfont" !important;

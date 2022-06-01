@@ -5,7 +5,7 @@ var utils_request = require("../../utils/request.js");
 if (!Math) {
   Header();
 }
-const Header = () => "./list-header.js";
+const Header = () => "./components/list-header.js";
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   setup(__props) {
     let new_songs = common_vendor.ref([]);

@@ -9,7 +9,7 @@ if (!Math) {
   (history + hot + music + hotSings + searchList + searchDetail)();
 }
 const history = () => "./history.js";
-const hot = () => "./hot.js";
+const hot = () => "./hot-search.js";
 const music = () => "./music.js";
 const hotSings = () => "./hot-sings.js";
 const searchList = () => "./search-list.js";

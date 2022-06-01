@@ -7,6 +7,10 @@
 .news-songs-container::-webkit-scrollbar {
   display: none;
 }
+.news-songs-container .news-songs-pic {
+  width: 260rpx !important;
+  border-radius: 20rpx;
+}
 .news-songs {
   position: relative;
 }
@@ -28,8 +32,4 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-}
-image {
-  width: 260rpx;
-  border-radius: 20rpx;
 }

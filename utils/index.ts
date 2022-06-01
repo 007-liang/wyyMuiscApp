@@ -26,7 +26,7 @@ export const transform_num_unit = (num: number) => {
     };
     let unit = num_unit[str.length];
     result.push(str.slice(0, index))
-    if (unit === "亿") {
+    if (unit === "万") {
         let float_num = parseInt(str.slice(index, index + 1));
         if (float_num > 0) {
             result.push(float_num)

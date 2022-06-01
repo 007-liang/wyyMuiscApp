@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import history from "@/pages/search/history.vue";
-import hot from "@/pages/search/hot.vue";
+import hot from "@/pages/search/hot-search.vue";
 import music from "@/pages/search/music.vue";
 import hotSings from "@/pages/search/hot-sings.vue";
 import searchList from "@/pages/search/search-list.vue";

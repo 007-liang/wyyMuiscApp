@@ -2,6 +2,7 @@
 var common_vendor = require("../../../common/vendor.js");
 var store_storeSearch = require("../../../store/store-search.js");
 require("../../../store/store-user-info.js");
+var utils_index = require("../../../utils/index.js");
 require("../../../utils/localstorage.js");
 require("../../../utils/symbols.js");
 require("../../../utils/request.js");
@@ -26,7 +27,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
             b: common_vendor.t(item.name),
             c: common_vendor.t(item.trackCount),
             d: common_vendor.t(item.creator.nickname),
-            e: item.name
+            e: common_vendor.t(common_vendor.unref(utils_index.transform_num_unit)(item.playCount)),
+            f: item.name
           };
         })
       };

@@ -1,10 +1,12 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
 if (!Math) {
-  (banner + newsSonglist)();
+  (banner + category + newsSonglist + exclusiveBroadcast)();
 }
+const category = () => "./category.js";
 const newsSonglist = () => "./news-songlist.js";
 const banner = () => "./banner.js";
+const exclusiveBroadcast = () => "./exclusive-broadcast.js";
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   setup(__props) {
     const to_search_page = () => {

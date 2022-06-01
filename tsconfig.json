@@ -7,7 +7,6 @@
         "esModuleInterop": true,
         "noImplicitAny": false,
         "baseUrl": "./",
-        "allowJs": true,
         "paths": {
             "@/*": ["./*"]
         },
@@ -15,4 +14,5 @@
     "vueCompilerOptions": {
         "experimentalDisableTemplateSupport": true
     },
+    "exclude": ["/custom-tab-bar/*"]
 }

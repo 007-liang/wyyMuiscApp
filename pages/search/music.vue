@@ -64,9 +64,6 @@ export default defineComponent({
         // console.log(this.musics);
         
     },
-    methods: {
-
-    },
 })
 </script>
 

@@ -15,8 +15,7 @@ const _sfc_main = common_vendor.defineComponent({
       }
     });
     this.musics = res.data.result;
-  },
-  methods: {}
+  }
 });
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {

@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "header": "./list-header"
+    "header": "./components/list-header"
   }
 }

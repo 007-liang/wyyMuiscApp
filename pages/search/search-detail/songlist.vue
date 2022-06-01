@@ -1,6 +1,8 @@
 <script setup lang='ts'>
 import { useSearchStore } from '@/store';
-import { computed } from 'vue';
+import {
+    transform_num_unit
+} from "@/utils";
 const searchStore = useSearchStore();
 let load = false;
 defineExpose({
@@ -34,9 +36,9 @@ let unit = {
         <view class="songlist-content">
             <view class="songlist-title">{{item.name}}</view>
             <view class="songlist-subtitle">
-                {{item.trackCount}} 首
-                by {{item.creator.nickname}}
-                播放 <!-- {{getPlayCount(item.playCount)}} --> 次
+                {{item.trackCount}} 首,
+                by {{item.creator.nickname}},
+                播放 {{transform_num_unit(item.playCount)}} 次
             </view>
         </view>
     </view>

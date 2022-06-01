@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import Header from "./list-header.vue";
+import Header from "./components/list-header.vue";
 import { wxRequest, transform_num_unit } from '@/utils';
 import { ref } from 'vue';
 
@@ -27,6 +27,7 @@ get_new_songs();
                 :key="item.id"
             >
                 <image
+                    class="news-songs-pic"
                     mode="widthFix"
                     :src="item.picUrl + '?param=160y160'"
                 />
@@ -53,6 +54,11 @@ get_new_songs();
     &::-webkit-scrollbar {
         display: none;
     }
+    
+    .news-songs-pic {
+        width: 260rpx !important;
+        border-radius: 20rpx;
+    }
 }
 .news-songs {
     position: relative;
@@ -78,8 +84,4 @@ get_new_songs();
     -webkit-line-clamp: 2;
 }
 
-image {
-    width: 260rpx;
-    border-radius: 20rpx;
-}
 </style>

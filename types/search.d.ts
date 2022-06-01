@@ -1,9 +1,3 @@
-/// <reference path="./node_modules/@dcloudio/types/index.d.ts"/>
-
-interface CloudMusicRes {
-    code: number,
-}
-
 interface ISearchHotData {
     // 热搜关键词
     alg: string,
@@ -15,7 +9,6 @@ interface ISearchHotData {
     source: number
     url: string
 }
-
 declare interface ISearchHot extends CloudMusicRes {
     // 热搜关键词
     result: {
@@ -29,6 +22,7 @@ declare interface INewsMusicArtists {
     name: string,
     id: number,
 }
+
 declare interface INewsMusicData {
     // 最新单曲 数据
     name: string,
@@ -45,10 +39,27 @@ declare interface INewsMusicData {
         }
     }
 }
+
 declare interface INewsMusic extends CloudMusicRes {
     // 最新单曲
     category: number;
     result: INewsMusicData[]
+}
+
+declare interface INewsHotSingsSing {
+    // 热门歌手 歌手信息
+    name: string,
+    id: number,
+    picId: number,
+    img1v1Id: number,
+    alias: string[],
+    picUrl: string,
+}
+
+declare interface INewsHotSings extends CloudMusicRes {
+    // 热门歌手
+    more: boolean,
+    artists: INewsHotSingsSing[]
 }
 
 declare interface INewsHotSingsSing {
@@ -111,18 +122,3 @@ declare interface IsearchDetialSonglistRes extends CloudMusicRes {
 
     }
 }
-
-// 首页推荐歌单
-declare interface IIndexNewSongsResult {
-    name: string,
-    picUrl: string,
-    playCount: number,
-    trackCount: number,
-    id: number,
-}
-// 首页推荐歌单
-declare interface IIndexNewSongs extends CloudMusicRes {
-    result: IIndexNewSongsResult[]
-}
-
-// 首页轮播图

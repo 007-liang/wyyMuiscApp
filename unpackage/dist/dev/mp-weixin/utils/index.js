@@ -24,7 +24,7 @@ const transform_num_unit = (num) => {
   }
   let unit = num_unit[str.length];
   result.push(str.slice(0, index));
-  if (unit === "\u4EBF") {
+  if (unit === "\u4E07") {
     let float_num = parseInt(str.slice(index, index + 1));
     if (float_num > 0) {
       result.push(float_num);

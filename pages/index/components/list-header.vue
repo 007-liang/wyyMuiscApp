@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 const props = defineProps<{
-    title: string,
+    title?: string,
     path?: string
 }>();
 const to_path = () => {
@@ -13,7 +13,9 @@ const to_path = () => {
 <template>
     <view class="index-card-header">
         <view class="index-card-title">
-            {{props.title}}
+            <slot name="title">
+                {{props.title}}
+            </slot>
         </view>
         <view
             class="index-card-more"

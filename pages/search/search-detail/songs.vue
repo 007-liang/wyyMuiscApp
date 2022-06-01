@@ -34,6 +34,7 @@ defineExpose({
             </text>
             -
             <text>{{item.al.name}}</text>
+
         </view>
         <view class="search-detail-more">
 
