@@ -1,6 +1,9 @@
 {
   "navigationBarTitleText": "首页",
   "usingComponents": {
-    "side-menu-and-search": "../../components/sideMenuAndSearch/sideMenuAndSearch"
+    "category": "./category",
+    "news-songlist": "./news-songlist",
+    "banner": "./banner",
+    "exclusive-broadcast": "./exclusive-broadcast"
   }
 }

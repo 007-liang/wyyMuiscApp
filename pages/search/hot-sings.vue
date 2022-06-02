@@ -33,7 +33,7 @@ getData();
                 >
                     <image
                         mode="widthFix"
-                        :src="item.picUrl"
+                        :src="item.picUrl + '?param=80y80'"
                         class="search-hot-sing-pic"
                     />
                     <text>{{item.name}}</text>

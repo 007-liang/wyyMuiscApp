@@ -1,1 +1,1 @@
-<view class="content"><side-menu-and-search u-i="1053d8c6-0" bind:__l="__l"></side-menu-and-search><text>Holle World</text></view>
+<view class="index-header"><view class="search-box" bindtap="{{a}}"><input type="text" class="search-control" placeholder="请输入搜索内容"></input><text class="search-icon iconfont">  </text></view></view><view class="content"><banner u-i="1053d8c6-0" bind:__l="__l"/><category u-i="1053d8c6-1" bind:__l="__l"/><news-songlist u-i="1053d8c6-2" bind:__l="__l"/><exclusive-broadcast u-i="1053d8c6-3" bind:__l="__l"/></view>

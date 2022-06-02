@@ -17,7 +17,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
             c: common_vendor.o(($event) => common_vendor.unref(searchStore).input_keyword(item))
           };
         }),
-        b: common_vendor.unref(searchStore).history.length > 0
+        b: common_vendor.o((...args) => common_vendor.unref(searchStore).clear_history && common_vendor.unref(searchStore).clear_history(...args)),
+        c: common_vendor.unref(searchStore).history.length > 0
       };
     };
   }

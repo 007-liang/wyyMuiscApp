@@ -1,0 +1,1 @@
+<view wx:for="{{a}}" wx:for-item="item" wx:key="b" class="searchlistsbox" bindtap="{{item.c}}"><text class="iconfont">  </text><view class="searchlists-text">{{item.a}}</view></view>

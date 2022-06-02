@@ -1218,9 +1218,9 @@ class EffectScope {
 function effectScope(detached) {
   return new EffectScope(detached);
 }
-function recordEffectScope(effect, scope = activeEffectScope) {
+function recordEffectScope(effect2, scope = activeEffectScope) {
   if (scope && scope.active) {
-    scope.effects.push(effect);
+    scope.effects.push(effect2);
   }
 }
 const createDep = (effects) => {
@@ -1238,14 +1238,14 @@ const initDepMarkers = ({ deps }) => {
     }
   }
 };
-const finalizeDepMarkers = (effect) => {
-  const { deps } = effect;
+const finalizeDepMarkers = (effect2) => {
+  const { deps } = effect2;
   if (deps.length) {
     let ptr = 0;
     for (let i = 0; i < deps.length; i++) {
       const dep = deps[i];
       if (wasTracked(dep) && !newTracked(dep)) {
-        dep.delete(effect);
+        dep.delete(effect2);
       } else {
         deps[ptr++] = dep;
       }
@@ -1319,14 +1319,31 @@ class ReactiveEffect {
     }
   }
 }
-function cleanupEffect(effect) {
-  const { deps } = effect;
+function cleanupEffect(effect2) {
+  const { deps } = effect2;
   if (deps.length) {
     for (let i = 0; i < deps.length; i++) {
-      deps[i].delete(effect);
+      deps[i].delete(effect2);
     }
     deps.length = 0;
   }
+}
+function effect(fn, options) {
+  if (fn.effect) {
+    fn = fn.effect.fn;
+  }
+  const _effect = new ReactiveEffect(fn);
+  if (options) {
+    extend(_effect, options);
+    if (options.scope)
+      recordEffectScope(_effect, options.scope);
+  }
+  if (!options || !options.lazy) {
+    _effect.run();
+  }
+  const runner = _effect.run.bind(_effect);
+  runner.effect = _effect;
+  return runner;
 }
 let shouldTrack = true;
 const trackStack = [];
@@ -1434,15 +1451,15 @@ function trigger(target, type, key, newValue, oldValue, oldTarget) {
   }
 }
 function triggerEffects(dep, debuggerEventExtraInfo) {
-  for (const effect of isArray(dep) ? dep : [...dep]) {
-    if (effect !== activeEffect || effect.allowRecurse) {
-      if (effect.onTrigger) {
-        effect.onTrigger(extend({ effect }, debuggerEventExtraInfo));
+  for (const effect2 of isArray(dep) ? dep : [...dep]) {
+    if (effect2 !== activeEffect || effect2.allowRecurse) {
+      if (effect2.onTrigger) {
+        effect2.onTrigger(extend({ effect: effect2 }, debuggerEventExtraInfo));
       }
-      if (effect.scheduler) {
-        effect.scheduler();
+      if (effect2.scheduler) {
+        effect2.scheduler();
       } else {
-        effect.run();
+        effect2.run();
       }
     }
   }
@@ -2642,17 +2659,17 @@ function doWatch(source, cb, { immediate, deep, flush, onTrack, onTrigger } = EM
   }
   let cleanup;
   let onCleanup = (fn) => {
-    cleanup = effect.onStop = () => {
+    cleanup = effect2.onStop = () => {
       callWithErrorHandling(fn, instance, 4);
     };
   };
   let oldValue = isMultiSource ? [] : INITIAL_WATCHER_VALUE;
   const job = () => {
-    if (!effect.active) {
+    if (!effect2.active) {
       return;
     }
     if (cb) {
-      const newValue = effect.run();
+      const newValue = effect2.run();
       if (deep || forceTrigger || (isMultiSource ? newValue.some((v, i) => hasChanged(v, oldValue[i])) : hasChanged(newValue, oldValue)) || false) {
         if (cleanup) {
           cleanup();
@@ -2665,7 +2682,7 @@ function doWatch(source, cb, { immediate, deep, flush, onTrack, onTrigger } = EM
         oldValue = newValue;
       }
     } else {
-      effect.run();
+      effect2.run();
     }
   };
   job.allowRecurse = !!cb;
@@ -2683,26 +2700,26 @@ function doWatch(source, cb, { immediate, deep, flush, onTrack, onTrigger } = EM
       }
     };
   }
-  const effect = new ReactiveEffect(getter, scheduler);
+  const effect2 = new ReactiveEffect(getter, scheduler);
   {
-    effect.onTrack = onTrack;
-    effect.onTrigger = onTrigger;
+    effect2.onTrack = onTrack;
+    effect2.onTrigger = onTrigger;
   }
   if (cb) {
     if (immediate) {
       job();
     } else {
-      oldValue = effect.run();
+      oldValue = effect2.run();
     }
   } else if (flush === "post") {
-    queuePostRenderEffect(effect.run.bind(effect), instance && instance.suspense);
+    queuePostRenderEffect(effect2.run.bind(effect2), instance && instance.suspense);
   } else {
-    effect.run();
+    effect2.run();
   }
   return () => {
-    effect.stop();
+    effect2.stop();
     if (instance && instance.scope) {
-      remove(instance.scope.effects, effect);
+      remove(instance.scope.effects, effect2);
     }
   };
 }
@@ -4556,8 +4573,8 @@ function componentUpdateScopedSlotsFn() {
     mpInstance.setData(diffData);
   }
 }
-function toggleRecurse({ effect, update }, allowed) {
-  effect.allowRecurse = update.allowRecurse = allowed;
+function toggleRecurse({ effect: effect2, update }, allowed) {
+  effect2.allowRecurse = update.allowRecurse = allowed;
 }
 function setupRenderEffect(instance) {
   const updateScopedSlots = componentUpdateScopedSlotsFn.bind(instance);
@@ -4582,13 +4599,13 @@ function setupRenderEffect(instance) {
       }
     }
   };
-  const effect = instance.effect = new ReactiveEffect(componentUpdateFn, () => queueJob(instance.update), instance.scope);
-  const update = instance.update = effect.run.bind(effect);
+  const effect2 = instance.effect = new ReactiveEffect(componentUpdateFn, () => queueJob(instance.update), instance.scope);
+  const update = instance.update = effect2.run.bind(effect2);
   update.id = instance.uid;
   toggleRecurse(instance, true);
   {
-    effect.onTrack = instance.rtc ? (e2) => invokeArrayFns$1(instance.rtc, e2) : void 0;
-    effect.onTrigger = instance.rtg ? (e2) => invokeArrayFns$1(instance.rtg, e2) : void 0;
+    effect2.onTrack = instance.rtc ? (e2) => invokeArrayFns$1(instance.rtc, e2) : void 0;
+    effect2.onTrigger = instance.rtg ? (e2) => invokeArrayFns$1(instance.rtg, e2) : void 0;
     update.ownerInstance = instance;
   }
   update();
@@ -6547,11 +6564,13 @@ function isSlowBuffer(obj) {
 var MD5 = md5.exports;
 exports.MD5 = MD5;
 exports._export_sfc = _export_sfc;
+exports.computed$1 = computed$1;
 exports.createPinia = createPinia;
 exports.createSSRApp = createSSRApp;
 exports.defineComponent = defineComponent;
 exports.defineStore = defineStore;
 exports.e = e;
+exports.effect = effect;
 exports.f = f;
 exports.index = index;
 exports.n = n;
@@ -6565,3 +6584,4 @@ exports.s = s;
 exports.sr = sr;
 exports.t = t;
 exports.unref = unref;
+exports.watch = watch;

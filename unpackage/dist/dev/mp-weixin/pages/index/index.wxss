@@ -1,7 +1,35 @@
-
+.index-header {
+  background-color: #fff;
+}
+.index-header .search-box {
+  position: relative;
+  margin: 20rpx;
+}
+.index-header .search-box .search-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 32rpx;
+  font-size: 34rpx;
+}
+.index-header .search-control {
+  padding: 20rpx;
+  padding-left: 72rpx;
+  border: 2rpx solid #999;
+  border-radius: 40rpx;
+}
+.section {
+  padding: 40rpx;
+  border-radius: 20rpx;
+}
 .content {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+  flex: 1;
+  overflow-y: scroll;
+  padding-bottom: 120rpx;
+}
+page {
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }

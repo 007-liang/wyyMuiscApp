@@ -1,0 +1,1 @@
+<view wx:for="{{a}}" wx:for-item="item" wx:key="d" class="search-detail-songbox"><view class="search-detail-title">{{item.a}}</view><view class="search-detail-subtitle"><text wx:for="{{item.b}}" wx:for-item="item" wx:key="b">{{item.a}}</text> - <text>{{item.c}}</text></view><view class="search-detail-more"></view></view>

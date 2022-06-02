@@ -3,8 +3,10 @@
   "enablePullDownRefresh": false,
   "usingComponents": {
     "history": "./history",
-    "hot": "./hot",
+    "hot": "./hot-search",
     "music": "./music",
-    "hot-sings": "./hot-sings"
+    "hot-sings": "./hot-sings",
+    "search-list": "./search-list",
+    "search-detail": "./search-detail"
   }
 }

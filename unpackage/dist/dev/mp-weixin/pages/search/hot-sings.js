@@ -19,7 +19,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       return {
         a: common_vendor.f(common_vendor.unref(sings), (item, k0, i0) => {
           return {
-            a: item.picUrl,
+            a: item.picUrl + "?param=80y80",
             b: common_vendor.t(item.name),
             c: item.name
           };

@@ -9,9 +9,9 @@
                 class="search-news-song"
                 v-for="item in musics"
                 :key="item.id"
-            >   
+            >
                 <image
-                    :src="item.picUrl"
+                    :src="item.picUrl + '?param=80y80'"
                     class="search-song-pic"
                     mode="widthFix"
                 />
@@ -63,9 +63,6 @@ export default defineComponent({
         this.musics = res.data.result;
         // console.log(this.musics);
         
-    },
-    methods: {
-
     },
 })
 </script>

@@ -1,0 +1,35 @@
+.news-songs-container {
+  display: flex;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  column-gap: 20rpx;
+}
+.news-songs-container::-webkit-scrollbar {
+  display: none;
+}
+.news-songs-container .news-songs-pic {
+  width: 260rpx !important;
+  border-radius: 20rpx;
+}
+.news-songs {
+  position: relative;
+}
+.playCount {
+  position: absolute;
+  right: 10rpx;
+  top: 10rpx;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 10rpx;
+  border-radius: 30rpx;
+}
+.playCount .iconfont {
+  font-size: 34rpx;
+}
+.news-song-name {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}

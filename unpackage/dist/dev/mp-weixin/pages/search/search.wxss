@@ -1,14 +1,32 @@
-.search-box.data-v-4cedc0c6 {
+page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.search-container {
+  flex: 1;
+  overflow-y: scroll;
+}
+.search-box {
   display: flex;
   align-items: center;
   column-gap: 20rpx;
+  position: relative;
 }
-.search-box .iconfont.data-v-4cedc0c6 {
+.search-box .back {
   margin-left: 10rpx;
   font-size: 32rpx;
 }
-input.data-v-4cedc0c6 {
+.search-clear-keyword {
+  position: absolute;
+  right: 40rpx;
+  transform: translateY(-50%);
+  top: 50%;
+  font-size: 36rpx;
+}
+input {
   padding: 20rpx;
+  padding-right: 80rpx;
   border-bottom: 2rpx solid #ddd;
   flex: 1;
   margin-right: 20rpx;
