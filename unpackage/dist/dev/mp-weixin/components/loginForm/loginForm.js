@@ -1,7 +1,8 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
+var api_user = require("../../api/user.js");
 var utils_localstorage = require("../../utils/localstorage.js");
-var utils_request = require("../../utils/request.js");
+require("../../utils/request.js");
 require("../../store/store-search.js");
 var store_storeUserInfo = require("../../store/store-user-info.js");
 require("../../utils/symbols.js");
@@ -81,20 +82,15 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         if (sendCode.value) {
           await validateCode();
         }
-        const { data } = await utils_request.wxRequest({
-          url: "/login/cellphone",
-          data: {
-            phone,
-            md5_password: common_vendor.MD5(pwd)
-          }
-        });
+        const { data } = await api_user.sendLogin(phone, common_vendor.MD5(pwd));
         formData2.pwd = "";
         formData2.phone = "";
+        formData2.captcha = "";
         if (data.code === 200) {
           msgType.value = "success";
           messageText.value = "\u767B\u5F55\u6210\u529F";
           utils_localstorage.setLocalStorage("cookie", data.cookie);
-          storeUserInfo.setUserInof(data);
+          storeUserInfo.setUserInfo(data);
           setTimeout(() => common_vendor.index.redirectTo({ url: "/pages/my/my" }), 1e3);
         } else {
           msgType.value = "error";
@@ -118,11 +114,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     const getCode = async () => {
       var _a;
       await submit("validateField", "phone");
-      let phone = formData.phone;
-      const { data } = await utils_request.wxRequest({
-        url: "/captcha/sent",
-        data: { phone }
-      });
+      const { data } = await api_user.sendCaptcha(formData.phone);
       if (data.code === 200 && data.data) {
         interval.value = 60;
         sendCode.value = true;
@@ -141,13 +133,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     const validateCode = () => {
       return new Promise(async (resolve, reject) => {
         const { phone, captcha } = formData;
-        utils_request.wxRequest({
-          url: "/captcha/verify",
-          data: {
-            phone,
-            captcha
-          }
-        }).then(({ data }) => {
+        api_user.getValidateCode(phone, captcha).then(({ data }) => {
           if (data.code === 200 && data.data) {
             resolve("OK");
           } else {

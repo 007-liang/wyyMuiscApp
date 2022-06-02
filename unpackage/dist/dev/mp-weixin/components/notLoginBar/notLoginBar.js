@@ -1,14 +1,7 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
 const _sfc_main = {
-  name: "loginStatus",
-  data() {
-    return {
-      img: ""
-    };
-  },
-  created() {
-  }
+  name: "loginStatus"
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {};

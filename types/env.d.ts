@@ -5,8 +5,8 @@ interface CloudMusicRes {
 }
 
 declare interface IUserInfo {
+    // 用户基本信息
     cookie: string;
-    token: string;
     profile: {
         avatarUrl: string;
         backgroundUrl: string;
@@ -26,7 +26,38 @@ declare interface IUserInfo {
         id: number;
         createTime: number;
     };
-    loginType: number;
+    login: boolean;
+}
+
+declare interface ISongDetail {
+    // 歌曲详情
+    al: {
+        id: number;
+        name: string;
+        picUrl: string;
+    };
+    alia: []; // 别名
+    ar: { 
+        // 歌手信息
+        alias: [],
+        id: number;
+        name: string;
+    }[];
+    name: string;
+    pop: number; // 歌曲热度
+    dt: number;
+}
+
+declare interface IUserlv {
+    // 用户等级
+    info: string;
+    level: number | string;
+    nextLoginCount: number;
+    userId: number;
+    progress: number;
+    nextPlayCount: number;
+    nowLoginCount: number;
+    nowPlayCount: number;
 }
 
 interface ISearchHotData {

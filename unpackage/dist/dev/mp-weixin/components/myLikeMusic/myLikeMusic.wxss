@@ -1,0 +1,53 @@
+.like-music-box {
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+.like-music {
+  position: relative;
+  display: flex;
+  gap: 20rpx;
+}
+.like-music-box-active {
+  background-color: #cccccc;
+}
+.like-music-info {
+  padding-top: 10rpx;
+  font-size: 28rpx;
+}
+.like-music-info .like-music-total {
+  color: #999999;
+  font-size: 24rpx;
+}
+.like-icon {
+  position: absolute;
+  top: 50%;
+  left: 25rpx;
+  color: #ffffff;
+  font-size: 40rpx;
+  transform: translateY(-50%);
+}
+.like-music-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #cccccc;
+}
+.palpitation {
+  padding: 5rpx 20rpx;
+  border-radius: 20px;
+  font-size: 20rpx;
+  line-height: 40rpx;
+  border: 1px solid #999999;
+  transition: background-color 0.2s;
+}
+.palpitation > .iconfont {
+  font-size: 24rpx;
+  color: #FF3A3A;
+}
+.palpitation-active {
+  background-color: #cccccc;
+}

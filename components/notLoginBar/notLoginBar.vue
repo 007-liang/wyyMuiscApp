@@ -17,43 +17,10 @@
 </template>
 
 <script lang="ts">
-	export default {
-		name:"loginStatus",
-		data() {
-			return {
-				img: ''
-			};
-		},
-		created() {
-			
-		}
-	}
+export default {
+	name:"loginStatus"
+}
 </script>
 
 <style lang="less">
-.user-avatar {
-	box-sizing: border-box;
-	display: flex;
-	width: 100rpx;
-	height: 100rpx;
-	padding-top: 15rpx;
-	border-radius: 50%;
-	border: 2rpx solid #FFFFFF;
-	background-color: #F8F1F1;
-	justify-content: center;
-	align-items: center;
-	overflow: hidden;
-	
-	.iconfont {
-		color: #F9D9D9;
-		font-size: 90rpx;
-	}
-}
-
-.login-name {
-	padding-left: 15rpx;
-	padding-right: 5rpx;
-	font-size: 26rpx;
-	font-weight: 700;
-}
 </style>

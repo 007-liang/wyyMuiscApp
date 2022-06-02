@@ -1,6 +1,11 @@
 <script setup lang="ts">
+import { reactive, ref } from "vue";
+import { getValidateCode, sendCaptcha, sendLogin } from "@/api";
+import { setLocalStorage } from "@/utils";
+import { useUserInfo } from "@/store";
+import MD5 from "md5";
+
 type TFromData = typeof formData;
-type TCode = CloudMusicRes & { data: boolean, message: string  };
 
 let timer: any;
 let count = 0;
@@ -69,22 +74,15 @@ const login = async () => {
 		if (sendCode.value) {
 			await validateCode();
 		}
-		const { data, } = await wxRequest<
-			Required<ILoginStatus>
-		>({ 
-			url: "/login/cellphone",
-			data: {
-				phone,
-				md5_password: MD5(pwd),
-			} 
-		});
+		const { data, } = await sendLogin(phone, MD5(pwd));
 		formData.pwd = '';
 		formData.phone = '';
+		formData.captcha = '';
 		if (data.code === 200) {
 			msgType.value = 'success';
 			messageText.value = '登录成功';
 			setLocalStorage('cookie', data.cookie);
-			storeUserInfo.setUserInof(data as IUserInfo);
+			storeUserInfo.setUserInfo(data as IUserInfo);
 			setTimeout(() => (
 				uni.redirectTo({ url: '/pages/my/my' })
 			), 1000);
@@ -111,11 +109,7 @@ const login = async () => {
 
 const getCode = async () => {
 	await submit('validateField', 'phone');
-	let phone = formData.phone;
-	const { data } = await wxRequest<TCode>({
-		url: '/captcha/sent',
-		data: { phone },
-	});
+	const { data } = await sendCaptcha(formData.phone);
 	if (data.code === 200 && data.data) {
 		interval.value = 60;
 		sendCode.value = true;
@@ -135,13 +129,7 @@ const getCode = async () => {
 const validateCode = () => {
 	return new Promise(async (resolve, reject) => {
 		const { phone, captcha } = formData;
-	 	wxRequest<TCode>({
-			url: '/captcha/verify',
-			data: {
-				phone,
-				captcha,
-			}
-		}).then(({data}) => {
+	 	getValidateCode(phone, captcha).then(({data}) => {
 			if(data.code === 200 && data.data) {
 				resolve('OK');
 			} else {
@@ -219,13 +207,6 @@ const validateCode = () => {
 	</uni-popup>
 	<!-- <text class="vistor-login" @click="login(true)">游客登录</text> -->
 </template>
-
-<script lang="ts">
-import { reactive, ref } from "vue";
-import { setLocalStorage, wxRequest } from "@/utils";
-import { useUserInfo } from "@/store";
-import MD5 from "md5";
-</script>
 
 <style lang="less">
 .login-form {

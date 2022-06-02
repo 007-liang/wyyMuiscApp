@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/my/my",
     "pages/login/login",
     "pages/search/search",
     "pages/index/index",
-    "pages/my/my"
+    "pages/loading/loading"
   ],
   "window": {
     "navigationBarTextStyle": "white",
@@ -27,6 +28,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

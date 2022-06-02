@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "启动页",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "login-logo": "../../components/loginLogo/loginLogo"
+  }
+}
