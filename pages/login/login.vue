@@ -1,12 +1,13 @@
 <template>
-	<loginLogo></loginLogo>
-	<phoneLogin></phoneLogin>
+	<logo></logo>
+    <view class="login-phone-box">
+        <loginForm></loginForm>
+    </view>
 </template>
 
-<script lang='ts'>
-export default {
-	
-}
+<script setup lang='ts'>
+import logo from '@/components/logo/loginLogo.vue';
+import loginForm from './loginForm.vue';
 </script>
 
 <style lang='less'>

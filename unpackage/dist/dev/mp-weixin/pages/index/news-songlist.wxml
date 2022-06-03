@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 <view class="section"><header wx:if="{{a}}" u-i="0c9857e8-0" bind:__l="__l" u-p="{{a}}"/><view class="news-songs-container"><view wx:for="{{b}}" wx:for-item="item" wx:key="d" class="news-songs" bindtap="{{item.e}}"><image class="news-songs-pic" mode="widthFix" src="{{item.a}}"/><view class="playCount"><text class="iconfont">  </text> {{item.b}}</view><view class="news-song-name">{{item.c}}</view></view></view></view>
+=======
+<view class="section"><header wx:if="{{a}}" u-i="0d6c9761-0" bind:__l="__l" u-p="{{a}}"/><view class="news-songs-container"><song-sheet-card wx:for="{{b}}" wx:for-item="item" wx:key="a" u-i="{{item.b}}" bind:__l="__l" u-p="{{item.c}}"></song-sheet-card></view></view>
+>>>>>>> d97e9b43cca36d90da432a16aabd80b7f50cdc62

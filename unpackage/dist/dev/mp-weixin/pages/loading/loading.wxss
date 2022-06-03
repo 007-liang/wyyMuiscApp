@@ -1,0 +1,16 @@
+page {
+  width: 100vw;
+  height: 100vh;
+  background-color: #DB2C1F;
+}
+.loading-page {
+  position: fixed;
+  display: flex;
+  top: 30%;
+  left: 50%;
+  height: 60%;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #ffffff;
+  transform: translateX(-50%);
+}

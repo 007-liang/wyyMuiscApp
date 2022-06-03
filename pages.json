@@ -3,14 +3,14 @@
 		"current": 0,
 		"list": [
 			{
-				"name": "login",
-				"path": "pages/login/login"
+				"name": "loading",
+				"path": "pages/loading/loading"
 			}
 		]
 	},
 	"pages": [
 		{
-			"path": "pages/index/index",
+			"path": "pages/my/my",
 			"style": {
 				"navigationBarTitleText": "首页",
 				"enablePullDownRefresh": false
@@ -37,9 +37,16 @@
             }
         },
 		{
-			"path": "pages/my/my",
+			"path": "pages/index/index",
 			"style": {
-				"enablePullDownRefresh": false
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/loading/loading",
+			"style": {
+				"navigationBarTitleText": "启动页",
+                "enablePullDownRefresh": false
 			}
 		}
 	],

@@ -1,29 +1,25 @@
 <script lang="ts">
+import { getLocalStorage } from './utils';
 import { useUserInfo } from './store';
-import { getLocalStorage, wxRequest } from './utils';
+import { getLoginStatus } from './api';
 
-type TUserInfo = {
-    data: CloudMusicRes & IUserInfo;
-};
 export default {
     async onLaunch() {
-        // 凭借本地cookie实现自动登录
+        // 凭借本地 cookie 实现自动登录
+        const cookie = getLocalStorage('cookie') as string;
         const storeUserInfo = useUserInfo();
-        const cookie = getLocalStorage('cookie');
         const { 
             data: { 
                 data 
             } 
-        } = await wxRequest<TUserInfo>({
-            url: '/login/status',
-            data: { cookie },
-        });
+        } = await getLoginStatus(cookie);
         if (
             data.code === 200 && 
             data.profile !== null && 
             !isNaN(data.profile.userId)
         ) {
-            storeUserInfo.setUserInof(data);
+            data.cookie = cookie;
+            storeUserInfo.setUserInfo(data);
         }
     },
     onShow: function() {
@@ -106,19 +102,19 @@ page {
         rgb(255, 255, 255)
     );
 }
-	
+
 // 主题红
-@theme-color: #DB2C1F;
+// @theme-color: #DB2C1F;
 
 // 圆角边框
-@border-radius: 8px;
+// @border-radius: 8px;
 
 // 图标背景渐变颜色 (default是默认颜色)
-@iconfont-default: #CFCFCF;
-@iconfont-shallow: #FF9090;
-@iconfont-deep: #FF3A3A;
+// @iconfont-default: #CFCFCF;
+// @iconfont-shallow: #FF9090;
+// @iconfont-deep: #FF3A3A;
 
 // 导航栏下划线渐变颜色
-@nav-line-start: #FF3C3C;
-@nav-line-end: #FCA2A2;
+// @nav-line-start: #FF3C3C;
+// @nav-line-end: #FCA2A2;
 </style>

@@ -40,6 +40,7 @@ const transform_num_unit = (num) => {
   }
   return result.join(".") + unit;
 };
+<<<<<<< HEAD
 const get_song_ar = (song) => {
   return song.ar.reduce((names, item) => {
     names.push(item.name);
@@ -48,4 +49,15 @@ const get_song_ar = (song) => {
 };
 exports.get_song_ar = get_song_ar;
 exports.to_music_library = to_music_library;
+=======
+const forEach = (list, cb) => {
+  for (let i = 0; i < list.length; i++) {
+    let item = list[i];
+    let result = cb.call(list, item, i);
+    if (result)
+      break;
+  }
+};
+exports.forEach = forEach;
+>>>>>>> d97e9b43cca36d90da432a16aabd80b7f50cdc62
 exports.transform_num_unit = transform_num_unit;

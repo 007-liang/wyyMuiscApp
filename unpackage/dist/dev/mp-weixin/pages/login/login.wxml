@@ -1,1 +1,1 @@
-<login-logo u-i="91376d42-0" bind:__l="__l"></login-logo><phone-login u-i="91376d42-1" bind:__l="__l"></phone-login>
+<logo u-i="3a679c98-0" bind:__l="__l"></logo><view class="login-phone-box"><login-form u-i="3a679c98-1" bind:__l="__l"></login-form></view>

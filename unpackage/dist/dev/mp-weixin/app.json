@@ -1,10 +1,15 @@
 {
   "pages": [
+<<<<<<< HEAD
     "pages/index/index",
     "pages/music-library/music-library",
+=======
+    "pages/my/my",
+>>>>>>> d97e9b43cca36d90da432a16aabd80b7f50cdc62
     "pages/login/login",
     "pages/search/search",
-    "pages/my/my"
+    "pages/index/index",
+    "pages/loading/loading"
   ],
   "window": {
     "navigationBarTextStyle": "white",

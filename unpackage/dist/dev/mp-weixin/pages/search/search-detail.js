@@ -41,16 +41,16 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         }),
         b: common_vendor.unref(search_store).search_nav_enum.song === common_vendor.unref(search_store).active_search_nav.type
       }, common_vendor.unref(search_store).search_nav_enum.song === common_vendor.unref(search_store).active_search_nav.type ? {
-        c: common_vendor.sr(set_lazy_comp(common_vendor.unref(search_store).search_nav_enum.song), "2ed046fa-0"),
+        c: common_vendor.sr(set_lazy_comp(common_vendor.unref(search_store).search_nav_enum.song), "4bf783ce-0"),
         d: set_lazy_comp(common_vendor.unref(search_store).search_nav_enum.song)
       } : {}, {
         e: common_vendor.unref(search_store).search_nav_enum.songlist === common_vendor.unref(search_store).active_search_nav.type
       }, common_vendor.unref(search_store).search_nav_enum.songlist === common_vendor.unref(search_store).active_search_nav.type ? {
-        f: common_vendor.sr(set_lazy_comp(common_vendor.unref(search_store).search_nav_enum.songlist), "2ed046fa-1"),
+        f: common_vendor.sr(set_lazy_comp(common_vendor.unref(search_store).search_nav_enum.songlist), "4bf783ce-1"),
         g: set_lazy_comp(common_vendor.unref(search_store).search_nav_enum.songlist)
       } : {});
     };
   }
 });
-var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/\u6587\u6863/\u8BFE\u7A0B/\u5C0F\u7A0B\u5E8F/cloudmusic/pages/search/search-detail.vue"]]);
+var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "G:/\u6848\u4F8B/\u5C0F\u7A0B\u5E8F/\u7F51\u6613\u4E91\u97F3\u4E50/wyyMusic/pages/search/search-detail.vue"]]);
 wx.createComponent(Component);

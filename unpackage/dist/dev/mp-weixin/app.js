@@ -2,32 +2,36 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports[Symbol.toStringTag] = "Module";
 var common_vendor = require("./common/vendor.js");
+var utils_localstorage = require("./utils/localstorage.js");
+require("./utils/request.js");
 require("./store/store-search.js");
 var store_storeUserInfo = require("./store/store-user-info.js");
-var utils_localstorage = require("./utils/localstorage.js");
-var utils_request = require("./utils/request.js");
+var api_user = require("./api/user.js");
 require("./utils/symbols.js");
 if (!Math) {
+<<<<<<< HEAD
   "./pages/index/index.js";
   "./pages/music-library/music-library.js";
+=======
+  "./pages/my/my.js";
+>>>>>>> d97e9b43cca36d90da432a16aabd80b7f50cdc62
   "./pages/login/login.js";
   "./pages/search/search.js";
-  "./pages/my/my.js";
+  "./pages/index/index.js";
+  "./pages/loading/loading.js";
 }
 const _sfc_main = {
   async onLaunch() {
-    const storeUserInfo = store_storeUserInfo.useUserInfo();
     const cookie = utils_localstorage.getLocalStorage("cookie");
+    const storeUserInfo = store_storeUserInfo.useUserInfo();
     const {
       data: {
         data
       }
-    } = await utils_request.wxRequest({
-      url: "/login/status",
-      data: { cookie }
-    });
+    } = await api_user.getLoginStatus(cookie);
     if (data.code === 200 && data.profile !== null && !isNaN(data.profile.userId)) {
-      storeUserInfo.setUserInof(data);
+      data.cookie = cookie;
+      storeUserInfo.setUserInfo(data);
     }
   },
   onShow: function() {
@@ -35,7 +39,7 @@ const _sfc_main = {
   onHide: function() {
   }
 };
-var App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/\u6587\u6863/\u8BFE\u7A0B/\u5C0F\u7A0B\u5E8F/cloudmusic/App.vue"]]);
+var App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "G:/\u6848\u4F8B/\u5C0F\u7A0B\u5E8F/\u7F51\u6613\u4E91\u97F3\u4E50/wyyMusic/App.vue"]]);
 function createApp() {
   const app = common_vendor.createSSRApp(App);
   const pinia = common_vendor.createPinia();

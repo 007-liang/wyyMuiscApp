@@ -1,10 +1,14 @@
 <script setup lang='ts'>
 import Header from "./components/list-header.vue";
+<<<<<<< HEAD
 import {
     wxRequest,
     transform_num_unit,
     to_music_library,
 } from '@/utils';
+=======
+import { wxRequest } from '@/utils';
+>>>>>>> d97e9b43cca36d90da432a16aabd80b7f50cdc62
 import { ref } from 'vue';
 
 let new_songs = ref<IIndexNewSongsResult[]>([]);
@@ -25,10 +29,10 @@ get_new_songs();
     <view class="section">
         <Header title="推荐歌单" />
         <view class="news-songs-container">
-            <view
-                class="news-songs"
-                v-for="item in new_songs"
+            <songSheetCard 
+                v-for="item in new_songs" 
                 :key="item.id"
+<<<<<<< HEAD
                 @click="to_music_library(item.id)"
             >
                 <image
@@ -46,6 +50,13 @@ get_new_songs();
                     {{item.name}}
                 </view>
             </view>
+=======
+                :sid="item.id"
+                :picUrl="item.picUrl"
+                :playCount="item.playCount"
+                :name="item.name"
+            ></songSheetCard>
+>>>>>>> d97e9b43cca36d90da432a16aabd80b7f50cdc62
         </view>
     </view>
 </template>
@@ -59,34 +70,5 @@ get_new_songs();
     &::-webkit-scrollbar {
         display: none;
     }
-    
-    .news-songs-pic {
-        width: 260rpx !important;
-        border-radius: 20rpx;
-    }
 }
-.news-songs {
-    position: relative;
-}
-.playCount {
-    position: absolute;
-    right: 10rpx;
-    top: 10rpx;
-    color: #fff;
-    background-color: rgba(0, 0, 0, .4);
-    padding: 10rpx;
-    border-radius: 30rpx;
-    
-    .iconfont {
-        font-size: 34rpx;
-    }
-}
-.news-song-name {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-}
-
 </style>

@@ -2,6 +2,9 @@
   "enablePullDownRefresh": false,
   "usingComponents": {
     "padding-top": "../../components/paddingTop/paddingTop",
-    "not-login-bar": "../../components/notLoginBar/notLoginBar"
+    "song-sheet-card": "../../components/songSheetCard/songSheetCard",
+    "login-bar": "./loginBar",
+    "not-login-bar": "./notLoginBar",
+    "my-like-music": "./myLikeMusic"
   }
 }

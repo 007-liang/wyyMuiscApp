@@ -10,6 +10,7 @@
     "postcss": false,
     "minified": true,
     "coverView": true,
+    "compileHotReLoad": false,
     "lazyloadPlaceholderEnable": false,
     "preloadBackgroundData": false,
     "autoAudits": false,
@@ -21,18 +22,17 @@
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
-    "useStaticServer": true,
-    "showES6CompileOption": false,
+    "disableUseStrict": false,
+    "ignoreUploadUnusedFiles": true,
     "checkInvalidKey": true,
-    "compileHotReLoad": false,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
     },
-    "disableUseStrict": false,
-    "useCompilerPlugins": false,
-    "ignoreUploadUnusedFiles": true
+    "useStaticServer": true,
+    "showES6CompileOption": false,
+    "useCompilerPlugins": false
   },
   "compileType": "miniprogram",
   "libVersion": "2.24.2",
@@ -42,8 +42,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "login",
-          "pathName": "pages/login/login",
+          "name": "loading",
+          "pathName": "pages/loading/loading",
           "query": ""
         }
       ]

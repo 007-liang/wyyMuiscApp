@@ -58,3 +58,13 @@ export const get_song_ar = (song: IMusicDetail) => {
         return names;
     }, [] as string[])
 }
+
+
+type TCallBack<T> = (item: T, key: number) => boolean | undefined;
+export const forEach = <T>(list: T[], cb: TCallBack<T>) => {
+    for (let i = 0; i < list.length; i++) {
+        let item = list[i];
+        let result = cb.call(list, item, i);
+        if (result) break;
+    }
+};
