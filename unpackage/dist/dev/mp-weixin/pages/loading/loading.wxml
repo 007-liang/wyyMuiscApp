@@ -1,1 +1,1 @@
-<view class="loading-page"><login-logo u-i="d50ea74c-0" bind:__l="__l"></login-logo><text>网抑云音乐</text></view>
+<view class="loading-page"><logo u-i="d50ea74c-0" bind:__l="__l"></logo><text>网抑云音乐</text></view>

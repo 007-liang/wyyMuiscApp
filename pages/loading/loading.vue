@@ -4,7 +4,7 @@
 
 <template>
     <view class="loading-page">
-        <loginLogo></loginLogo>
+        <logo></logo>
         <text>网抑云音乐</text>
     </view>
 </template>

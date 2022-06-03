@@ -32,4 +32,13 @@ const transform_num_unit = (num) => {
   }
   return result.join(".") + unit;
 };
+const forEach = (list, cb) => {
+  for (let i = 0; i < list.length; i++) {
+    let item = list[i];
+    let result = cb.call(list, item, i);
+    if (result)
+      break;
+  }
+};
+exports.forEach = forEach;
 exports.transform_num_unit = transform_num_unit;

@@ -1,6 +1,6 @@
 <script setup lang='ts'>
-import { getLikeList, getSongDetail } from '@/api';
 import { useUserInfo } from '@/store';
+import { getLikeList, getSongDetail } from '@/api';
 import { onMounted, ref } from 'vue-demi';
 
 type TSongDetail = { songs: ISongDetail[] } & CloudMusicRes;
@@ -53,7 +53,7 @@ onMounted(shoudleLoadList);
                 <view class="like-music-img">
                     <image 
                         class="img"
-                        v-if="firstSong.al" 
+                        v-if="firstSong.al?.picUrl" 
                         :lazy-load="true"
                         :src="firstSong.al.picUrl + '?param=50y50'" 
                     />
@@ -122,6 +122,10 @@ onMounted(shoudleLoadList);
     border-radius: 8px;
     overflow: hidden;
     background-color: #cccccc;
+    > .img {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .palpitation {

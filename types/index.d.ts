@@ -1,4 +1,3 @@
-
 declare interface IIndexNewSongsResult {
     name: string,
     picUrl: string,

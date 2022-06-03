@@ -1,9 +1,13 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
-var utils_index = require("../../utils/index.js");
 var utils_request = require("../../utils/request.js");
+if (!Array) {
+  const _easycom_songSheetCard2 = common_vendor.resolveComponent("songSheetCard");
+  _easycom_songSheetCard2();
+}
+const _easycom_songSheetCard = () => "../../components/songSheetCard/songSheetCard.js";
 if (!Math) {
-  Header();
+  (Header + _easycom_songSheetCard)();
 }
 const Header = () => "./components/list-header.js";
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
@@ -26,10 +30,14 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         }),
         b: common_vendor.f(common_vendor.unref(new_songs), (item, k0, i0) => {
           return {
-            a: item.picUrl + "?param=160y160",
-            b: common_vendor.t(common_vendor.unref(utils_index.transform_num_unit)(item.playCount)),
-            c: common_vendor.t(item.name),
-            d: item.id
+            a: item.id,
+            b: "0d6c9761-1-" + i0,
+            c: common_vendor.p({
+              sid: item.id,
+              picUrl: item.picUrl,
+              playCount: item.playCount,
+              name: item.name
+            })
           };
         })
       };

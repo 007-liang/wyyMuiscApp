@@ -34,3 +34,12 @@ export const transform_num_unit = (num: number) => {
     };
     return result.join(".") + unit;
 };
+
+type TCallBack<T> = (item: T, key: number) => boolean | undefined;
+export const forEach = <T>(list: T[], cb: TCallBack<T>) => {
+    for (let i = 0; i < list.length; i++) {
+        let item = list[i];
+        let result = cb.call(list, item, i);
+        if (result) break;
+    }
+};

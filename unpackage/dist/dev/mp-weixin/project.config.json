@@ -42,8 +42,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "login",
-          "pathName": "pages/login/login",
+          "name": "loading",
+          "pathName": "pages/loading/loading",
           "query": ""
         }
       ]

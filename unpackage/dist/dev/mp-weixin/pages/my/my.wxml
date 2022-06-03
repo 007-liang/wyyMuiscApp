@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-<padding-top u-i="3c7f7bc0-0" bind:__l="__l"></padding-top><login-bar wx:if="{{a}}" u-i="3c7f7bc0-1" bind:__l="__l"></login-bar><not-login-bar wx:else u-i="3c7f7bc0-2" bind:__l="__l"></not-login-bar><view class="margin"><my-like-music u-i="3c7f7bc0-3" bind:__l="__l"></my-like-music></view>
-=======
-<padding-top u-i="3182360b-0" bind:__l="__l"></padding-top><not-login-bar u-i="3182360b-1" bind:__l="__l"></not-login-bar>
->>>>>>> da9b9bb3023a9adedc018e7b0f34d0fa2ad3470b
+<padding-top u-i="3c7f7bc0-0" bind:__l="__l"></padding-top><login-bar wx:if="{{a}}" u-i="3c7f7bc0-1" bind:__l="__l"></login-bar><not-login-bar wx:else u-i="3c7f7bc0-2" bind:__l="__l"></not-login-bar><view class="margin"><my-like-music u-i="3c7f7bc0-3" bind:__l="__l"></my-like-music><view class="my-recommend-list"><song-sheet-card wx:for="{{b}}" wx:for-item="item" wx:key="a" u-i="{{item.b}}" bind:__l="__l" u-p="{{item.c}}"></song-sheet-card></view></view>

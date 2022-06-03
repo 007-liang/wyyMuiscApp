@@ -2,12 +2,8 @@
 var common_vendor = require("../../common/vendor.js");
 const _sfc_main = {};
 if (!Array) {
-  const _easycom_loginLogo2 = common_vendor.resolveComponent("loginLogo");
-  _easycom_loginLogo2();
-}
-const _easycom_loginLogo = () => "../../components/loginLogo/loginLogo.js";
-if (!Math) {
-  _easycom_loginLogo();
+  const _component_logo = common_vendor.resolveComponent("logo");
+  _component_logo();
 }
 function _sfc_render(_ctx, _cache) {
   return {};

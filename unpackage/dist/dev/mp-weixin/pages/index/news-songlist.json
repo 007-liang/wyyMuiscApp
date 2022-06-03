@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
+    "song-sheet-card": "../../components/songSheetCard/songSheetCard",
     "header": "./components/list-header"
   }
 }

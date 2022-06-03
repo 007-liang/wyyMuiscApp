@@ -1,7 +1,39 @@
 <script setup lang="ts">
+import { forEach, wxRequest } from "@/utils";
+import { ref } from "vue-demi";
+import { getRecommendSongSheet } from "@/api";
 import { useUserInfo } from "@/store";
+import loginBar from './loginBar.vue'; // 已登录栏
+import notLoginBar from './notLoginBar.vue'; // 未登录栏
+import myLikeMusic from "./myLikeMusic.vue"; // 我喜欢的音乐栏
 
+type TSongSheet = (IRSongSheet | ITopListDetail)[];
+const songSheet = ref<TSongSheet>([]);
 const userInfo = useUserInfo().userInfo;
+// 获取排行榜
+const recommendSongList = async () => {
+	const { data } = await wxRequest<ITopListData & CloudMusicRes>({
+		url: '/toplist/detail',
+	});
+	if (data.code === 200 && data.list) {
+		forEach(data.list, (data) => {
+			let { ToplistType } = data;
+			if (!ToplistType) return true;
+			if (/^(N|H|)$/.test(ToplistType)) {
+				songSheet.value.push(data);
+			}
+		});
+		recommendSongSheet();
+	}
+};
+// 获取歌单
+const recommendSongSheet = async () => {
+	const { data } = await getRecommendSongSheet();
+	if (data.code === 200 && data.recommend) {
+		songSheet.value.push(...data.recommend.slice(0, 4));
+	}
+}
+recommendSongList();
 </script>
 
 <template>
@@ -10,6 +42,16 @@ const userInfo = useUserInfo().userInfo;
 	<notLoginBar v-else></notLoginBar>
 	<view class="margin">
 		<myLikeMusic></myLikeMusic>
+		<view class="my-recommend-list">
+			<songSheetCard
+				v-for="item in songSheet"
+				:key="item.id"
+				:sid="item.id"
+				:name="item.name"
+				:picUrl="item.picUrl || item.coverImgUrl"
+				:playCount="item.playCount || item.playcount" 
+			></songSheetCard>
+		</view>
 	</view>
 </template>
 
@@ -61,5 +103,27 @@ page {
 
 .margin {
 	margin: 0 20rpx;
+}
+
+.my-recommend-list {
+	margin-top: 40rpx;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 20rpx;
+}
+
+.news-songs {
+	flex: 30%;
+
+	.news-song-name {
+		font-size: 16rpx;
+		font-weight: 700;
+	}
+
+	.news-song-name,
+	.news-songs-pic {
+		width: 220rpx;
+	}
 }
 </style>
