@@ -12,9 +12,17 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "首页"
+				"navigationBarTitleText": "首页",
+				"enablePullDownRefresh": false
 			}
 		},
+        {
+            "path": "pages/music-library/music-library",
+            "style": {
+                "navigationBarTitleText": "歌单",
+				"enablePullDownRefresh": false
+            }
+        },
         {
 			"path": "pages/login/login",
 			"style": {
@@ -38,7 +46,8 @@
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "网抑云音乐",
-		"enablePullDownRefresh": true
+		"enablePullDownRefresh": true,
+        "navigationBarBackgroundColor": "#FF2222"
 	},
 	"tabBar": {
 		"custom": true,

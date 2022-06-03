@@ -29,7 +29,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
             a: item.picUrl + "?param=160y160",
             b: common_vendor.t(common_vendor.unref(utils_index.transform_num_unit)(item.playCount)),
             c: common_vendor.t(item.name),
-            d: item.id
+            d: item.id,
+            e: common_vendor.o(($event) => common_vendor.unref(utils_index.to_music_library)(item.id), item.id)
           };
         })
       };

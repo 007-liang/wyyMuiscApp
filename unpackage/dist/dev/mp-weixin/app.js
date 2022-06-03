@@ -9,6 +9,7 @@ var utils_request = require("./utils/request.js");
 require("./utils/symbols.js");
 if (!Math) {
   "./pages/index/index.js";
+  "./pages/music-library/music-library.js";
   "./pages/login/login.js";
   "./pages/search/search.js";
   "./pages/my/my.js";

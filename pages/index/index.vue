@@ -30,12 +30,17 @@ import category from "./category.vue"; // 轮播图下面的类别
 import newsSonglist from "./news-songlist.vue"; // 推荐歌单
 import banner from "./banner.vue"; // 轮播图
 import exclusiveBroadcast from "./exclusive-broadcast.vue"; // 独家放送
-import recommend from "./recommend.vue";
+// import recommend from "./recommend.vue";
+import { onMounted } from "vue";
+import { to_music_library } from "@/utils";
 const to_search_page = () => {
     wx.navigateTo({
         url: '/pages/search/search'
     })
 }
+onMounted(() => {
+    to_music_library("2746032864");
+})
 </script>
 
 <style lang="less">

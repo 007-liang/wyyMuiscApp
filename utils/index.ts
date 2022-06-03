@@ -2,6 +2,16 @@ export * from "./localstorage";
 export * from "./symbols";
 export * from "./request"
 
+/**
+ * @description 跳转到歌单页面
+ * @param id 歌单id
+ */
+export const to_music_library = (id: string) => {
+    wx.navigateTo({
+        url: `/pages/music-library/music-library?id=${id}`
+    })
+}
+
 let num_unit = [
     "",
     "",
@@ -18,6 +28,9 @@ let num_unit = [
     "亿",
 ]
 export const transform_num_unit = (num: number) => {
+    if (isNaN(num)) {
+        return;
+    };
     let str = num.toString();
     let index = str.length > 4 ? str.length % 4 : str.length;
     let result: (string | number)[] = [];
@@ -34,3 +47,14 @@ export const transform_num_unit = (num: number) => {
     };
     return result.join(".") + unit;
 };
+
+/**
+ * 获取歌曲
+ * @param song 歌曲详情
+ */
+export const get_song_ar = (song: IMusicDetail) => {
+    return song.ar.reduce((names, item) => {
+        names.push(item.name);
+        return names;
+    }, [] as string[])
+}

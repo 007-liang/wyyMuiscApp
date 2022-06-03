@@ -41,9 +41,9 @@ export default {
 
 @font-face {
     font-family: 'iconfont';  /* Project id 3434140 */
-    src: url('//at.alicdn.com/t/font_3434140_bot144ya9m.woff2?t=1653749261283') format('woff2'),
-        url('//at.alicdn.com/t/font_3434140_bot144ya9m.woff?t=1653749261283') format('woff'),
-        url('//at.alicdn.com/t/font_3434140_bot144ya9m.ttf?t=1653749261283') format('truetype');
+    src: url('//at.alicdn.com/t/font_3434140_1ux1h6h5f5r.woff2?t=1654261750018') format('woff2'),
+        url('//at.alicdn.com/t/font_3434140_1ux1h6h5f5r.woff?t=1654261750018') format('woff'),
+        url('//at.alicdn.com/t/font_3434140_1ux1h6h5f5r.ttf?t=1654261750018') format('truetype');
 }
 
 .section {
@@ -54,6 +54,12 @@ export default {
 page {
     font-family: 'Microsoft YaHei Light';
     font-size: 16px;
+}
+
+.text-hidden {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .scrollbar-none {

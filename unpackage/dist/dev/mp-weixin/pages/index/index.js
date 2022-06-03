@@ -1,5 +1,7 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
+var utils_index = require("../../utils/index.js");
+require("../../utils/request.js");
 if (!Math) {
   (banner + category + newsSonglist + exclusiveBroadcast)();
 }
@@ -14,6 +16,9 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         url: "/pages/search/search"
       });
     };
+    common_vendor.onMounted(() => {
+      utils_index.to_music_library("2746032864");
+    });
     return (_ctx, _cache) => {
       return {
         a: common_vendor.o(to_search_page)

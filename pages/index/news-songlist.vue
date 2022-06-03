@@ -1,6 +1,10 @@
 <script setup lang='ts'>
 import Header from "./components/list-header.vue";
-import { wxRequest, transform_num_unit } from '@/utils';
+import {
+    wxRequest,
+    transform_num_unit,
+    to_music_library,
+} from '@/utils';
 import { ref } from 'vue';
 
 let new_songs = ref<IIndexNewSongsResult[]>([]);
@@ -25,6 +29,7 @@ get_new_songs();
                 class="news-songs"
                 v-for="item in new_songs"
                 :key="item.id"
+                @click="to_music_library(item.id)"
             >
                 <image
                     class="news-songs-pic"
