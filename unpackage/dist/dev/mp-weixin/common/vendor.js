@@ -4174,6 +4174,16 @@ function formatComponentName(instance, Component2, isRoot = false) {
 const computed$1 = (getterOrOptions, debugOptions) => {
   return computed(getterOrOptions, debugOptions, isInSSRComponentSetup);
 };
+function useSlots() {
+  return getContext().slots;
+}
+function getContext() {
+  const i = getCurrentInstance();
+  if (!i) {
+    warn$1(`useContext() called without active instance.`);
+  }
+  return i.setupContext || (i.setupContext = createSetupContext(i));
+}
 const version = "3.2.33";
 function unwrapper(target) {
   return unref(target);
@@ -6584,4 +6594,5 @@ exports.s = s;
 exports.sr = sr;
 exports.t = t;
 exports.unref = unref;
+exports.useSlots = useSlots;
 exports.watch = watch;

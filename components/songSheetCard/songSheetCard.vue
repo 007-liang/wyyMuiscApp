@@ -10,7 +10,7 @@ const props = defineProps<{
 </script>
 
 <template>
-    <view class="news-songs">
+    <view class="news-songs" @click="$emit('click', $event)">
         <image
             class="news-songs-pic"
             mode="widthFix"

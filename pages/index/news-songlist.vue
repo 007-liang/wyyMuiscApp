@@ -1,14 +1,6 @@
 <script setup lang='ts'>
 import Header from "./components/list-header.vue";
-<<<<<<< HEAD
-import {
-    wxRequest,
-    transform_num_unit,
-    to_music_library,
-} from '@/utils';
-=======
-import { wxRequest } from '@/utils';
->>>>>>> d97e9b43cca36d90da432a16aabd80b7f50cdc62
+import { to_music_library, wxRequest } from '@/utils';
 import { ref } from 'vue';
 
 let new_songs = ref<IIndexNewSongsResult[]>([]);
@@ -23,6 +15,7 @@ const get_new_songs = async () => {
     new_songs.value = res.data.result;
 };
 get_new_songs();
+
 </script>
 
 <template>
@@ -32,31 +25,12 @@ get_new_songs();
             <songSheetCard 
                 v-for="item in new_songs" 
                 :key="item.id"
-<<<<<<< HEAD
-                @click="to_music_library(item.id)"
-            >
-                <image
-                    class="news-songs-pic"
-                    mode="widthFix"
-                    :src="item.picUrl + '?param=160y160'"
-                />
-                <view class="playCount">
-                    <text class="iconfont">
-                        &#xe75d;
-                    </text>
-                    {{transform_num_unit(item.playCount)}}
-                </view>
-                <view class="news-song-name">
-                    {{item.name}}
-                </view>
-            </view>
-=======
                 :sid="item.id"
                 :picUrl="item.picUrl"
                 :playCount="item.playCount"
                 :name="item.name"
+                @click="to_music_library(item.id)"
             ></songSheetCard>
->>>>>>> d97e9b43cca36d90da432a16aabd80b7f50cdc62
         </view>
     </view>
 </template>

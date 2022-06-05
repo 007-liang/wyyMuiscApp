@@ -1,7 +1,10 @@
 .index-header {
+  display: flex;
+  align-items: center;
   background-color: #fff;
 }
 .index-header .search-box {
+  flex: 1;
   position: relative;
   margin: 20rpx;
 }
@@ -13,7 +16,7 @@
   font-size: 34rpx;
 }
 .index-header .search-control {
-  padding: 20rpx;
+  padding: 10rpx;
   padding-left: 72rpx;
   border: 2rpx solid #999;
   border-radius: 40rpx;

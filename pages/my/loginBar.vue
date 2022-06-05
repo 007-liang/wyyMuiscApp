@@ -60,6 +60,11 @@ getUserLv();
 </template>
 
 <style lang="less">
+.login-bar {
+	display: flex;
+	padding: 40rpx 30rpx;
+	align-items: center;
+}
 .user-avatar {
 	padding: 0;
 	border: none;

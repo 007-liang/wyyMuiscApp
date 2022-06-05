@@ -1,20 +1,17 @@
 {
   "pages": [
-<<<<<<< HEAD
     "pages/index/index",
+    "pages/music-library-search/music-library-search",
     "pages/music-library/music-library",
-=======
     "pages/my/my",
->>>>>>> d97e9b43cca36d90da432a16aabd80b7f50cdc62
     "pages/login/login",
     "pages/search/search",
-    "pages/index/index",
     "pages/loading/loading"
   ],
   "window": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "网抑云音乐",
-    "enablePullDownRefresh": true,
+    "enablePullDownRefresh": false,
     "navigationBarBackgroundColor": "#FF2222"
   },
   "tabBar": {
@@ -34,6 +31,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

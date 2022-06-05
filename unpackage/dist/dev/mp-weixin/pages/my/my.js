@@ -54,7 +54,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         b: common_vendor.f(songSheet.value, (item, k0, i0) => {
           return {
             a: item.id,
-            b: "3c7f7bc0-4-" + i0,
+            b: "3182360b-4-" + i0,
             c: common_vendor.p({
               sid: item.id,
               name: item.name,
@@ -67,5 +67,5 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
   }
 });
-var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "G:/\u6848\u4F8B/\u5C0F\u7A0B\u5E8F/\u7F51\u6613\u4E91\u97F3\u4E50/wyyMusic/pages/my/my.vue"]]);
+var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/\u6587\u6863/\u8BFE\u7A0B/\u5C0F\u7A0B\u5E8F/cloudmusic/pages/my/my.vue"]]);
 wx.createPage(MiniProgramPage);

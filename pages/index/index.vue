@@ -1,6 +1,7 @@
 <template>
     <!-- <view class="home"> -->
         <view class="index-header">
+            <side />    
             <view
                 class="search-box"
                 @click="to_search_page"
@@ -38,15 +39,19 @@ const to_search_page = () => {
         url: '/pages/search/search'
     })
 }
-onMounted(() => {
-    to_music_library("2746032864");
-})
+// onMounted(() => {
+//     to_music_library("2746032864");
+// })
 </script>
 
 <style lang="less">
 .index-header {
+    display: flex;
+    align-items: center;
+
     background-color: #fff;
     .search-box {
+        flex: 1;
         position: relative;
         margin: 20rpx;
         .search-icon {
@@ -58,7 +63,7 @@ onMounted(() => {
         }
     }
     .search-control {
-        padding: 20rpx;
+        padding: 10rpx;
         padding-left: 72rpx;
         border: 2rpx solid #999;
         border-radius: 40rpx;

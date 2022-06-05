@@ -9,22 +9,19 @@ var store_storeUserInfo = require("./store/store-user-info.js");
 var api_user = require("./api/user.js");
 require("./utils/symbols.js");
 if (!Math) {
-<<<<<<< HEAD
   "./pages/index/index.js";
+  "./pages/music-library-search/music-library-search.js";
   "./pages/music-library/music-library.js";
-=======
   "./pages/my/my.js";
->>>>>>> d97e9b43cca36d90da432a16aabd80b7f50cdc62
   "./pages/login/login.js";
   "./pages/search/search.js";
-  "./pages/index/index.js";
   "./pages/loading/loading.js";
 }
 const _sfc_main = {
   async onLaunch() {
     const cookie = utils_localstorage.getLocalStorage("cookie");
     const storeUserInfo = store_storeUserInfo.useUserInfo();
-    const {
+    let {
       data: {
         data
       }
@@ -39,7 +36,7 @@ const _sfc_main = {
   onHide: function() {
   }
 };
-var App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "G:/\u6848\u4F8B/\u5C0F\u7A0B\u5E8F/\u7F51\u6613\u4E91\u97F3\u4E50/wyyMusic/App.vue"]]);
+var App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/\u6587\u6863/\u8BFE\u7A0B/\u5C0F\u7A0B\u5E8F/cloudmusic/App.vue"]]);
 function createApp() {
   const app = common_vendor.createSSRApp(App);
   const pinia = common_vendor.createPinia();

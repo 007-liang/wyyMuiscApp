@@ -1,5 +1,6 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
+var utils_index = require("../../utils/index.js");
 var utils_request = require("../../utils/request.js");
 if (!Array) {
   const _easycom_songSheetCard2 = common_vendor.resolveComponent("songSheetCard");
@@ -30,27 +31,20 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         }),
         b: common_vendor.f(common_vendor.unref(new_songs), (item, k0, i0) => {
           return {
-<<<<<<< HEAD
-            a: item.picUrl + "?param=160y160",
-            b: common_vendor.t(common_vendor.unref(utils_index.transform_num_unit)(item.playCount)),
-            c: common_vendor.t(item.name),
-            d: item.id,
-            e: common_vendor.o(($event) => common_vendor.unref(utils_index.to_music_library)(item.id), item.id)
-=======
             a: item.id,
-            b: "0d6c9761-1-" + i0,
-            c: common_vendor.p({
+            b: common_vendor.o(($event) => common_vendor.unref(utils_index.to_music_library)(item.id), item.id),
+            c: "0c9857e8-1-" + i0,
+            d: common_vendor.p({
               sid: item.id,
               picUrl: item.picUrl,
               playCount: item.playCount,
               name: item.name
             })
->>>>>>> d97e9b43cca36d90da432a16aabd80b7f50cdc62
           };
         })
       };
     };
   }
 });
-var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "G:/\u6848\u4F8B/\u5C0F\u7A0B\u5E8F/\u7F51\u6613\u4E91\u97F3\u4E50/wyyMusic/pages/index/news-songlist.vue"]]);
+var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/\u6587\u6863/\u8BFE\u7A0B/\u5C0F\u7A0B\u5E8F/cloudmusic/pages/index/news-songlist.vue"]]);
 wx.createComponent(Component);

@@ -19,6 +19,11 @@ const animationend = () => {
         animation.value = "scroll_header 10s linear";
     }, 2000)
 };
+const toMusicLibrarySearch = () => {
+    wx.navigateTo({
+        url: "/pages/music-library-search/music-library-search"
+    })
+}
 </script>
 
 <template>
@@ -68,7 +73,10 @@ const animationend = () => {
             收藏
         </view>
 
-        <view class="music-library-search iconfont">
+        <view
+            class="music-library-search iconfont"
+            @click="toMusicLibrarySearch"
+        >
             &#xe684;
         </view>
 

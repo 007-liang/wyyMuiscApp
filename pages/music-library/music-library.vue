@@ -60,23 +60,6 @@ export default defineComponent({
 </template>
 
 <style lang="less">
-.music-library-bg {
-    position: fixed;
-    z-index: -2;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-.music-library-filter {
-    position: fixed;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, .4);
-    backdrop-filter: blur(120rpx);
-}
 .container {
     flex: 1;
     overflow-y: scroll;

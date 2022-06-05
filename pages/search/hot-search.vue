@@ -16,6 +16,7 @@
                     class="search-hot-category"
                     :class="{ active: index < 3 }"
                     v-if="isShowDetail ? true : index < hots.length / 2"
+                    @click="input_keyword(item.searchWord)"
                 >
                     <text class="search-hot-index">{{index + 1}}</text>
                     <text class="search-hot-keyword">{{item.searchWord}}</text>
@@ -52,6 +53,7 @@
 </template>
 
 <script lang='ts'>
+import { useSearchStore } from '@/store'
 import { defineComponent } from 'vue'
 import { wxRequest } from '../../utils'
 export default defineComponent({
@@ -73,6 +75,12 @@ export default defineComponent({
             videos: [], // 视频
             users: [], // 博客
         }
+    },
+    setup() {
+        let searchStore = useSearchStore();
+        return {
+            input_keyword: searchStore.input_keyword
+        };
     },
     watch: {
         isShowDetail() {
