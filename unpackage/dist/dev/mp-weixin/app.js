@@ -4,11 +4,14 @@ exports[Symbol.toStringTag] = "Module";
 var common_vendor = require("./common/vendor.js");
 var utils_localstorage = require("./utils/localstorage.js");
 require("./utils/request.js");
+require("./store/playingSong.js");
 require("./store/store-search.js");
 var store_storeUserInfo = require("./store/store-user-info.js");
+require("./store/audio.js");
 var api_user = require("./api/user.js");
 require("./utils/symbols.js");
 if (!Math) {
+  "./pages/songDetail/songDetail.js";
   "./pages/my/my.js";
   "./pages/login/login.js";
   "./pages/search/search.js";

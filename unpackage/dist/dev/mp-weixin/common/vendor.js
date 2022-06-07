@@ -2592,6 +2592,9 @@ function inject(key, defaultValue, treatDefaultAsFactory = false) {
     warn$1(`inject() can only be used inside setup() or functional components.`);
   }
 }
+function watchEffect(effect2, options) {
+  return doWatch(effect2, null, options);
+}
 const INITIAL_WATCHER_VALUE = {};
 function watch(source, cb, options) {
   if (!isFunction(cb)) {
@@ -6572,10 +6575,13 @@ exports.defineStore = defineStore;
 exports.e = e;
 exports.effect = effect;
 exports.f = f;
+exports.getCurrentInstance = getCurrentInstance;
 exports.index = index;
 exports.n = n;
+exports.nextTick = nextTick;
 exports.o = o;
 exports.onMounted = onMounted;
+exports.onUnmounted = onUnmounted;
 exports.p = p;
 exports.reactive = reactive;
 exports.ref = ref;
@@ -6585,3 +6591,4 @@ exports.sr = sr;
 exports.t = t;
 exports.unref = unref;
 exports.watch = watch;
+exports.watchEffect = watchEffect;

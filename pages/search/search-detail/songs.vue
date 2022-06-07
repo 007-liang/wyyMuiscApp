@@ -22,10 +22,10 @@ defineExpose({
         v-for="item in songs"
         :key="item.id"
     >
-        <view class="search-detail-title">
+        <view class="search-detail-title ellipsis">
             {{item.name}}
         </view>
-        <view class="search-detail-subtitle">
+        <view class="search-detail-subtitle ellipsis">
             <text
                 v-for="item in item.ar"
                 :key="item.id"
@@ -46,17 +46,11 @@ defineExpose({
 .search-detail-title {
     font-size: 36rpx;
     width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 .search-detail-subtitle {
     font-size: 30rpx;
     color: #999;
     width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 .search-detail-songbox {
     box-sizing: border-box;

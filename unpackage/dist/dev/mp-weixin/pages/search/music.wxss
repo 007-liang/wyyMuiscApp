@@ -23,13 +23,6 @@
 .search-song-detail-title {
   padding: 12rpx 0;
 }
-.search-song-detail-subtitle,
-.search-song-detail-title,
-.search-song-sings {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
 .search-song-sings {
   margin-top: 12rpx;
 }

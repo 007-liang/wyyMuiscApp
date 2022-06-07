@@ -6,8 +6,8 @@
   },
   "setting": {
     "urlCheck": false,
-    "es6": true,
-    "postcss": false,
+    "es6": false,
+    "postcss": true,
     "minified": true,
     "coverView": true,
     "compileHotReLoad": false,
@@ -38,17 +38,7 @@
   "libVersion": "2.24.2",
   "appid": "wxbe602774c213318f",
   "projectname": "wyyMusic",
-  "condition": {
-    "miniprogram": {
-      "list": [
-        {
-          "name": "loading",
-          "pathName": "pages/loading/loading",
-          "query": ""
-        }
-      ]
-    }
-  },
+  "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2

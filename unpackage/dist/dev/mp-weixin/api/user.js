@@ -1,7 +1,9 @@
 "use strict";
 var utils_request = require("../utils/request.js");
+require("../store/playingSong.js");
 require("../store/store-search.js");
 var store_storeUserInfo = require("../store/store-user-info.js");
+require("../store/audio.js");
 const getLikeList = (uid) => {
   return utils_request.wxRequest({
     url: "/likelist",

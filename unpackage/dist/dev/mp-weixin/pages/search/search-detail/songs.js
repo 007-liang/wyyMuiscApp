@@ -1,7 +1,9 @@
 "use strict";
 var common_vendor = require("../../../common/vendor.js");
+require("../../../store/playingSong.js");
 var store_storeSearch = require("../../../store/store-search.js");
 require("../../../store/store-user-info.js");
+require("../../../store/audio.js");
 require("../../../utils/localstorage.js");
 require("../../../utils/symbols.js");
 require("../../../utils/request.js");

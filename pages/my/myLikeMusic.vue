@@ -3,15 +3,13 @@ import { useUserInfo } from '@/store';
 import { getLikeList, getSongDetail } from '@/api';
 import { onMounted, ref } from 'vue-demi';
 
-type TSongDetail = { songs: ISongDetail[] } & CloudMusicRes;
-
 const store = useUserInfo();
 const userInfo = store.userInfo;
 const total = ref(0);
 const firstSong = ref({} as ISongDetail);
 
 const getFirstSong = async (mid: number) => {
-    const { data } = await getSongDetail<TSongDetail>(mid);
+    const { data } = await getSongDetail(mid);
     if (data.code === 200) {
         firstSong.value = data.songs[0];
     }
@@ -41,7 +39,12 @@ onMounted(shoudleLoadList);
 </script>
 
 <template>
-    <view class="base-shelf">
+    <navigator
+        url="/pages/songDetail/songDetail"
+        open-type="navigate"
+        hover-class="none"
+        class="base-shelf"
+    >
         <view 
             class="like-music-box" 
             hover-stay-time="0"
@@ -75,7 +78,7 @@ onMounted(shoudleLoadList);
                 </view>
             </view>
         </view>
-    </view>
+    </navigator>
 </template>
 
 <style lang='less'>

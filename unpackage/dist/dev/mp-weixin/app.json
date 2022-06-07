@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/songDetail/songDetail",
     "pages/my/my",
     "pages/login/login",
     "pages/search/search",
@@ -28,6 +29,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

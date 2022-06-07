@@ -1,17 +1,11 @@
 .search-detail-title {
   font-size: 36rpx;
   width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 .search-detail-subtitle {
   font-size: 30rpx;
   color: #999;
   width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 .search-detail-songbox {
   box-sizing: border-box;

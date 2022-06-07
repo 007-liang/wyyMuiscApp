@@ -36,10 +36,10 @@ export default {
 /*每个页面公共css */
 
 @font-face {
-    font-family: 'iconfont';  /* Project id 3434140 */
-    src: url('//at.alicdn.com/t/font_3434140_bot144ya9m.woff2?t=1653749261283') format('woff2'),
-        url('//at.alicdn.com/t/font_3434140_bot144ya9m.woff?t=1653749261283') format('woff'),
-        url('//at.alicdn.com/t/font_3434140_bot144ya9m.ttf?t=1653749261283') format('truetype');
+  font-family: 'iconfont';  /* Project id 3434140 */
+  src: url('//at.alicdn.com/t/font_3434140_1ux1h6h5f5r.woff2?t=1654261750018') format('woff2'),
+       url('//at.alicdn.com/t/font_3434140_1ux1h6h5f5r.woff?t=1654261750018') format('woff'),
+       url('//at.alicdn.com/t/font_3434140_1ux1h6h5f5r.ttf?t=1654261750018') format('truetype');
 }
 
 .section {
@@ -56,6 +56,12 @@ page {
     &::-webkit-scrollbar {
         display: none;
     }
+}
+
+.ellipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .iconfont {
