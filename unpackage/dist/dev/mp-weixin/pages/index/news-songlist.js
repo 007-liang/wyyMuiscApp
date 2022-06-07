@@ -1,5 +1,6 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
+var utils_index = require("../../utils/index.js");
 var utils_request = require("../../utils/request.js");
 if (!Array) {
   const _easycom_songSheetCard2 = common_vendor.resolveComponent("songSheetCard");
@@ -31,8 +32,9 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         b: common_vendor.f(common_vendor.unref(new_songs), (item, k0, i0) => {
           return {
             a: item.id,
-            b: "0d6c9761-1-" + i0,
-            c: common_vendor.p({
+            b: common_vendor.o(($event) => common_vendor.unref(utils_index.to_music_library)(item.id), item.id),
+            c: "0d6c9761-1-" + i0,
+            d: common_vendor.p({
               sid: item.id,
               picUrl: item.picUrl,
               playCount: item.playCount,

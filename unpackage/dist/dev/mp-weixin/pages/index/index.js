@@ -1,5 +1,9 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
+if (!Array) {
+  const _component_side = common_vendor.resolveComponent("side");
+  _component_side();
+}
 if (!Math) {
   (banner + category + newsSonglist + exclusiveBroadcast)();
 }

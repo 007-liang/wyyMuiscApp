@@ -1,16 +1,19 @@
 {
   "pages": [
-    "pages/songDetail/songDetail",
+    "pages/index/index",
+    "pages/music-library-search/music-library-search",
+    "pages/music-library/music-library",
     "pages/my/my",
     "pages/login/login",
     "pages/search/search",
-    "pages/index/index",
-    "pages/loading/loading"
+    "pages/loading/loading",
+    "pages/songDetail/songDetail"
   ],
   "window": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "网抑云音乐",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": false,
+    "navigationBarBackgroundColor": "#FF2222"
   },
   "tabBar": {
     "custom": true,

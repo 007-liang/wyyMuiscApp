@@ -8,7 +8,7 @@ export default {
         // 凭借本地 cookie 实现自动登录
         const cookie = getLocalStorage('cookie') as string;
         const storeUserInfo = useUserInfo();
-        const { 
+        let { 
             data: { 
                 data 
             } 
@@ -37,9 +37,28 @@ export default {
 
 @font-face {
   font-family: 'iconfont';  /* Project id 3434140 */
-  src: url('//at.alicdn.com/t/font_3434140_1ux1h6h5f5r.woff2?t=1654261750018') format('woff2'),
-       url('//at.alicdn.com/t/font_3434140_1ux1h6h5f5r.woff?t=1654261750018') format('woff'),
-       url('//at.alicdn.com/t/font_3434140_1ux1h6h5f5r.ttf?t=1654261750018') format('truetype');
+  src: url('//at.alicdn.com/t/font_3434140_7mmr28816b.woff2?t=1654568716514') format('woff2'),
+       url('//at.alicdn.com/t/font_3434140_7mmr28816b.woff?t=1654568716514') format('woff'),
+       url('//at.alicdn.com/t/font_3434140_7mmr28816b.ttf?t=1654568716514') format('truetype');
+}
+
+.user-avatar {
+	box-sizing: border-box;
+	display: flex;
+	width: 100rpx;
+	height: 100rpx;
+	padding-top: 15rpx;
+	border-radius: 50%;
+	border: 2rpx solid #FFFFFF;
+	background-color: #F8F1F1;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	
+	.iconfont {
+		color: #F9D9D9;
+		font-size: 90rpx;
+	}
 }
 
 .section {
@@ -50,6 +69,12 @@ export default {
 page {
     font-family: 'Microsoft YaHei Light';
     font-size: 16px;
+}
+
+.text-hidden {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .scrollbar-none {
@@ -101,6 +126,26 @@ page {
         rgba(255, 255, 255, .0),
         rgb(255, 255, 255)
     );
+}
+
+// 歌单图片背景
+.music-library-bg {
+    position: fixed;
+    z-index: -2;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+// 歌单图片背景模糊
+.music-library-filter {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, .4);
+    backdrop-filter: blur(120rpx);
 }
 
 // 主题红

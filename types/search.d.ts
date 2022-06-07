@@ -91,17 +91,11 @@ declare interface ISearchKeyword extends CloudMusicRes {
     }
 }
 
-declare interface ISearchDetailSongsRes {
-    name: string,
-    al: {
-        name: string,
-    },
-    ar: {name: string}[]
-}
+
 declare interface ISearchDetailRes extends CloudMusicRes {
     result: {
         songCount: number,
-        songs: ISearchDetailSongsRes
+        songs: IMusicDetail
     }
 }
 

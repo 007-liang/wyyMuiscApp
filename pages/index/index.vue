@@ -1,6 +1,7 @@
 <template>
     <!-- <view class="home"> -->
         <view class="index-header">
+            <side />    
             <view
                 class="search-box"
                 @click="to_search_page"
@@ -30,18 +31,27 @@ import category from "./category.vue"; // 轮播图下面的类别
 import newsSonglist from "./news-songlist.vue"; // 推荐歌单
 import banner from "./banner.vue"; // 轮播图
 import exclusiveBroadcast from "./exclusive-broadcast.vue"; // 独家放送
-import recommend from "./recommend.vue";
+// import recommend from "./recommend.vue";
+import { onMounted } from "vue";
+import { to_music_library } from "@/utils";
 const to_search_page = () => {
     wx.navigateTo({
         url: '/pages/search/search'
     })
 }
+// onMounted(() => {
+//     to_music_library("2746032864");
+// })
 </script>
 
 <style lang="less">
 .index-header {
+    display: flex;
+    align-items: center;
+
     background-color: #fff;
     .search-box {
+        flex: 1;
         position: relative;
         margin: 20rpx;
         .search-icon {
@@ -53,7 +63,7 @@ const to_search_page = () => {
         }
     }
     .search-control {
-        padding: 20rpx;
+        padding: 10rpx;
         padding-left: 72rpx;
         border: 2rpx solid #999;
         border-radius: 40rpx;

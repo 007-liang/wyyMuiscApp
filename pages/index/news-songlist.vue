@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import Header from "./components/list-header.vue";
-import { wxRequest } from '@/utils';
+import { to_music_library, wxRequest } from '@/utils';
 import { ref } from 'vue';
 
 let new_songs = ref<IIndexNewSongsResult[]>([]);
@@ -15,6 +15,7 @@ const get_new_songs = async () => {
     new_songs.value = res.data.result;
 };
 get_new_songs();
+
 </script>
 
 <template>
@@ -28,6 +29,7 @@ get_new_songs();
                 :picUrl="item.picUrl"
                 :playCount="item.playCount"
                 :name="item.name"
+                @click="to_music_library(item.id)"
             ></songSheetCard>
         </view>
     </view>

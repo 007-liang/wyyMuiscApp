@@ -1,5 +1,10 @@
 "use strict";
 require("./request.js");
+const to_music_library = (id) => {
+  wx.navigateTo({
+    url: `/pages/music-library/music-library?id=${id}`
+  });
+};
 let num_unit = [
   "",
   "",
@@ -16,6 +21,9 @@ let num_unit = [
   "\u4EBF"
 ];
 const transform_num_unit = (num) => {
+  if (isNaN(num)) {
+    return;
+  }
   let str = num.toString();
   let index = str.length > 4 ? str.length % 4 : str.length;
   let result = [];
@@ -32,7 +40,15 @@ const transform_num_unit = (num) => {
   }
   return result.join(".") + unit;
 };
+const get_song_ar = (song) => {
+  return song.ar.reduce((names, item) => {
+    names.push(item.name);
+    return names;
+  }, []);
+};
 const forEach = (list, cb) => {
+  if (!Array.isArray(list))
+    return;
   for (let i = 0; i < list.length; i++) {
     let item = list[i];
     let result = cb.call(list, item, i);
@@ -42,20 +58,20 @@ const forEach = (list, cb) => {
 };
 const parseAuthors = (authors) => {
   let result = ``;
-  authors && authors.forEach((item) => result += `/${item.name}`);
+  forEach(authors, (item) => result += `/${item.name}`);
   return result.slice(1);
 };
-const parseSongTime = (branch, second, millisecond) => {
+const parseSongTime = (b, s, ms) => {
   let num = 0;
-  let br = parseFloat(branch);
-  let sc = parseFloat(second);
+  let br = parseFloat(b);
+  let sr = parseFloat(s);
   if (br) {
     num += br * 60;
   }
-  if (sc) {
-    num += sc;
+  if (sr) {
+    num += sr;
   }
-  return num + +millisecond / 1e3;
+  return num + +ms / 1e3;
 };
 const parseLyricData = (lyric, tlyric) => {
   var _a;
@@ -94,7 +110,9 @@ const numToDateFormat = (num) => {
   return `${minute}:${second}`;
 };
 exports.forEach = forEach;
+exports.get_song_ar = get_song_ar;
 exports.numToDateFormat = numToDateFormat;
 exports.parseAuthors = parseAuthors;
 exports.parseLyricData = parseLyricData;
+exports.to_music_library = to_music_library;
 exports.transform_num_unit = transform_num_unit;

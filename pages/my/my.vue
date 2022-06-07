@@ -68,38 +68,6 @@ page {
 	overflow: hidden;
 }
 
-// 登录栏骨架
-.login-bar {
-	display: flex;
-	padding: 40rpx 30rpx;
-	align-items: center;
-}
-
-.user-avatar {
-	box-sizing: border-box;
-	display: flex;
-	width: 100rpx;
-	height: 100rpx;
-	padding-top: 15rpx;
-	border-radius: 50%;
-	border: 2rpx solid #FFFFFF;
-	background-color: #F8F1F1;
-	justify-content: center;
-	align-items: center;
-	overflow: hidden;
-	
-	.iconfont {
-		color: #F9D9D9;
-		font-size: 90rpx;
-	}
-}
-
-.login-name {
-	padding-left: 15rpx;
-	padding-right: 5rpx;
-	font-size: 26rpx;
-	font-weight: 700;
-}
 
 .margin {
 	margin: 0 20rpx;

@@ -11,18 +11,20 @@ require("./store/audio.js");
 var api_user = require("./api/user.js");
 require("./utils/symbols.js");
 if (!Math) {
-  "./pages/songDetail/songDetail.js";
+  "./pages/index/index.js";
+  "./pages/music-library-search/music-library-search.js";
+  "./pages/music-library/music-library.js";
   "./pages/my/my.js";
   "./pages/login/login.js";
   "./pages/search/search.js";
-  "./pages/index/index.js";
   "./pages/loading/loading.js";
+  "./pages/songDetail/songDetail.js";
 }
 const _sfc_main = {
   async onLaunch() {
     const cookie = utils_localstorage.getLocalStorage("cookie");
     const storeUserInfo = store_storeUserInfo.useUserInfo();
-    const {
+    let {
       data: {
         data
       }
