@@ -24,8 +24,7 @@ const playSong = async (id: number) => {
 };
 export default {
     async onLoad(options) {
-        options.id = 33894312;
-        state.id = options.id;
+        state.id = options.id || 33894312;
         await playSong(options.id);
         const { data } = await getSongDetail(state.id);
         if (data.code === 200) {
