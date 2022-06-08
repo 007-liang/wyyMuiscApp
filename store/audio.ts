@@ -1,20 +1,23 @@
-import { effect } from "vue";
 import { state } from "./playingSong";
 
 /**
  * 音频上下文
  */
 export const audioCtx = wx.createInnerAudioContext();
-
-effect(() => {
-    if (state.playing) {
+/**
+ * 控制播放和暂停
+ * @param isPlay 是否播放
+ */
+export const playPause = (isPlay: boolean) => {
+    if (isPlay) {
         audioCtx.play();
         state.timer = setInterval(updateProgress, 1000);
     } else {
         clearInterval(state.timer);
         audioCtx.pause();
     }
-});
+    state.playing = isPlay;
+};
 /**
  * 更新进度条
  */
@@ -26,10 +29,7 @@ export const updateProgress = () => {
         state.progress = +ratio.toFixed(2);
     }
 };
-audioCtx.onCanplay(() => {
-    state.playing = true;
-});
 audioCtx.onEnded(() => {
-    state.playing = false;
+    playPause(false);
     updateProgress();
 });

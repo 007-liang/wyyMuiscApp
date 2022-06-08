@@ -14,6 +14,10 @@ export const state = reactive<IPlayingSong>({
     picUrl: '/static/song_detali_background_image.jpg',
     showLyric: true,
     timer: null,
+    lyric: {
+        id: -1,
+        data: [],
+    },
 });
 export const usePlayingSongStore = defineStore('playing-song', () => {
     return {
