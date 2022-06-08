@@ -5,9 +5,10 @@ require("../../../store/playingSong.js");
 var store_storeSearch = require("../../../store/store-search.js");
 require("../../../store/store-user-info.js");
 require("../../../store/store-music-library.js");
+require("../../../utils/request.js");
+var utils_navigateTo = require("../../../utils/navigateTo.js");
 require("../../../utils/localstorage.js");
 require("../../../utils/symbols.js");
-require("../../../utils/request.js");
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   setup(__props, { expose }) {
     const searchStore = store_storeSearch.useSearchStore();
@@ -31,7 +32,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
               };
             }),
             c: common_vendor.t(item.al.name),
-            d: item.id
+            d: item.id,
+            e: common_vendor.o(($event) => common_vendor.unref(utils_navigateTo.to_song_detail)(item.id), item.id)
           };
         })
       };

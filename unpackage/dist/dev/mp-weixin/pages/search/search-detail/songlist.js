@@ -6,6 +6,7 @@ var store_storeSearch = require("../../../store/store-search.js");
 require("../../../store/store-user-info.js");
 require("../../../store/store-music-library.js");
 var utils_index = require("../../../utils/index.js");
+var utils_navigateTo = require("../../../utils/navigateTo.js");
 require("../../../utils/localstorage.js");
 require("../../../utils/symbols.js");
 require("../../../utils/request.js");
@@ -32,7 +33,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
             d: common_vendor.t(item.creator.nickname),
             e: common_vendor.t(common_vendor.unref(utils_index.transform_num_unit)(item.playCount)),
             f: item.id,
-            g: common_vendor.o(($event) => common_vendor.unref(utils_index.to_music_library)(item.id), item.id)
+            g: common_vendor.o(($event) => common_vendor.unref(utils_navigateTo.to_music_library)(item.id), item.id)
           };
         })
       };

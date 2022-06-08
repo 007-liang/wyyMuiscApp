@@ -7,6 +7,7 @@ require("../../store/store-search.js");
 var store_storeUserInfo = require("../../store/store-user-info.js");
 require("../../store/store-music-library.js");
 var api_songSheet = require("../../api/songSheet.js");
+var utils_navigateTo = require("../../utils/navigateTo.js");
 var utils_request = require("../../utils/request.js");
 require("../../utils/localstorage.js");
 require("../../utils/symbols.js");
@@ -57,7 +58,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         b: common_vendor.f(songSheet.value, (item, k0, i0) => {
           return {
             a: item.id,
-            b: common_vendor.o(($event) => common_vendor.unref(utils_index.to_music_library)(item.id), item.id),
+            b: common_vendor.o(($event) => common_vendor.unref(utils_navigateTo.to_music_library)(item.id), item.id),
             c: "3182360b-5-" + i0,
             d: common_vendor.p({
               sid: item.id,

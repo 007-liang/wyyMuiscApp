@@ -2,6 +2,9 @@
 import {  
     useSearchStore,
 } from "@/store";
+import {
+    to_song_detail
+} from "@/utils";
 import { computed } from "vue";
 const searchStore = useSearchStore();
 const songs = computed(() => {
@@ -24,6 +27,7 @@ defineExpose({
         class="search-detail-songbox"
         v-for="item in songs"
         :key="item.id"
+        @click="to_song_detail(item.id)"
     >
         <view class="search-detail-title ellipsis">
             {{item.name}}
