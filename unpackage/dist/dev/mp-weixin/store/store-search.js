@@ -4,7 +4,7 @@ var utils_localstorage = require("../utils/localstorage.js");
 var utils_symbols = require("../utils/symbols.js");
 var utils_request = require("../utils/request.js");
 const useSearchStore = common_vendor.defineStore("search", () => {
-  const search_keyword = common_vendor.ref("\u9AD8\u8003");
+  const search_keyword = common_vendor.ref("");
   const history = common_vendor.ref(utils_localstorage.getLocalStorage(utils_symbols.search_history_localstorage) || []);
   const push_history = (keyword) => {
     history.value.unshift(keyword);

@@ -1,4 +1,5 @@
 <script setup lang='ts'>
+import { to_search_page } from "@/utils";
 </script>
 
 <template>
@@ -7,7 +8,7 @@
 
         <text
             class="iconfont"
-            @click=""
+            @click="to_search_page"
         >
             &#xe8f3;
         </text>

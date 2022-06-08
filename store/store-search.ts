@@ -10,7 +10,7 @@ import {
 } from "@/utils";
 
 export const useSearchStore = defineStore("search", () => {
-    const search_keyword = ref("高考");
+    const search_keyword = ref("");
     const history = ref(
         getLocalStorage(search_history_localstorage) || []
     ) as Ref<string[]>;

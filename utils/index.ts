@@ -10,6 +10,12 @@ export const to_music_library = (id: string) => {
     wx.navigateTo({
         url: `/pages/music-library/music-library?id=${id}`
     })
+};
+
+export const to_search_page = () => {
+    wx.navigateTo({
+        url: "/pages/search/search"
+    })
 }
 
 let num_unit = [
@@ -51,7 +57,7 @@ export const transform_num_unit = (num: number) => {
 
 /**
  * 获取歌曲
- * @param song 歌曲详情
+ * @param song 歌曲歌手
  */
 export const get_song_ar = (song: IMusicDetail) => {
     return song.ar.reduce((names, item) => {

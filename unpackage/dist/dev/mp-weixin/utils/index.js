@@ -5,6 +5,11 @@ const to_music_library = (id) => {
     url: `/pages/music-library/music-library?id=${id}`
   });
 };
+const to_search_page = () => {
+  wx.navigateTo({
+    url: "/pages/search/search"
+  });
+};
 let num_unit = [
   "",
   "",
@@ -115,4 +120,5 @@ exports.numToDateFormat = numToDateFormat;
 exports.parseAuthors = parseAuthors;
 exports.parseLyricData = parseLyricData;
 exports.to_music_library = to_music_library;
+exports.to_search_page = to_search_page;
 exports.transform_num_unit = transform_num_unit;
