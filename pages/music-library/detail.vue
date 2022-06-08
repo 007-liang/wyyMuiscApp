@@ -21,6 +21,7 @@ const styles = {
     left: 0,
     width: '100vw',
     height: '100vh',
+    overflow: "auto"
 }
 </script>
 
@@ -71,7 +72,7 @@ const styles = {
                 </view>
             </view>
 
-            <view style="width: 100%">
+            <view style="width: 100%;line-height: 60rpx;">
                 {{store.playlist.description}}
             </view>
         </view>
@@ -142,7 +143,7 @@ const styles = {
 <style lang="less" scope>
 .music-library-more-detail {
     box-sizing: border-box;
-    height: 100%;
+    // height: 100vh;
     padding: 60rpx;
     display: flex;
     row-gap: 40rpx;
@@ -150,6 +151,7 @@ const styles = {
     align-items: center;
     justify-content: center;
     color: #fff;
+    overflow: auto;
 
     .iconfont {
         position: absolute;
@@ -206,9 +208,10 @@ const styles = {
     }
 
     .music-library-creator-subscribe {
-        padding: 6rpx 20rpx;
+        padding: 0rpx 20rpx;
         background-color: rgba(255, 255, 255, .2);
         border-radius: 40rpx;
+        font-size: 34rpx;
     }
 }
 

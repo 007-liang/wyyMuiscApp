@@ -28,7 +28,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
             c: common_vendor.t(item.trackCount),
             d: common_vendor.t(item.creator.nickname),
             e: common_vendor.t(common_vendor.unref(utils_index.transform_num_unit)(item.playCount)),
-            f: item.name
+            f: item.id,
+            g: common_vendor.o(($event) => common_vendor.unref(utils_index.to_music_library)(item.id), item.id)
           };
         })
       };

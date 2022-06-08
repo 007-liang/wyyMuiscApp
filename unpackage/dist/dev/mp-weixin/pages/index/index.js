@@ -19,6 +19,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         url: "/pages/search/search"
       });
     };
+    common_vendor.onMounted(() => {
+    });
     return (_ctx, _cache) => {
       return {
         a: common_vendor.o(to_search_page)

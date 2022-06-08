@@ -4,7 +4,7 @@ var utils_localstorage = require("../utils/localstorage.js");
 var utils_symbols = require("../utils/symbols.js");
 var utils_request = require("../utils/request.js");
 const useSearchStore = common_vendor.defineStore("search", () => {
-  const search_keyword = common_vendor.ref("");
+  const search_keyword = common_vendor.ref("\u9AD8\u8003");
   const history = common_vendor.ref(utils_localstorage.getLocalStorage(utils_symbols.search_history_localstorage) || []);
   const push_history = (keyword) => {
     history.value.unshift(keyword);
@@ -29,7 +29,6 @@ const useSearchStore = common_vendor.defineStore("search", () => {
   const onSearch = () => {
     search_nav_data.value = {};
     active_search_index.value = 0;
-    active_search_nav.value = search_nav[0];
     if (typeof timer === "number") {
       clearTimeout(timer);
     }
@@ -110,13 +109,15 @@ const useSearchStore = common_vendor.defineStore("search", () => {
     search_comp_loadflag[index] = true;
   };
   let search_nav_data = common_vendor.ref({});
-  let active_search_index = common_vendor.ref(1);
-  let active_search_nav = common_vendor.ref(search_nav[1]);
+  let active_search_index = common_vendor.ref(0);
+  let active_search_nav = common_vendor.computed$1(() => {
+    return search_nav[active_search_index.value];
+  });
+  let loading = common_vendor.ref(false);
   const active_search_data = common_vendor.computed$1(() => {
     return active_search_data[active_search_index.value];
   });
   const change_active_search_nav = (index) => {
-    active_search_nav.value = search_nav[index];
     active_search_index.value = index;
   };
   const get_search_nav_data = async () => {
@@ -127,13 +128,13 @@ const useSearchStore = common_vendor.defineStore("search", () => {
     if (cache_search_nav_data) {
       return cache_search_nav_data;
     }
+    loading.value = true;
     const type = active_search_nav.value.type;
     let res = await utils_request.wxRequest({
       url: "/cloudsearch",
       data: {
         keywords: search_keyword.value.trim(),
-        type,
-        limit: 20
+        type
       }
     });
     let data = null;
@@ -143,6 +144,9 @@ const useSearchStore = common_vendor.defineStore("search", () => {
       data = res.data.result.playlists;
     }
     search_nav_data.value[active_search_nav.value.type] = data;
+    setTimeout(() => {
+      loading.value = false;
+    }, 500);
   };
   const cur_search_data = common_vendor.computed$1(() => {
     return search_nav_data.value[active_search_nav.value.type];
@@ -168,7 +172,8 @@ const useSearchStore = common_vendor.defineStore("search", () => {
     clear_history,
     search_control_focus,
     search_control_blur,
-    search_control_focus_flag
+    search_control_focus_flag,
+    loading
   };
 });
 exports.useSearchStore = useSearchStore;

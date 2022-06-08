@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/search/search",
     "pages/index/index",
+    "pages/my/my",
     "pages/music-library-search/music-library-search",
     "pages/music-library/music-library",
-    "pages/my/my",
     "pages/login/login",
-    "pages/search/search",
     "pages/loading/loading"
   ],
   "window": {

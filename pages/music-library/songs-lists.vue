@@ -1,9 +1,15 @@
 <script setup lang='ts'>
 import { get_song_ar } from "@/utils";
 
-const props = defineProps<{
-    musics: IMusicDetail[]
-}>();
+const props = withDefaults(
+    defineProps<{
+        musics: IMusicDetail[],
+        showIndex?: boolean
+    }>(),
+    {
+        showIndex: true
+    }
+);
 </script>
 
 <template>
@@ -12,7 +18,7 @@ const props = defineProps<{
         v-for="(item, index) in props.musics"
         :key="item.id"
     >
-        <view class="music-library-song-index">
+        <view class="music-library-song-index" v-if="props.showIndex">
             {{index + 1}}
         </view>
         <view class="music-library-song-detail">
@@ -20,8 +26,8 @@ const props = defineProps<{
                 {{item.name}}
             </view>
             <view class="text-hidden">
-                <tag-vip v-if="item.fee === 1"/>
-                <tag-sq v-if="item.sq" />
+                <tagVip v-if="item.fee === 1" />
+                <tagSq v-if="item.sq" />
 
                 {{get_song_ar(item).join("/")}}
                 -

@@ -9,12 +9,12 @@ var store_storeUserInfo = require("./store/store-user-info.js");
 var api_user = require("./api/user.js");
 require("./utils/symbols.js");
 if (!Math) {
+  "./pages/search/search.js";
   "./pages/index/index.js";
+  "./pages/my/my.js";
   "./pages/music-library-search/music-library-search.js";
   "./pages/music-library/music-library.js";
-  "./pages/my/my.js";
   "./pages/login/login.js";
-  "./pages/search/search.js";
   "./pages/loading/loading.js";
 }
 const _sfc_main = {

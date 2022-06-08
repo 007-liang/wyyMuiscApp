@@ -6585,6 +6585,7 @@ exports.f = f;
 exports.index = index;
 exports.n = n;
 exports.o = o;
+exports.onBeforeUnmount = onBeforeUnmount;
 exports.onMounted = onMounted;
 exports.p = p;
 exports.reactive = reactive;

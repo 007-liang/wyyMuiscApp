@@ -9,7 +9,14 @@ const store = useMusicLibraryStore();
         <view
             class="music-library-songs"
         >
-            <SongsLists :musics="store.musics" />
+            <SongsLists
+                :musics="store.musics"
+                v-show="!store.loading"
+            />
+            <loading
+                v-show="store.loading"
+                styles="padding: 270rpx 0;text-align: center;"
+            />
             <!-- <view
                 class="music-library-song"
                 v-for="(item, index) in store.musics"

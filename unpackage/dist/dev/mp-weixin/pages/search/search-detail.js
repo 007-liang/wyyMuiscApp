@@ -5,8 +5,13 @@ require("../../store/store-user-info.js");
 require("../../utils/localstorage.js");
 require("../../utils/symbols.js");
 require("../../utils/request.js");
+if (!Array) {
+  const _easycom_loading2 = common_vendor.resolveComponent("loading");
+  _easycom_loading2();
+}
+const _easycom_loading = () => "../../components/loading/loading.js";
 if (!Math) {
-  (Songs + Songlist)();
+  (_easycom_loading + Songs + Songlist)();
 }
 const Songlist = () => "./search-detail/songlist.js";
 const Songs = () => "./search-detail/songs.js";
@@ -39,16 +44,22 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
             d: common_vendor.o(($event) => common_vendor.unref(search_store).change_active_search_nav(index), item.title)
           };
         }),
-        b: common_vendor.unref(search_store).search_nav_enum.song === common_vendor.unref(search_store).active_search_nav.type
+        b: common_vendor.unref(search_store).loading,
+        c: common_vendor.p({
+          styles: "padding: 100rpx 0;"
+        }),
+        d: common_vendor.unref(search_store).search_nav_enum.song === common_vendor.unref(search_store).active_search_nav.type
       }, common_vendor.unref(search_store).search_nav_enum.song === common_vendor.unref(search_store).active_search_nav.type ? {
-        c: common_vendor.sr(set_lazy_comp(common_vendor.unref(search_store).search_nav_enum.song), "2ed046fa-0"),
-        d: set_lazy_comp(common_vendor.unref(search_store).search_nav_enum.song)
+        e: common_vendor.sr(set_lazy_comp(common_vendor.unref(search_store).search_nav_enum.song), "2ed046fa-1"),
+        f: set_lazy_comp(common_vendor.unref(search_store).search_nav_enum.song)
       } : {}, {
-        e: common_vendor.unref(search_store).search_nav_enum.songlist === common_vendor.unref(search_store).active_search_nav.type
+        g: common_vendor.unref(search_store).search_nav_enum.songlist === common_vendor.unref(search_store).active_search_nav.type
       }, common_vendor.unref(search_store).search_nav_enum.songlist === common_vendor.unref(search_store).active_search_nav.type ? {
-        f: common_vendor.sr(set_lazy_comp(common_vendor.unref(search_store).search_nav_enum.songlist), "2ed046fa-1"),
-        g: set_lazy_comp(common_vendor.unref(search_store).search_nav_enum.songlist)
-      } : {});
+        h: common_vendor.sr(set_lazy_comp(common_vendor.unref(search_store).search_nav_enum.songlist), "2ed046fa-2"),
+        i: set_lazy_comp(common_vendor.unref(search_store).search_nav_enum.songlist)
+      } : {}, {
+        j: !common_vendor.unref(search_store).loading
+      });
     };
   }
 });

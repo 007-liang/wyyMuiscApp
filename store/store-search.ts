@@ -10,7 +10,7 @@ import {
 } from "@/utils";
 
 export const useSearchStore = defineStore("search", () => {
-    const search_keyword = ref("");
+    const search_keyword = ref("高考");
     const history = ref(
         getLocalStorage(search_history_localstorage) || []
     ) as Ref<string[]>;
@@ -43,7 +43,6 @@ export const useSearchStore = defineStore("search", () => {
     const onSearch = () => {
         search_nav_data.value = {};
         active_search_index.value = 0;
-        active_search_nav.value = search_nav[0];
 
         if (typeof timer === 'number') {
             // 清除上一次的 timeout 的timer
@@ -192,15 +191,19 @@ export const useSearchStore = defineStore("search", () => {
     // 已经加载过的页面, 进行缓存数据
     let search_nav_data = ref({});
     // 当前选中的导航索引
-    let active_search_index = ref(1);
+    let active_search_index = ref(0);
     // 当前选中导航的type
-    let active_search_nav = ref(search_nav[1]);
+    // let active_search_nav = ref(search_nav[0]);
+    let active_search_nav = computed(() => {
+        return search_nav[active_search_index.value]
+    });
+    let loading = ref(false);
     const active_search_data = computed(() => {
         return active_search_data[active_search_index.value];
     });
     // 改变选中导航, 更新 选中索引和选中type
     const change_active_search_nav = (index: number) => {
-        active_search_nav.value = search_nav[index];
+        // active_search_nav.value = search_nav[index];
         active_search_index.value = index;
     };
     const get_search_nav_data = async () => {
@@ -213,13 +216,13 @@ export const useSearchStore = defineStore("search", () => {
         if (cache_search_nav_data) {
             return cache_search_nav_data;
         };
+        loading.value = true;
         const type = active_search_nav.value.type;
         let res = await wxRequest<any>({
             url: "/cloudsearch",
             data: {
                 keywords: search_keyword.value.trim(),
                 type: type,
-                limit: 20,
             }
         });
         let data = null
@@ -231,6 +234,9 @@ export const useSearchStore = defineStore("search", () => {
         search_nav_data.value[
             active_search_nav.value.type
         ] = data;
+        setTimeout(() => {
+            loading.value = false;
+        }, 500);
     };
     const cur_search_data = computed(() => {
         return search_nav_data.value[
@@ -261,5 +267,7 @@ export const useSearchStore = defineStore("search", () => {
         search_control_focus,
         search_control_blur,
         search_control_focus_flag,
+
+        loading,
     }
 });

@@ -8,18 +8,18 @@ var utils_request = require("../../utils/request.js");
 require("../../utils/localstorage.js");
 require("../../utils/symbols.js");
 if (!Array) {
-  const _easycom_paddingTop2 = common_vendor.resolveComponent("paddingTop");
   const _easycom_songSheetCard2 = common_vendor.resolveComponent("songSheetCard");
-  (_easycom_paddingTop2 + _easycom_songSheetCard2)();
+  _easycom_songSheetCard2();
 }
-const _easycom_paddingTop = () => "../../components/paddingTop/paddingTop.js";
 const _easycom_songSheetCard = () => "../../components/songSheetCard/songSheetCard.js";
 if (!Math) {
-  (_easycom_paddingTop + loginBar + notLoginBar + myLikeMusic + _easycom_songSheetCard)();
+  (Header + loginBar + notLoginBar + tags + myLikeMusic + _easycom_songSheetCard)();
 }
 const loginBar = () => "./loginBar.js";
 const notLoginBar = () => "./notLoginBar.js";
 const myLikeMusic = () => "./myLikeMusic.js";
+const tags = () => "./tags.js";
+const Header = () => "./header.js";
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   setup(__props) {
     const songSheet = common_vendor.ref([]);
@@ -54,8 +54,9 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         b: common_vendor.f(songSheet.value, (item, k0, i0) => {
           return {
             a: item.id,
-            b: "3182360b-4-" + i0,
-            c: common_vendor.p({
+            b: common_vendor.o(($event) => common_vendor.unref(utils_index.to_music_library)(item.id), item.id),
+            c: "3182360b-5-" + i0,
+            d: common_vendor.p({
               sid: item.id,
               name: item.name,
               picUrl: item.picUrl || item.coverImgUrl,

@@ -21,6 +21,7 @@
             <category />
             <news-songlist />
             <exclusive-broadcast />
+            <!-- <fixedSizeList /> -->
             <!-- <recommend /> -->
         </view>
     <!-- </view> -->
@@ -39,9 +40,9 @@ const to_search_page = () => {
         url: '/pages/search/search'
     })
 }
-// onMounted(() => {
-//     to_music_library("2746032864");
-// })
+onMounted(() => {
+    // to_music_library("2746032864");
+})
 </script>
 
 <style lang="less">

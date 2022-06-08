@@ -12,13 +12,6 @@ store.listener_page_scroll((scrollTop) => {
     }
 });
 
-const animation = ref("scroll_header 10s linear 1s")
-const animationend = () => {
-    animation.value = "";
-    setTimeout(() => {
-        animation.value = "scroll_header 10s linear";
-    }, 2000)
-};
 const toMusicLibrarySearch = () => {
     wx.navigateTo({
         url: "/pages/music-library-search/music-library-search"
@@ -47,19 +40,12 @@ const toMusicLibrarySearch = () => {
         >
             <view
                 class="music-library-scroll-header-text"
-                @animationend="animationend"
-                :style="{
-                    animation
-                }"
             >
                 {{store.playlist.name}}
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                &nbsp;
-                {{store.playlist.name}}
+                
+                <!-- <view style="margin-left: 50%;">
+                    {{store.playlist.name}}
+                </view> -->
             </view>
         </view>
 
@@ -108,17 +94,9 @@ const toMusicLibrarySearch = () => {
 }
 .music-library-scroll-header-text {
     // animation: name duration timing-function delay iteration-count direction fill-mode;
-    // animation: scroll_header 10s linear 2s;
+    // animation: scroll_header 10s linear;
     white-space: nowrap;
-}
-@keyframes scroll_header {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-180%);
-    }
+    display: flex;
 }
 .music-library-header {
     display: flex;

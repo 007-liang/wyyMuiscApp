@@ -17,7 +17,7 @@
 @font-face {
   font-family: 'iconfont';
   /* Project id 3434140 */
-  src: url('//at.alicdn.com/t/font_3434140_1ux1h6h5f5r.woff2?t=1654261750018') format('woff2'), url('//at.alicdn.com/t/font_3434140_1ux1h6h5f5r.woff?t=1654261750018') format('woff'), url('//at.alicdn.com/t/font_3434140_1ux1h6h5f5r.ttf?t=1654261750018') format('truetype');
+  src: url('//at.alicdn.com/t/font_3434140_iwfhdkgllxb.woff2?t=1654586994539') format('woff2'), url('//at.alicdn.com/t/font_3434140_iwfhdkgllxb.woff?t=1654586994539') format('woff'), url('//at.alicdn.com/t/font_3434140_iwfhdkgllxb.ttf?t=1654586994539') format('truetype');
 }
 .user-avatar {
   box-sizing: border-box;

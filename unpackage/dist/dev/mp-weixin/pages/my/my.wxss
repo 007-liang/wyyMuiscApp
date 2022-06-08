@@ -13,7 +13,7 @@ page {
 .my-recommend-list {
   margin-top: 40rpx;
   display: flex;
-  justify-content: space-between;
+  column-gap: 20rpx;
   flex-wrap: wrap;
   gap: 20rpx;
 }
@@ -21,10 +21,21 @@ page {
   flex: 30%;
 }
 .news-songs .news-song-name {
-  font-size: 16rpx;
+  font-size: 22rpx;
   font-weight: 700;
 }
 .news-songs .news-song-name,
 .news-songs .news-songs-pic {
   width: 220rpx;
+}
+.my-container {
+  flex: 1;
+  overflow: auto;
+  padding-bottom: 120rpx;
+}
+page {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
 }
