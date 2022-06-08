@@ -17,14 +17,14 @@
                 />
                 <view class="search-song-detail">
                     <view
-                        class="search-song-detail-title"
+                        class="search-song-detail-title ellipsis"
                     >
                         {{item.name}}
                     </view>
-                    <view class="search-song-detail-subtitle">
+                    <view class="search-song-detail-subtitle ellipsis">
                         专辑: {{item.song.album.name}}
                     </view>
-                    <view class="search-song-sings">
+                    <view class="search-song-sings ellipsis">
                         歌手
                         <text
                             v-for="item in item.song.artists"
@@ -92,13 +92,6 @@ export default defineComponent({
 }
 .search-song-detail-title {
     padding: 12rpx 0;
-}
-.search-song-detail-subtitle,
-.search-song-detail-title,
-.search-song-sings {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
 }
 .search-song-sings {
     margin-top: 12rpx;

@@ -38,7 +38,7 @@
         <view class="search-hot-categorys">
             <template v-for="(item, index) in hots" :key="item.first">
                 <view
-                    class="search-hot-category"
+                    class="ellipsis"
                     :class="{ active: index < 3 }"
                     v-if="isShowDetail ? true : index < hots.length / 2"
                 >
@@ -137,13 +137,6 @@ export default defineComponent({
     box-shadow: 0 0 10rpx 10rpx #f2f2f2;
     font-size: 36rpx;
     border-radius: 20rpx;
-
-    .search-hot-category {
-        // padding: 14rpx 0;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-    }
 
     .search-hot-index {
         margin-right: 28rpx;

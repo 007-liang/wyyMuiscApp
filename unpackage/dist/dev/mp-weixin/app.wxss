@@ -52,6 +52,11 @@ page {
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
+.ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 .iconfont {
   display: inline-block;
   font-family: "iconfont" !important;

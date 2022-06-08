@@ -39,3 +39,9 @@ page {
   width: 100vw;
   height: 100vh;
 }
+.login-name {
+  padding-left: 15rpx;
+  padding-right: 5rpx;
+  font-size: 26rpx;
+  font-weight: 700;
+}

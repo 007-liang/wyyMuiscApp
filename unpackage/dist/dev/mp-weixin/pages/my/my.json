@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "我的",
+  "navigationBarTitleText": "个人主页",
   "enablePullDownRefresh": false,
   "usingComponents": {
     "song-sheet-card": "../../components/songSheetCard/songSheetCard",

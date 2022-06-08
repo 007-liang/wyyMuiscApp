@@ -4,18 +4,22 @@ exports[Symbol.toStringTag] = "Module";
 var common_vendor = require("./common/vendor.js");
 var utils_localstorage = require("./utils/localstorage.js");
 require("./utils/request.js");
+require("./store/audio.js");
+require("./store/playingSong.js");
 require("./store/store-search.js");
 var store_storeUserInfo = require("./store/store-user-info.js");
+require("./store/store-music-library.js");
 var api_user = require("./api/user.js");
 require("./utils/symbols.js");
 if (!Math) {
-  "./pages/search/search.js";
   "./pages/index/index.js";
-  "./pages/my/my.js";
   "./pages/music-library-search/music-library-search.js";
   "./pages/music-library/music-library.js";
+  "./pages/my/my.js";
   "./pages/login/login.js";
+  "./pages/search/search.js";
   "./pages/loading/loading.js";
+  "./pages/songDetail/songDetail.js";
 }
 const _sfc_main = {
   async onLaunch() {

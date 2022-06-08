@@ -1,12 +1,13 @@
 {
   "pages": [
-    "pages/search/search",
     "pages/index/index",
-    "pages/my/my",
     "pages/music-library-search/music-library-search",
     "pages/music-library/music-library",
+    "pages/my/my",
     "pages/login/login",
-    "pages/loading/loading"
+    "pages/search/search",
+    "pages/loading/loading",
+    "pages/songDetail/songDetail"
   ],
   "window": {
     "navigationBarTextStyle": "white",
