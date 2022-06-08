@@ -1,40 +1,72 @@
-<script setup lang='ts'>
-import handerVue from "./hander.vue";
-import footerVue from "./footer.vue";
-import lyricVue from "./lyric.vue";
-import cdVue from "./cd.vue";
-</script>
-
 <script lang="ts">
 import { 
     usePlayingSongStore, 
-    audioCtx 
+    audioCtx, 
+	updateProgress,
+playPause
 } from "@/store";
 import { 
     getSongDetail, 
     getSongUrl 
 } from "@/api";
 import { parseAuthors } from '@/utils';
+import handerVue from "./hander.vue";
+import footerVue from "./footer.vue";
+import lyricVue from "./lyric.vue";
+import cdVue from "./cd.vue";
+import { ref } from 'vue-demi';
 
 const { state } = usePlayingSongStore();
-const playSong = async (id: number) => {
+const sid = ref();
+
+const setSongUrl = async (id: number) => {
     const { data } = await getSongUrl(id);
-    const song = data.data[0];
-    audioCtx.src = song.url;
+    if (data.code === 200) {
+        const song = data.data[0];
+        audioCtx.src = song.url;
+        playPause(true);
+    }
 };
+
 export default {
     async onLoad(options) {
-        state.id = options.id || 33894312;
-        await playSong(options.id);
-        const { data } = await getSongDetail(state.id);
-        if (data.code === 200) {
-            const song = data.songs[0];
-            state.author = parseAuthors(song.ar);
-            state.picUrl = song.al.picUrl;
-            state.name = song.name;
-            state.endTime = Math.floor(song.dt / 1000);
+        state.progress = 0;
+        state.currentTime = 0;
+        sid.value = +options.id || 1452439191;
+        if (state.id !== sid.value) {
+            state.id = sid.value;
+            await setSongUrl(state.id);
+            const { data } = await getSongDetail(state.id);
+            if (data.code === 200) {
+                const song = data.songs[0];
+                state.author = parseAuthors(song.ar);
+                state.picUrl = song.al.picUrl;
+                state.name = song.name;
+                state.endTime = Math.floor(song.dt / 1000);
+            }
+        }
+        if (state.timer === null) {
+            state.timer = setInterval(updateProgress , 1000);
         }
     },
+    setup() {
+        return {
+            sid,
+            state,
+        }
+    },
+    components: {
+        handerVue,
+        footerVue,
+        lyricVue,
+        cdVue,
+    },
+    onUnload() {
+        if (state.timer !== null) {
+            clearInterval(state.timer);
+            state.timer = null;
+        }
+    }
 }
 </script>
 
@@ -48,7 +80,10 @@ export default {
     <view class="song-detail">
         <handerVue></handerVue>
         <cdVue v-show="!state.showLyric"></cdVue>
-        <lyricVue v-show="state.showLyric"></lyricVue>
+        <lyricVue 
+            v-show="state.showLyric"
+            :sid="sid || -1"
+        ></lyricVue>
         <footerVue></footerVue>
     </view>
 </template>

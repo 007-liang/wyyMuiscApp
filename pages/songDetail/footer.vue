@@ -1,6 +1,7 @@
 <script setup lang='ts'>
 import { 
     audioCtx,
+    playPause,
     updateProgress,
     usePlayingSongStore,
 } from "@/store";
@@ -109,7 +110,7 @@ onMounted(() => {
             >&#xe8f4;</view>
             <view 
                 class="iconfont play-pause"
-                @click="state.playing = !state.playing;"
+                @click="playPause(!state.playing)"
             >
                 <text 
                     v-if="!state.playing" 

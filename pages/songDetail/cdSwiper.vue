@@ -1,11 +1,12 @@
 <script lang='ts' setup>
-import { usePlayingSongStore } from '@/store';
-const list = [
-    'https://fanyi-cdn.cdn.bcebos.com/static/translation/img/header/logo_e835568.png',
-    'https://www.processon.com/assets/imgs/logo_small.svg',
-    'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f184e7c3-1912-41b2-b81f-435d1b37c7b4/1ae87107-2943-4ba6-be2b-390ca27c6260.png'
-];
-const  { state } = usePlayingSongStore();
+import { 
+    state,
+} from '@/store';
+import { useMusicLibraryStore } from '@/store';
+const { musics } = useMusicLibraryStore();
+
+// console.log(musics);
+
 </script>
 
 <template>
@@ -14,7 +15,7 @@ const  { state } = usePlayingSongStore();
         easing-function="linear" 
         current="1"
     >
-        <swiper-item
+        <!-- <swiper-item
             v-for="(itme, i) in list" 
             :key="i"
             class="cd-swiper-item"
@@ -28,7 +29,7 @@ const  { state } = usePlayingSongStore();
                     :src="state.picUrl + '?param=110y100'" 
                 />
             </view>
-        </swiper-item>
+        </swiper-item> -->
     </swiper>
 </template>
 

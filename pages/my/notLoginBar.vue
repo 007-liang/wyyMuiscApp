@@ -23,18 +23,9 @@ export default {
 </script>
 
 <style lang="less">
-// 登录栏骨架
 .login-bar {
 	display: flex;
 	padding: 40rpx 30rpx;
 	align-items: center;
 }
-
-.login-name {
-	padding-left: 15rpx;
-	padding-right: 5rpx;
-	font-size: 26rpx;
-	font-weight: 700;
-}
-
 </style>

@@ -7,10 +7,13 @@ const props = defineProps<{
 </script>
 
 <template>
-     <view
+    <navigator
+        open-type="navigate"
+        hover-class="none"
         class="music-library-song"
         v-for="(item, index) in props.musics"
         :key="item.id"
+        :url="`/pages/songDetail/songDetail?id=${item.id}`"
     >
         <view class="music-library-song-index">
             {{index + 1}}
@@ -34,7 +37,7 @@ const props = defineProps<{
         <view class="iconfont">
             &#xe67a;
         </view>
-    </view>
+    </navigator>
 </template>
 
 <style lang="less" scoped>

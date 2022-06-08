@@ -9,7 +9,7 @@ import {
     watchEffect, 
 	onUnmounted,
     getCurrentInstance,
-    nextTick,
+    onBeforeMount,
 } from "vue";
 import { 
     usePlayingSongStore,
@@ -17,12 +17,16 @@ import {
 } from "@/store";
 import voiceVue from "./voice.vue";
 
+const props = defineProps<{
+    sid: number
+}>();
+
 let textH = 0;
+let nullSapce = 0;
 let updateTimer: any;
-let first = true;
 const tname = ref('');
 const key = ref(0);
-const scrollTop = ref(0);
+const scrollTop = ref(-1);
 const loading = ref(true);
 const lyricData = ref<TParsedLyric>([]);
 const { state } = usePlayingSongStore();
@@ -33,9 +37,10 @@ const clear = () => {
 const instance = getCurrentInstance();
 // 滚动歌词的主逻辑
 const timerCallBack = () => {
+    if (audioCtx.paused) return;
     let lyricList = lyricData.value!;
     let length = lyricList.length;
-    let currentTime = Math.floor(audioCtx.currentTime);
+    let currentTime = audioCtx.currentTime;
     if (currentTime <=  Math.floor(lyricList[0].time)) {
         scrollTop.value = 0;
         key.value = 0; 
@@ -47,11 +52,11 @@ const timerCallBack = () => {
     }
     forEach(lyricList, (item, i) => {
         let nextItem = lyricList[i + 1];
-        if (
-            Math.floor(item.time) === currentTime
-        ) {
+        let offset = item.time - currentTime;
+        if (!item.text) nullSapce++; // 处理没有文本但是占用了key的空间
+        if (offset >= -0.2 && offset <= 0.2) {
             if (item.text) {
-                let scrollT = i * textH;
+                let scrollT = (i - nullSapce) * textH;
                 if (scrollTop.value !== scrollT) {
                     scrollTop.value = scrollT;
                     key.value = i;
@@ -68,59 +73,79 @@ const timerCallBack = () => {
             return true;
         }
     });
+    nullSapce = 0;
 };
 // 设置定时器滚动歌词
-const lyricMove = () => {
-    watchEffect(() => {
-        if (state.playing) {
-            updateTimer = setInterval(timerCallBack, 200);
-        } else {
-            clear();
-        }
-    });
+const setTimer = () => {
+    updateTimer = setInterval(timerCallBack, 200);
 };
 // 等待歌词渲染完成
 const awaiteRender = () => {
-    if (state.showLyric && first) {
-        first = false;
-        uni.createSelectorQuery().in(instance)
-        .select('.lyric-text')
-        .boundingClientRect((rect) => {
-            if (rect && rect.height) {
-                textH = rect.height || 40;
-                lyricMove();
-            } else {
-                setTimeout(awaiteRender, 200);
-            }
-        }).exec();
-    }
-};
-// 获取歌词
-watchEffect(async () => {
-    const { id  } = state;
-    if (!isNaN(id) && id !== -1) {
-        const { data } = await wxRequest<
-            ISongLyric & CloudMusicRes
-        >({
-            url: '/lyric',
-            data: { id },
-        });
-        if (data.code === 200) {
-            loading.value = false;
-            lyricData.value = parseLyricData(
-                data.lrc.lyric, 
-                data.tlyric?.lyric
-            );
-            if (data.tlyric && data.transUser) {
-                tname.value = data.transUser.nickname;
-            } else {
-                tname.value = '';
-            }
-            nextTick(awaiteRender);
+    uni.createSelectorQuery().in(instance)
+    .select('.lyric-text')
+    .boundingClientRect((rect) => {
+        if (rect && rect.height) {
+            textH = rect.height || 40;
+            watchEffect(() => {
+                if (state.playing) {
+                    setTimer();
+                } else {
+                    clear();
+                }
+            });
         }
+    }).exec();
+};
+
+onBeforeMount(() => {
+    if (state.lyric.id !== props.sid) {
+        // 获取歌词
+        watchEffect(async () => {
+            if (
+                props.sid 
+                && state.showLyric 
+                && !lyricData.value.length
+            ) { 
+                const { data } = await wxRequest<
+                    ISongLyric & CloudMusicRes
+                >({
+                    url: '/lyric',
+                    data: { 
+                        id: props.sid
+                    },
+                });
+                if (data.code === 200) {
+                    const {
+                        lrc,
+                        tlyric,
+                        transUser,
+                    } = data;
+                    const { lyric } = state;
+                    loading.value = false;
+                    lyric.id = props.sid;
+                    lyric.data = lyricData.value = parseLyricData(
+                        lrc.lyric, 
+                        tlyric?.lyric
+                    );
+                    if (tlyric && transUser) {
+                        tname.value = transUser.nickname;
+                    } else {
+                        tname.value = '';
+                    }
+                    awaiteRender();
+                }
+            }
+        });
+    } else {
+        loading.value = false;
+        lyricData.value = state.lyric.data;
+        awaiteRender();
     }
 });
-onUnmounted(clear);
+onUnmounted(() => {
+    clear();
+    audioCtx.offCanplay(setTimer);
+});
 </script>
 
 <template>
@@ -156,7 +181,7 @@ onUnmounted(clear);
                     }"
                 >
                     <view>{{ item.text }}</view>
-                    <view v-if="item.tText">{{ item.tText }}</view>
+                    <text v-if="item.tText">{{ item.tText }}</text>
                 </view>
             </template>
             <view 
@@ -166,6 +191,7 @@ onUnmounted(clear);
                 翻译贡献者：{{ tname }}
             </view>
         </template>
+        <view class="lyric-text"></view>
         <view class="lyric-padding"></view>
     </scroll-view>
 </template>
@@ -197,11 +223,12 @@ onUnmounted(clear);
 }
 
 .lyric-padding {
-    padding-top: calc(60vh / 2);
+    padding-top: 25vh;
 }
 
 .lyric-text {
     display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     color: #999999;
     font-size: 22rpx;

@@ -10,6 +10,7 @@ import myLikeMusic from "./myLikeMusic.vue"; // 我喜欢的音乐栏
 type TSongSheet = (IRSongSheet | ITopListDetail)[];
 const songSheet = ref<TSongSheet>([]);
 const userInfo = useUserInfo().userInfo;
+
 // 获取排行榜
 const recommendSongList = async () => {
 	const { data } = await wxRequest<ITopListData & CloudMusicRes>({
@@ -26,6 +27,7 @@ const recommendSongList = async () => {
 		recommendSongSheet();
 	}
 };
+
 // 获取歌单
 const recommendSongSheet = async () => {
 	const { data } = await getRecommendSongSheet();
@@ -68,7 +70,6 @@ page {
 	overflow: hidden;
 }
 
-
 .margin {
 	margin: 0 20rpx;
 }
@@ -85,7 +86,7 @@ page {
 	flex: 30%;
 
 	.news-song-name {
-		font-size: 16rpx;
+		font-size: 22rpx;
 		font-weight: 700;
 	}
 
@@ -93,5 +94,12 @@ page {
 	.news-songs-pic {
 		width: 220rpx;
 	}
+}
+
+.login-name {
+	padding-left: 15rpx;
+	padding-right: 5rpx;
+	font-size: 26rpx;
+	font-weight: 700;
 }
 </style>
