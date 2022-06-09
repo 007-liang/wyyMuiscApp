@@ -39,9 +39,9 @@ getUserLv();
 				:src="profile.avatarUrl + '?param=50y50'"
 				mode="scaleToFill"
 			/>
-			<view class="login-name"> 
+			<view class="login-name text-hidden"> 
 				<text class="nickname"> 
-					{{ profile.nickname }} 
+					{{ profile.nickname }}
 				</text>
 				<navigator 
 					url="/pages/my/my"
@@ -64,10 +64,16 @@ getUserLv();
 	display: flex;
 	padding: 40rpx 30rpx;
 	align-items: center;
+    column-gap: 20rpx;
 }
 .user-avatar {
 	padding: 0;
 	border: none;
+}
+
+.login-name {
+    flex: 1;
+    overflow: hidden;
 }
 
 .nickname {
@@ -82,12 +88,14 @@ getUserLv();
 	background-color: #fff;
 	border-radius: 40rpx;
 	text-align: center;
-	font-size: 16rpx;
+	font-size: 18rpx;
 }
 
 .row {
 	display: flex;
 	align-items: center;
+    column-gap: 20rpx;
+    overflow: hidden;
 }
 
 .login-bar {

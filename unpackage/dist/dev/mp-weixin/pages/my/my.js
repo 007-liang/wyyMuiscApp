@@ -2,29 +2,37 @@
 var common_vendor = require("../../common/vendor.js");
 var utils_index = require("../../utils/index.js");
 require("../../store/audio.js");
+<<<<<<< HEAD
 require("../../store/playing-song.js");
 require("../../store/store-search.js");
 var store_storeUserInfo = require("../../store/store-user-info.js");
 require("../../store/history-library.js");
 require("../../store/store-music-library.js");
 require("../../store/playing-song-library.js");
+=======
+require("../../store/playingSong.js");
+require("../../store/store-search.js");
+var store_storeUserInfo = require("../../store/store-user-info.js");
+require("../../store/store-music-library.js");
+>>>>>>> 1a0ac77e42b6c066ca79ac2e572eb36f2e909e1d
 var api_songSheet = require("../../api/songSheet.js");
+var utils_navigateTo = require("../../utils/navigateTo.js");
 var utils_request = require("../../utils/request.js");
 require("../../utils/localstorage.js");
 require("../../utils/symbols.js");
 if (!Array) {
-  const _easycom_paddingTop2 = common_vendor.resolveComponent("paddingTop");
   const _easycom_songSheetCard2 = common_vendor.resolveComponent("songSheetCard");
-  (_easycom_paddingTop2 + _easycom_songSheetCard2)();
+  _easycom_songSheetCard2();
 }
-const _easycom_paddingTop = () => "../../components/paddingTop/paddingTop.js";
 const _easycom_songSheetCard = () => "../../components/songSheetCard/songSheetCard.js";
 if (!Math) {
-  (_easycom_paddingTop + loginBar + notLoginBar + myLikeMusic + _easycom_songSheetCard)();
+  (Header + loginBar + notLoginBar + tags + myLikeMusic + _easycom_songSheetCard)();
 }
 const loginBar = () => "./loginBar.js";
 const notLoginBar = () => "./notLoginBar.js";
 const myLikeMusic = () => "./myLikeMusic.js";
+const tags = () => "./tags.js";
+const Header = () => "./header.js";
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   setup(__props) {
     const songSheet = common_vendor.ref([]);
@@ -59,8 +67,9 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         b: common_vendor.f(songSheet.value, (item, k0, i0) => {
           return {
             a: item.id,
-            b: "3c7f7bc0-4-" + i0,
-            c: common_vendor.p({
+            b: common_vendor.o(($event) => common_vendor.unref(utils_navigateTo.to_music_library)(item.id), item.id),
+            c: "3182360b-5-" + i0,
+            d: common_vendor.p({
               sid: item.id,
               name: item.name,
               picUrl: item.picUrl || item.coverImgUrl,
@@ -72,5 +81,5 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
   }
 });
-var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "G:/\u6848\u4F8B/\u5C0F\u7A0B\u5E8F/\u7F51\u6613\u4E91\u97F3\u4E50/wyyMusic/pages/my/my.vue"]]);
+var MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/\u6587\u6863/\u8BFE\u7A0B/\u5C0F\u7A0B\u5E8F/cloudmusic/pages/my/my.vue"]]);
 wx.createPage(MiniProgramPage);

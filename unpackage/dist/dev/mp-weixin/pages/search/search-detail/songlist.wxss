@@ -1,3 +1,15 @@
+.songlist-content {
+  flex: 1;
+  overflow: hidden;
+}
+.songlist-content .songlist-subtitle {
+  display: flex;
+  column-gap: 10rpx;
+  overflow: hidden;
+}
+.songlist-content .songlist-name {
+  flex: 1;
+}
 .songlist-box {
   display: flex;
   gap: 20rpx;

@@ -42,6 +42,8 @@ const toLogin = () => {
             <template v-if="userStore.userInfo.login">
                 <image
                     :src="userStore.userInfo.profile.avatarUrl"
+                    style="width: 80rpx;border-radius: 50%;"
+                    mode="widthFix"
                 />
 
                 {{userStore.userInfo.profile.nickname}}
@@ -56,13 +58,14 @@ const toLogin = () => {
                 立即登录
 
                 <text class="iconfont">
-                    &#xe66b;
+                    &#xe66b; 
                 </text>
             </template>
         </view>
-        <view class="section">
+        <view
+            class="section"
+        >
             <SideItem
-                :style="borderBottom"
                 title="我的消息"
                 border-bottom
             />

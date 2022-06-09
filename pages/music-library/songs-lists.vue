@@ -6,6 +6,7 @@ import {
 } from '@/store'
 import { get_song_ar } from "@/utils";
 
+<<<<<<< HEAD
 const props = defineProps<{
     musics: IMusicDetail[];
 }>();
@@ -33,6 +34,17 @@ const beforePlaySong = (
         });
     }
 };
+=======
+const props = withDefaults(
+    defineProps<{
+        musics: IMusicDetail[],
+        showIndex?: boolean
+    }>(),
+    {
+        showIndex: true
+    }
+);
+>>>>>>> 1a0ac77e42b6c066ca79ac2e572eb36f2e909e1d
 </script>
 
 <template>
@@ -45,7 +57,7 @@ const beforePlaySong = (
         hover-class="none"
         class="music-library-song"
     >
-        <view class="music-library-song-index">
+        <view class="music-library-song-index" v-if="props.showIndex">
             {{index + 1}}
         </view>
         <view class="music-library-song-detail">
@@ -53,8 +65,8 @@ const beforePlaySong = (
                 {{item.name}}
             </view>
             <view class="text-hidden">
-                <tag-vip v-if="item.fee === 1"/>
-                <tag-sq v-if="item.sq" />
+                <tagVip v-if="item.fee === 1" />
+                <tagSq v-if="item.sq" />
 
                 {{get_song_ar(item).join("/")}}
                 -

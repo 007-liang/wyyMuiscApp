@@ -1,6 +1,9 @@
 <script lang='ts'>
 import { useMusicLibraryStore } from '@/store/store-music-library';
-import { defineComponent } from 'vue';
+import {
+    defineComponent,
+    onBeforeUnmount
+} from 'vue';
 import Header from "./header.vue";
 import Detail from "./detail.vue";
 import Tags from './tags.vue';
@@ -18,6 +21,9 @@ export default defineComponent({
         let {
             trigger_page_scroll,
         } = store;
+        onBeforeUnmount(() => {
+            store.reset();
+        })
         return {
             store,
             get_playlist: store.get_playlist,

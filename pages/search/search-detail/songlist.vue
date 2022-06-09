@@ -1,7 +1,8 @@
 <script setup lang='ts'>
 import { useSearchStore } from '@/store';
 import {
-    transform_num_unit
+    transform_num_unit,
+    to_music_library
 } from "@/utils";
 const searchStore = useSearchStore();
 let load = false;
@@ -14,19 +15,14 @@ defineExpose({
         searchStore.get_search_nav_data();
     }
 });
-let unit = {
-    1: "万",
-    2: "千万",
-    3: "亿"
-}
-
 </script>
 
 <template>
     <view
         v-for="item in searchStore.cur_search_data"
-        :key="item.name"
+        :key="item.id"
         class="songlist-box"
+        @click="to_music_library(item.id)"
     >   
         <image
             mode="widthFix"
@@ -37,14 +33,33 @@ let unit = {
             <view class="songlist-title">{{item.name}}</view>
             <view class="songlist-subtitle">
                 {{item.trackCount}} 首,
-                by {{item.creator.nickname}},
-                播放 {{transform_num_unit(item.playCount)}} 次
+                <view class="songlist-name text-hidden">
+                    by {{item.creator.nickname}}
+                </view>
+                ,
+                <view class="songlist-playcount">
+                    播放 {{transform_num_unit(item.playCount)}} 次
+                </view>
             </view>
         </view>
     </view>
 </template>
 
-<style lang="less">
+<style lang="less" scope>
+.songlist-content {
+    flex: 1;
+    overflow: hidden;
+
+    .songlist-subtitle {
+        display: flex;
+        column-gap: 10rpx;
+        overflow: hidden;
+    }
+
+    .songlist-name {
+        flex: 1;
+    }
+}
 .songlist-box {
     display: flex;
     gap: 20rpx;

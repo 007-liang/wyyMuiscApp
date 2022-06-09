@@ -37,16 +37,17 @@ const store = useMusicLibraryStore();
 <style lang="less" scoped>
 .music-library-tag-box {
     position: absolute;
-    top: 0;
+    top: -20rpx;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 40rpx;
     height: 100%;
     box-sizing: border-box;
-    padding: 20rpx;
+    padding: 40rpx 40rpx;
     display: flex;
     align-items: center;
     background-color: #fff;
+    box-shadow: 0 0 32rpx 0 #b6b6b6;
     font-size: 32rpx;
 
     .music-library-tag {

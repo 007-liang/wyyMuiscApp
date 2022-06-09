@@ -18,8 +18,13 @@
                     v-if="isShowDetail ? true : index < hots.length / 2"
                     @click="input_keyword(item.searchWord)"
                 >
-                    <text class="search-hot-index">{{index + 1}}</text>
-                    <text class="search-hot-keyword">{{item.searchWord}}</text>
+                    <text class="search-hot-index">
+                        {{index + 1}}
+                    </text>
+                    
+                    <text class="search-hot-keyword">
+                        {{item.searchWord}}
+                    </text>
                 </view>
             </template>
             <view

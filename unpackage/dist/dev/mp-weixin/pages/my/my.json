@@ -2,10 +2,11 @@
   "navigationBarTitleText": "个人主页",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "padding-top": "../../components/paddingTop/paddingTop",
     "song-sheet-card": "../../components/songSheetCard/songSheetCard",
     "login-bar": "./loginBar",
     "not-login-bar": "./notLoginBar",
-    "my-like-music": "./myLikeMusic"
+    "my-like-music": "./myLikeMusic",
+    "tags": "./tags",
+    "header": "./header"
   }
 }

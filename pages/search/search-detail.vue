@@ -42,7 +42,9 @@ const set_lazy_comp = (index: number) => {
             <view
                 class="search-detail-nav"
                 v-for="(item, index) in search_store.search_nav"
-                :class="{ active: index === search_store.active_search_index }"
+                :class="{
+                    active: index === search_store.active_search_index
+                }"
                 :key="item.title"
                 @click="search_store.change_active_search_nav(index)"
             >
@@ -50,22 +52,31 @@ const set_lazy_comp = (index: number) => {
             </view>
         </view>
         <view class="search-detail-comp">
-            <Songs
-                :ref="set_lazy_comp(search_store.search_nav_enum.song)"
-                v-if="
-                    search_store.search_nav_enum.song 
-                    === 
-                    search_store.active_search_nav.type
-                "
+            <loading
+                v-show="search_store.loading"
+                styles="padding: 100rpx 0;"
             />
-            <Songlist
-                :ref="set_lazy_comp(search_store.search_nav_enum.songlist)"
-                v-if="
-                    search_store.search_nav_enum.songlist
-                    === 
-                    search_store.active_search_nav.type
-                "
-            />
+            <view
+                v-show="!search_store.loading"
+                style="width: 100%;height: 100%;"
+            >
+                <Songs
+                    :ref="set_lazy_comp(search_store.search_nav_enum.song)"
+                    v-if="
+                        search_store.search_nav_enum.song 
+                        === 
+                        search_store.active_search_nav.type
+                    "
+                />
+                <Songlist
+                    :ref="set_lazy_comp(search_store.search_nav_enum.songlist)"
+                    v-if="
+                        search_store.search_nav_enum.songlist
+                        === 
+                        search_store.active_search_nav.type
+                    "
+                />
+            </view>
         </view>
     </view>
 </template>

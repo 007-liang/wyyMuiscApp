@@ -2,17 +2,14 @@ import { setIndex } from "@/store";
 
 export * from "./localstorage";
 export * from "./symbols";
-export * from "./request"
+export * from "./request";
+export * from "./navigateTo";
 
 /**
  * @description 跳转到歌单页面
  * @param id 歌单id
  */
-export const to_music_library = (id: string) => {
-    wx.navigateTo({
-        url: `/pages/music-library/music-library?id=${id}`
-    })
-}
+
 
 let num_unit = [
     "",
@@ -53,7 +50,7 @@ export const transform_num_unit = (num: number) => {
 
 /**
  * 获取歌曲
- * @param song 歌曲详情
+ * @param song 歌曲歌手
  */
 export const get_song_ar = (song: IMusicDetail) => {
     return song.ar.reduce((names, item) => {

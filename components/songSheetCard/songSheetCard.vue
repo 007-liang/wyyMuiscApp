@@ -10,7 +10,7 @@ const props = defineProps<{
 </script>
 
 <template>
-    <view class="news-songs" @click="$emit('click', $event)">
+    <view class="news-songs" @click="$emit('click', e)">
         <image
             class="news-songs-pic"
             mode="widthFix"
@@ -46,7 +46,7 @@ const props = defineProps<{
     background-color: rgba(0, 0, 0, .4);
     padding: 10rpx;
     border-radius: 30rpx;
-    font-size: 22rpx;
+    font-size: 24rpx;
 }
 
 .news-song-name {
