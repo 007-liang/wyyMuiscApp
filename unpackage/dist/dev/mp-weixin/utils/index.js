@@ -1,4 +1,11 @@
 "use strict";
+require("../store/audio.js");
+require("../store/playing-song.js");
+require("../store/store-search.js");
+require("../store/store-user-info.js");
+require("../store/history-library.js");
+require("../store/store-music-library.js");
+var store_playingSongLibrary = require("../store/playing-song-library.js");
 require("./request.js");
 const to_music_library = (id) => {
   wx.navigateTo({
@@ -76,7 +83,7 @@ const parseSongTime = (b, s, ms) => {
 const parseLyricData = (lyric, tlyric) => {
   var _a;
   const result = [];
-  const timeReg = /^(\[(\d+):(\d+)\.(\d+)\])(.+)?$/;
+  const timeReg = /^(\[(\d+):(\d+)\.(\d+)\])+(.+)?$/;
   let index = 0, lastIndex = 0, tIndex = 0, tLastIndex = 0, data, chunk = "", time = 0, tText = "", text = "";
   while (lastIndex <= lyric.length) {
     lastIndex = lyric.indexOf("\n", lastIndex + 1);
@@ -84,8 +91,13 @@ const parseLyricData = (lyric, tlyric) => {
       break;
     chunk = lyric.slice(index, lastIndex).trim();
     data = timeReg.exec(chunk);
+    index = lastIndex;
+    if (data === null)
+      continue;
     time = parseSongTime(data[2], data[3], data[4]);
     text = ((_a = data[5]) == null ? void 0 : _a.trim()) || "";
+    if (!text)
+      continue;
     if (tlyric) {
       tIndex = tlyric.indexOf(data[1], tLastIndex);
       if (tIndex !== -1) {
@@ -98,7 +110,6 @@ const parseLyricData = (lyric, tlyric) => {
       text,
       tText
     });
-    index = lastIndex;
   }
   return result;
 };
@@ -109,10 +120,26 @@ const numToDateFormat = (num) => {
   second < 9 ? second = "0" + second : null;
   return `${minute}:${second}`;
 };
+const setStateIndex = (index, maxIndex, isNext) => {
+  if (isNext) {
+    if (index === maxIndex) {
+      store_playingSongLibrary.setIndex(0);
+    } else {
+      store_playingSongLibrary.setIndex(++index);
+    }
+  } else {
+    if (index === 0) {
+      store_playingSongLibrary.setIndex(maxIndex);
+    } else {
+      store_playingSongLibrary.setIndex(--index);
+    }
+  }
+};
 exports.forEach = forEach;
 exports.get_song_ar = get_song_ar;
 exports.numToDateFormat = numToDateFormat;
 exports.parseAuthors = parseAuthors;
 exports.parseLyricData = parseLyricData;
+exports.setStateIndex = setStateIndex;
 exports.to_music_library = to_music_library;
 exports.transform_num_unit = transform_num_unit;

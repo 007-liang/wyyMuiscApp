@@ -32,6 +32,13 @@ declare interface IPlayingSong {
      * 播放进度
      */
     progress: number;
+    /**
+     * 解析后歌词
+     */
+    lyric: {
+        id: number;
+        data: TParsedLyric;
+    };
     showLyric: boolean;
     /**
      * 更新当前时间/进度定时器
@@ -69,6 +76,7 @@ declare interface ISongLyric {
     qfy: boolean;
     sfy: boolean;
     sgc: boolean;
+    needDesc: boolean;
     transUser: {
         id: number;
         nickname: string;
@@ -151,7 +159,5 @@ declare interface ISongDetail {
  * 歌手信息
  */
 declare type IAuthor = { 
-    alias: [],
-    id: number;
     name: string;
 }[];

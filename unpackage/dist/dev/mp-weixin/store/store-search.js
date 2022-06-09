@@ -1,5 +1,11 @@
 "use strict";
 var common_vendor = require("../common/vendor.js");
+require("./audio.js");
+require("./playing-song.js");
+require("./store-user-info.js");
+require("./history-library.js");
+require("./store-music-library.js");
+require("./playing-song-library.js");
 var utils_localstorage = require("../utils/localstorage.js");
 var utils_symbols = require("../utils/symbols.js");
 var utils_request = require("../utils/request.js");

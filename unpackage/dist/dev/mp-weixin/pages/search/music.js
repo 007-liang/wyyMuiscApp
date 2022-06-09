@@ -1,6 +1,16 @@
 "use strict";
+require("../../store/audio.js");
+require("../../store/playing-song.js");
+require("../../store/store-search.js");
+require("../../store/store-user-info.js");
+require("../../store/history-library.js");
+require("../../store/store-music-library.js");
+require("../../store/playing-song-library.js");
 var utils_request = require("../../utils/request.js");
 var common_vendor = require("../../common/vendor.js");
+require("../../utils/index.js");
+require("../../utils/localstorage.js");
+require("../../utils/symbols.js");
 const _sfc_main = common_vendor.defineComponent({
   data() {
     return {

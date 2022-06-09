@@ -6,6 +6,13 @@
                 "navigationBarTitleText": "首页"
             }
         },
+		{
+			"path": "pages/songDetail/songDetail",
+			"style": {
+				"navigationBarTitleText": "歌曲详情",
+				"enablePullDownRefresh": false
+			}
+		},
         {
             "path": "pages/music-library-search/music-library-search",
             "style": {
@@ -45,13 +52,6 @@
 			"style": {
 				"navigationBarTitleText": "启动页",
                 "enablePullDownRefresh": false
-			}
-		},
-		{
-			"path": "pages/songDetail/songDetail",
-			"style": {
-				"navigationBarTitleText": "歌曲详情",
-				"enablePullDownRefresh": false
 			}
 		}
 	],

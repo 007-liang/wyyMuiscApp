@@ -1,11 +1,12 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
 if (!Array) {
-  const _component_side = common_vendor.resolveComponent("side");
-  _component_side();
+  const _easycom_side2 = common_vendor.resolveComponent("side");
+  _easycom_side2();
 }
+const _easycom_side = () => "../../components/side/side.js";
 if (!Math) {
-  (banner + category + newsSonglist + exclusiveBroadcast)();
+  (_easycom_side + banner + category + newsSonglist + exclusiveBroadcast)();
 }
 const category = () => "./category.js";
 const newsSonglist = () => "./news-songlist.js";

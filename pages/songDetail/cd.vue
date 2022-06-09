@@ -1,8 +1,10 @@
 <script setup lang='ts'>
-import { usePlayingSongStore } from "@/store/playingSong";
+import { usePlayingSongStore } from "@/store";
 import cdSwiperVue from "./cdSwiper.vue";
 
-const { state } = usePlayingSongStore(); 
+const { 
+    playingSongState: state 
+} = usePlayingSongStore(); 
 </script>
 
 <template>
@@ -31,20 +33,20 @@ const { state } = usePlayingSongStore();
 }
 .cd-bg {
     .center();
-    top: 18%;
-    width: 340rpx;
-    height: 340rpx;
+    top: 30%;
+    width: 500rpx;
+    height: 500rpx;
     border-radius: 50%;
     transform: translateX(-50%);
     background-color: rgba(255, 255, 255, 0.1);
 }
 .stylus {
     .center();
-    top: 0;
-    width: calc(250rpx / 2);
-    height: calc(409rpx / 2);
-    transform: translateX(-25%);
-    transform-origin: top left;
+    top: 3%;
+    width: calc(250rpx / 1.3);
+    height: calc(409rpx / 1.3);
+    transform: translateX(-25%) rotate(-5deg);
+    transform-origin: 10px 10px;
     transition: transform 0.5s;
     z-index: 10;
 }

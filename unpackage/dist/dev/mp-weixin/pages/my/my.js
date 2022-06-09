@@ -1,10 +1,13 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
 var utils_index = require("../../utils/index.js");
-require("../../store/playingSong.js");
+require("../../store/audio.js");
+require("../../store/playing-song.js");
 require("../../store/store-search.js");
 var store_storeUserInfo = require("../../store/store-user-info.js");
-require("../../store/audio.js");
+require("../../store/history-library.js");
+require("../../store/store-music-library.js");
+require("../../store/playing-song-library.js");
 var api_songSheet = require("../../api/songSheet.js");
 var utils_request = require("../../utils/request.js");
 require("../../utils/localstorage.js");

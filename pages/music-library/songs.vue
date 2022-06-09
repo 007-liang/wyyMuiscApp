@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { useMusicLibraryStore } from '@/store/store-music-library';
+import { useMusicLibraryStore } from '@/store';
 import SongsLists from './songs-lists.vue';
 const store = useMusicLibraryStore();
 </script>

@@ -1,7 +1,9 @@
 <script setup lang='ts'>
-import { usePlayingSongStore } from '@/store/playingSong';
+import { usePlayingSongStore } from '@/store';
 
-const { state } = usePlayingSongStore();
+const { 
+    playingSongState: state 
+} = usePlayingSongStore();
 </script>
 
 <template>
@@ -37,7 +39,7 @@ const { state } = usePlayingSongStore();
 }
 
 .title {
-    font-size: 24rpx;
+    font-size: 28rpx;
     font-weight: 700;
 }
 

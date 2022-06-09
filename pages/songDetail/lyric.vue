@@ -10,16 +10,13 @@ import {
 	onUnmounted,
     getCurrentInstance,
     onBeforeMount,
+	watch,
 } from "vue";
 import { 
     usePlayingSongStore,
-    audioCtx
+    useAudioStore
 } from "@/store";
 import voiceVue from "./voice.vue";
-
-const props = defineProps<{
-    sid: number
-}>();
 
 let textH = 0;
 let nullSapce = 0;
@@ -28,8 +25,15 @@ const tname = ref('');
 const key = ref(0);
 const scrollTop = ref(-1);
 const loading = ref(true);
+const needDesc = ref(false);
+const pure = ref(false);
 const lyricData = ref<TParsedLyric>([]);
-const { state } = usePlayingSongStore();
+const {  
+    playingSongState: state 
+} = usePlayingSongStore();
+const { 
+    audioCtx 
+} = useAudioStore();
 const clear = () => {
     clearInterval(updateTimer);
     updateTimer = null;
@@ -37,7 +41,10 @@ const clear = () => {
 const instance = getCurrentInstance();
 // 滚动歌词的主逻辑
 const timerCallBack = () => {
-    if (audioCtx.paused) return;
+    if (lyricData.value.length === 0) {
+        return clear();
+    }
+    if (audioCtx.paused || loading.value) return;
     let lyricList = lyricData.value!;
     let length = lyricList.length;
     let currentTime = audioCtx.currentTime;
@@ -97,51 +104,86 @@ const awaiteRender = () => {
     }).exec();
 };
 
+const init = async () => {
+    const id = state.id;
+    const { data } = await wxRequest<
+        ISongLyric & CloudMusicRes
+    >({
+        url: '/lyric',
+        data: { 
+            id,
+        },
+    });
+    if (data.needDesc && !data.lrc.lyric) {
+        needDesc.value = data.needDesc;
+    } else if(data.sgc || data.sfy || data.qfy) {
+        pure.value = true;
+    } else if (data.code === 200) {
+        const {
+            lrc,
+            tlyric,
+            transUser,
+        } = data;
+        const { lyric } = state;
+        lyric.id = id;
+        lyric.data = lyricData.value = parseLyricData(
+            lrc.lyric, 
+            tlyric?.lyric
+        );
+        if (tlyric && transUser) {
+            tname.value = transUser.nickname;
+        } else {
+            tname.value = '';
+        }
+        awaiteRender();
+    }
+    loading.value = false;
+};
+
 onBeforeMount(() => {
-    if (state.lyric.id !== props.sid) {
-        // 获取歌词
-        watchEffect(async () => {
-            if (
-                props.sid 
-                && state.showLyric 
-                && !lyricData.value.length
-            ) { 
-                const { data } = await wxRequest<
-                    ISongLyric & CloudMusicRes
-                >({
-                    url: '/lyric',
-                    data: { 
-                        id: props.sid
-                    },
-                });
-                if (data.code === 200) {
-                    const {
-                        lrc,
-                        tlyric,
-                        transUser,
-                    } = data;
-                    const { lyric } = state;
-                    loading.value = false;
-                    lyric.id = props.sid;
-                    lyric.data = lyricData.value = parseLyricData(
-                        lrc.lyric, 
-                        tlyric?.lyric
-                    );
-                    if (tlyric && transUser) {
-                        tname.value = transUser.nickname;
-                    } else {
-                        tname.value = '';
-                    }
-                    awaiteRender();
-                }
-            }
-        });
-    } else {
+    let data = state.lyric.data;
+    if (
+        state.lyric.id === state.id 
+        && data.length
+    ) {
+        // 获取state中的歌词
         loading.value = false;
-        lyricData.value = state.lyric.data;
+        lyricData.value = data;
         awaiteRender();
     }
 });
+
+watch(
+    () => state.id,
+    async (id) => {
+        key.value = 0;
+        scrollTop.value = 0;
+        loading.value = true;
+        lyricData.value = [];
+        // 当id改变，需重新获取歌词
+        if (state.showLyric && state.lyric.id !== id) {
+            // 获取歌词
+            await init();
+        } else {
+            loading.value = false;
+            lyricData.value = state.lyric.data;
+            awaiteRender();
+        }
+    }
+);
+
+watch(
+    () => state.showLyric,
+    async (show) => {
+        // 当显示,且id不一致时需要重新获取歌词
+        if (show && state.lyric.id !== state.id) {
+            scrollTop.value = 0;
+            loading.value = true;
+            await init();
+        }
+    }
+);
+
 onUnmounted(() => {
     clear();
     audioCtx.offCanplay(setTimer);
@@ -168,7 +210,7 @@ onUnmounted(() => {
         >
             正在加载歌词...
         </view>
-        <template v-else>
+        <template v-else-if="lyricData.length">
             <template
                 v-for="(item, i) in lyricData"
                 :key="i"
@@ -180,8 +222,13 @@ onUnmounted(() => {
                         'lyric-active': i === key
                     }"
                 >
-                    <view>{{ item.text }}</view>
-                    <text v-if="item.tText">{{ item.tText }}</text>
+                    <view 
+                        class="elipsis"
+                    >{{ item.text }}</view>
+                    <text 
+                        v-if="item.tText" 
+                        class="elipsis"
+                    >{{ item.tText }}</text>
                 </view>
             </template>
             <view 
@@ -191,6 +238,18 @@ onUnmounted(() => {
                 翻译贡献者：{{ tname }}
             </view>
         </template>
+        <view 
+            v-else-if="pure"
+            class="lyric-text lyric-active"
+        >
+            请欣赏，纯音乐
+        </view>
+        <view 
+            v-else
+            class="lyric-text lyric-active"
+        >
+            暂无歌词
+        </view>
         <view class="lyric-text"></view>
         <view class="lyric-padding"></view>
     </scroll-view>
@@ -235,13 +294,17 @@ onUnmounted(() => {
     height: 80rpx;
     justify-content: center;
     align-items: center;
+    text-align: center;
     transition: color 0.2s, font-size 0.2s;
+    
+    .elipsis {
+        width: 80vw;
+    }
 }
 
 .lyric-active {
     color: #ffffff;
     font-weight: 700;
     font-size: 26rpx;
-    text-align: center;
 }
 </style>

@@ -1,6 +1,12 @@
 <script lang="ts">
-import { getLocalStorage } from './utils';
-import { useUserInfo } from './store';
+import { 
+    useUserInfo,
+    useHistoryLibrary
+} from './store';
+import { 
+    getLocalStorage, 
+    setLocalStorage 
+} from './utils';
 import { getLoginStatus } from './api';
 
 export default {
@@ -26,7 +32,11 @@ export default {
         // console.log('App Show')
     },
     onHide: function() {
-        // console.log('App Hide')
+        // 关闭时将历史记录写入本地存储
+        const { 
+            historyList
+        } = useHistoryLibrary();
+        setLocalStorage('history-list', historyList);
     }
 }
 </script>

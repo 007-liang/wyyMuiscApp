@@ -3,7 +3,7 @@ import { reactive } from "vue";
 /**
  * 当前歌曲播放状态
  */
-export const state = reactive<IPlayingSong>({
+export const playingSongState = reactive<IPlayingSong>({
     id: -1,
     endTime: 0,
     author: '',
@@ -21,6 +21,6 @@ export const state = reactive<IPlayingSong>({
 });
 export const usePlayingSongStore = defineStore('playing-song', () => {
     return {
-        state,
+        playingSongState,
     };
 });

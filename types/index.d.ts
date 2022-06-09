@@ -46,11 +46,13 @@ declare interface IIndexExclusiveBroadcastRes extends CloudMusicRes {
  * @description 歌曲详情属性
  */
 declare interface IMusicDetail {
-    name: string,
     al: {
         name: string,
+        picUrl: string,
     },
-    ar: {name: string}[]
+    ar: {name: string}[],
+    id: number,
+    dt: number,
 }
 
 declare interface IMusicTrackId {

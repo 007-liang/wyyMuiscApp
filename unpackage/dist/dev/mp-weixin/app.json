@@ -1,13 +1,13 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/songDetail/songDetail",
     "pages/music-library-search/music-library-search",
     "pages/music-library/music-library",
     "pages/my/my",
     "pages/login/login",
     "pages/search/search",
-    "pages/loading/loading",
-    "pages/songDetail/songDetail"
+    "pages/loading/loading"
   ],
   "window": {
     "navigationBarTextStyle": "white",
@@ -32,5 +32,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

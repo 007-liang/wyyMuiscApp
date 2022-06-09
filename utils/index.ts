@@ -1,3 +1,5 @@
+import { setIndex } from "@/store";
+
 export * from "./localstorage";
 export * from "./symbols";
 export * from "./request"
@@ -113,7 +115,7 @@ const parseSongTime = (
  */
 export const parseLyricData = (lyric: string, tlyric?:string) => {
     const result: TParsedLyric = [];
-    const timeReg = /^(\[(\d+):(\d+)\.(\d+)\])(.+)?$/;
+    const timeReg = /^(\[(\d+):(\d+)\.(\d+)\])+(.+)?$/;
     let index = 0,
         lastIndex = 0,
         tIndex = 0,
@@ -130,8 +132,11 @@ export const parseLyricData = (lyric: string, tlyric?:string) => {
         if (lastIndex === -1) break;
         chunk = lyric.slice(index, lastIndex).trim();
         data = timeReg.exec(chunk)!
+        index = lastIndex;
+        if (data === null) continue; // 预防未知错误
         time = parseSongTime(data[2], data[3], data[4]);
         text = data[5]?.trim() || '';
+        if (!text) continue;
         if (tlyric) { // 对译文歌词解析
             tIndex = tlyric.indexOf(data[1], tLastIndex);
             if (tIndex !== -1) {
@@ -144,13 +149,12 @@ export const parseLyricData = (lyric: string, tlyric?:string) => {
             text,
             tText:  tText,
         });
-        index = lastIndex;
     }
     return result;
 };
 
 /**
- * 74 -> 01:14
+ * 数字转时间 74 -> 01:14
  */
 export const numToDateFormat = (num: number) => {
     let minute: any = Math.floor(num / 60);
@@ -158,4 +162,27 @@ export const numToDateFormat = (num: number) => {
     minute < 9 ? minute = '0' + minute : null;
     second < 9 ? second = '0' + second : null
     return `${minute}:${second}`;
+};
+
+/**
+ * 设置当前播放项在索引位置
+ */
+export const setStateIndex = (
+    index: number, 
+    maxIndex: number, 
+    isNext: boolean
+) => {
+    if (isNext) {
+        if (index === maxIndex) {
+            setIndex(0);
+        } else {
+            setIndex(++index)
+        }
+    } else {
+        if (index === 0) {
+            setIndex(maxIndex)
+        } else {
+            setIndex(--index)
+        }
+    }
 };

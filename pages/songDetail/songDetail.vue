@@ -1,48 +1,65 @@
 <script lang="ts">
 import { 
     usePlayingSongStore, 
-    audioCtx, 
-	updateProgress,
-playPause
+    useAudioStore
 } from "@/store";
 import { 
     getSongDetail, 
     getSongUrl 
 } from "@/api";
-import { parseAuthors } from '@/utils';
+import { watch } from 'vue-demi';
 import handerVue from "./hander.vue";
 import footerVue from "./footer.vue";
 import lyricVue from "./lyric.vue";
 import cdVue from "./cd.vue";
-import { ref } from 'vue-demi';
 
-const { state } = usePlayingSongStore();
-const sid = ref();
+const { 
+    playingSongState: state 
+} = usePlayingSongStore();
+const {
+    audioCtx,
+    playPause,
+    updateProgress,
+    switchState,
+} = useAudioStore();
 
 const setSongUrl = async (id: number) => {
     const { data } = await getSongUrl(id);
     if (data.code === 200) {
         const song = data.data[0];
+        const aop = () => {
+            if(state.playing) {
+                state.playing = false;
+            }
+            playPause(true);
+            audioCtx.offCanplay(aop);
+        };
         audioCtx.src = song.url;
-        playPause(true);
+        audioCtx.onCanplay(aop);
     }
 };
 
+watch(
+    () => state.id,
+    async (id) => {
+        // 获取歌曲地址
+        if(id != null) {
+            state.progress = 0;
+            state.currentTime = 0;
+            await setSongUrl(id);
+        }
+    }
+);
+
 export default {
     async onLoad(options) {
-        state.progress = 0;
-        state.currentTime = 0;
-        sid.value = +options.id || 1452439191;
-        if (state.id !== sid.value) {
-            state.id = sid.value;
-            await setSongUrl(state.id);
+        let id = +options.id;
+        if (id && state.id !== id) {
+            state.id = id;
             const { data } = await getSongDetail(state.id);
             if (data.code === 200) {
-                const song = data.songs[0];
-                state.author = parseAuthors(song.ar);
-                state.picUrl = song.al.picUrl;
-                state.name = song.name;
-                state.endTime = Math.floor(song.dt / 1000);
+                const { al, ar, dt } = data.songs[0];
+                switchState({ id,  al, ar, dt, });
             }
         }
         if (state.timer === null) {
@@ -51,7 +68,6 @@ export default {
     },
     setup() {
         return {
-            sid,
             state,
         }
     },
@@ -82,7 +98,6 @@ export default {
         <cdVue v-show="!state.showLyric"></cdVue>
         <lyricVue 
             v-show="state.showLyric"
-            :sid="sid || -1"
         ></lyricVue>
         <footerVue></footerVue>
     </view>
@@ -99,7 +114,7 @@ page {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transition: background-image .5s linear;
+    transition: all 0.5s linear;
 }
 
 .vague-backage-mask {

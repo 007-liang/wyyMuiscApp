@@ -1,6 +1,16 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
+require("../../store/audio.js");
+require("../../store/playing-song.js");
+require("../../store/store-search.js");
+require("../../store/store-user-info.js");
+require("../../store/history-library.js");
+require("../../store/store-music-library.js");
+require("../../store/playing-song-library.js");
 var utils_request = require("../../utils/request.js");
+require("../../utils/index.js");
+require("../../utils/localstorage.js");
+require("../../utils/symbols.js");
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   setup(__props) {
     const banners = common_vendor.ref([]);

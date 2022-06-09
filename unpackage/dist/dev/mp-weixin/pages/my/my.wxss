@@ -21,10 +21,16 @@ page {
   flex: 30%;
 }
 .news-songs .news-song-name {
-  font-size: 16rpx;
+  font-size: 22rpx;
   font-weight: 700;
 }
 .news-songs .news-song-name,
 .news-songs .news-songs-pic {
   width: 220rpx;
+}
+.login-name {
+  padding-left: 15rpx;
+  padding-right: 5rpx;
+  font-size: 26rpx;
+  font-weight: 700;
 }

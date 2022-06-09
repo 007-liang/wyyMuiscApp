@@ -10,7 +10,6 @@ export const useMusicLibraryStore = defineStore("music_library", () => {
         }
     });
     const musics = ref<IMusicDetail[]>([]);
-
     const get_musics = async () => {
         let res = await wxRequest<IMusicLibraryAllRes>({
             url: "/playlist/track/all",
@@ -18,6 +17,7 @@ export const useMusicLibraryStore = defineStore("music_library", () => {
                 id: playlist.value.id
             }
         });
+        
         musics.value = res.data.songs
     }
     const get_playlist = async (id: string) => {
@@ -27,6 +27,7 @@ export const useMusicLibraryStore = defineStore("music_library", () => {
                 id
             }
         });
+        
         playlist.value = res.data.playlist;
         musics.value = playlist.value.tracks!;
         get_musics();

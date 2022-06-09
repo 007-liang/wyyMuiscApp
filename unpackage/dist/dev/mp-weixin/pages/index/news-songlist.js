@@ -2,6 +2,15 @@
 var common_vendor = require("../../common/vendor.js");
 var utils_index = require("../../utils/index.js");
 var utils_request = require("../../utils/request.js");
+require("../../store/audio.js");
+require("../../store/playing-song.js");
+require("../../store/store-search.js");
+require("../../store/store-user-info.js");
+require("../../store/history-library.js");
+require("../../store/store-music-library.js");
+require("../../store/playing-song-library.js");
+require("../../utils/localstorage.js");
+require("../../utils/symbols.js");
 if (!Array) {
   const _easycom_songSheetCard2 = common_vendor.resolveComponent("songSheetCard");
   _easycom_songSheetCard2();

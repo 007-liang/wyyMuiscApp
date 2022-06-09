@@ -1,19 +1,34 @@
 <script setup lang='ts'>
 import { 
-    audioCtx,
-    playPause,
-    updateProgress,
+    useAudioStore,
+    usePlayingLibrary,
     usePlayingSongStore,
 } from "@/store";
-import { numToDateFormat } from "@/utils";
-import { getCurrentInstance, onMounted, ref } from "vue";
+import { 
+    numToDateFormat, setStateIndex 
+} from "@/utils";
+import { 
+    getCurrentInstance, 
+    onMounted, 
+    ref 
+} from "vue";
+
 
 let ratio = 0;
 const like = ref();
 const rect = ref({} as UniApp.NodeInfo);
 const instance = getCurrentInstance();
-const state = usePlayingSongStore().state;
-// 跳转播放进度
+const store = usePlayingLibrary();
+const {
+    playingSongState: state,
+} = usePlayingSongStore();
+const {
+    audioCtx,
+    playPause,
+    switchState,
+} = useAudioStore(); 
+
+// 手指按下停止播放，并定位进度
 const jumpProgress = (e: any) => {
     const [{ pageX }] = e.touches;
     const { offsetLeft } = e.currentTarget;
@@ -21,12 +36,10 @@ const jumpProgress = (e: any) => {
     ratio = currentX / rect.value.width!;
     state.progress = +(ratio * 100).toFixed(2);
     state.currentTime = Math.floor(audioCtx.duration * ratio);
-    if (state.timer !== null) {
-        // 清除更新当前播放时间定时器
-        clearInterval(state.timer);
-        state.timer = null;
-    }
+    playPause(false);
 };
+
+// 拖拽进度
 const touchmove = (e: any) => {
     const [{ pageX }] = e.touches;
     const { offsetLeft } = e.currentTarget;
@@ -38,13 +51,24 @@ const touchmove = (e: any) => {
     // 停止定时器后，在这里更新当前时间
     state.currentTime = Math.floor(audioCtx.duration * ratio);
 };
+
+// 手指松开按照进度继续播放
 const touchend = () => {
-    if (state.timer === null) {
-        state.timer = setInterval(updateProgress, 1000);
-    }
+    playPause(true);
     const currentTime = audioCtx.duration * ratio;
     audioCtx.seek(currentTime);
 };
+
+// 播放上一首
+const switchSong = (next: boolean) => {
+    const list = store.state.list;
+    const index = store.index;
+    if (list && index !== null) {
+        setStateIndex(index, list.length - 1, next);
+        switchState(list[store.index!]);
+    }
+};
+
 onMounted(() => {
     uni.createSelectorQuery().in(instance)
     .select('.track')
@@ -107,6 +131,7 @@ onMounted(() => {
             >&#xe60a;</view>
             <view 
                 class="iconfont"
+                @click="switchSong(false)"
             >&#xe8f4;</view>
             <view 
                 class="iconfont play-pause"
@@ -123,6 +148,7 @@ onMounted(() => {
             </view>
             <view 
                 class="iconfont"
+                @click="switchSong(true)"
             >&#xe8f5;</view>
             <view 
                 class="iconfont"

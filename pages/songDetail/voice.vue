@@ -1,10 +1,13 @@
 <script lang='ts' setup>
-import { audioCtx } from '@/store';
-import { onMounted, ref } from 'vue';
+import { 
+    onMounted, 
+    ref 
+} from 'vue';
+import { useAudioStore } from '@/store';
 import { getCurrentInstance } from 'vue-demi';
-
 const instance = getCurrentInstance();
 const rect = ref({} as UniApp.NodeInfo);
+const { audioCtx } = useAudioStore();
 const offset = ref(audioCtx.volume * 100);
 const setVolume = (e: any) => {
     const { offsetLeft } = e.currentTarget;

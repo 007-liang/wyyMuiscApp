@@ -1,19 +1,49 @@
 <script setup lang='ts'>
+import { 
+    useHistoryLibrary,
+    usePlayingLibrary,
+    useMusicLibraryStore
+} from '@/store'
 import { get_song_ar } from "@/utils";
 
 const props = defineProps<{
-    musics: IMusicDetail[]
+    musics: IMusicDetail[];
 }>();
+const {
+    updateHistory,
+} = useHistoryLibrary();
+const playingStore = usePlayingLibrary();
+const libraryStore = useMusicLibraryStore();
+const beforePlaySong = (
+    musics: IMusicDetail, 
+    key: number
+) => {
+    let {
+        state,
+        setIndex,
+        setPlayingLibrary,
+    } = playingStore;
+    let playlist = libraryStore.playlist;
+    setIndex(key);
+    updateHistory(musics);
+    if (state.id !== playlist.id) {
+        setPlayingLibrary({
+            id: playlist.id!,
+            list: props.musics
+        });
+    }
+};
 </script>
 
 <template>
     <navigator
-        open-type="navigate"
-        hover-class="none"
-        class="music-library-song"
         v-for="(item, index) in props.musics"
         :key="item.id"
         :url="`/pages/songDetail/songDetail?id=${item.id}`"
+        @click="beforePlaySong(item, index)"
+        open-type="navigate"
+        hover-class="none"
+        class="music-library-song"
     >
         <view class="music-library-song-index">
             {{index + 1}}

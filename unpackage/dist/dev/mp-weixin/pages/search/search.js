@@ -1,12 +1,16 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
-require("../../store/playingSong.js");
+require("../../store/audio.js");
+require("../../store/playing-song.js");
 var store_storeSearch = require("../../store/store-search.js");
 require("../../store/store-user-info.js");
-require("../../store/audio.js");
+require("../../store/history-library.js");
+require("../../store/store-music-library.js");
+require("../../store/playing-song-library.js");
+require("../../utils/index.js");
+require("../../utils/request.js");
 require("../../utils/localstorage.js");
 require("../../utils/symbols.js");
-require("../../utils/request.js");
 if (!Math) {
   (history + hot + music + hotSings + searchList + searchDetail)();
 }

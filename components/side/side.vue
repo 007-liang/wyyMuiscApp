@@ -9,7 +9,7 @@ const props = defineProps<{
     style?: object,
 }>();
 
-const show = ref(true);
+const show = ref(false);
 
 const userStore = useUserInfo();
 const toLogin = () => {

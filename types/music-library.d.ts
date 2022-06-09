@@ -1,7 +1,6 @@
 declare interface IMusicLibrarySubscribersRes {
     
 }
-
 declare interface IMusicLibraryTrackIdsRes {
     id: number,
     uid: number,
@@ -56,4 +55,9 @@ declare interface IMusiceLibraryRes extends CloudMusicRes {
          */
         mv: number
     }
+}
+
+declare interface IPlayingLibrary {
+    id: number;
+    list: IMusicDetail[];
 }
