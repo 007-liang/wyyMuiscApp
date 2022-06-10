@@ -1,7 +1,5 @@
 "use strict";
 var common_vendor = require("../../common/vendor.js");
-var utils_request = require("../../utils/request.js");
-<<<<<<< HEAD
 require("../../store/audio.js");
 require("../../store/playing-song.js");
 require("../../store/store-search.js");
@@ -9,11 +7,11 @@ require("../../store/store-user-info.js");
 require("../../store/history-library.js");
 require("../../store/store-music-library.js");
 require("../../store/playing-song-library.js");
+var utils_request = require("../../utils/request.js");
+var utils_navigateTo = require("../../utils/navigateTo.js");
+require("../../utils/index.js");
 require("../../utils/localstorage.js");
 require("../../utils/symbols.js");
-=======
-var utils_navigateTo = require("../../utils/navigateTo.js");
->>>>>>> 1a0ac77e42b6c066ca79ac2e572eb36f2e909e1d
 if (!Array) {
   const _easycom_songSheetCard2 = common_vendor.resolveComponent("songSheetCard");
   _easycom_songSheetCard2();
@@ -45,7 +43,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
           return {
             a: item.id,
             b: common_vendor.o(($event) => common_vendor.unref(utils_navigateTo.to_music_library)(item.id), item.id),
-            c: "0c9857e8-1-" + i0,
+            c: "0d6c9761-1-" + i0,
             d: common_vendor.p({
               sid: item.id,
               picUrl: item.picUrl,
@@ -58,5 +56,5 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
   }
 });
-var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/\u6587\u6863/\u8BFE\u7A0B/\u5C0F\u7A0B\u5E8F/cloudmusic/pages/index/news-songlist.vue"]]);
+var Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "G:/\u6848\u4F8B/\u5C0F\u7A0B\u5E8F/\u7F51\u6613\u4E91\u97F3\u4E50/wyyMusic/pages/index/news-songlist.vue"]]);
 wx.createComponent(Component);

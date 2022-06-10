@@ -135,9 +135,5 @@ exports.get_song_ar = get_song_ar;
 exports.numToDateFormat = numToDateFormat;
 exports.parseAuthors = parseAuthors;
 exports.parseLyricData = parseLyricData;
-<<<<<<< HEAD
 exports.setStateIndex = setStateIndex;
-exports.to_music_library = to_music_library;
-=======
->>>>>>> 1a0ac77e42b6c066ca79ac2e572eb36f2e909e1d
 exports.transform_num_unit = transform_num_unit;

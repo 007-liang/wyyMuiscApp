@@ -42,13 +42,13 @@ export const useAudioStore = defineStore('audio-store', () => {
      * 切换状态，id改变自动获取数据
      * @param param0 歌曲详情的数据
      */
-    const switchState = (data: IMusicDetail) => {
+    const switchState = (data: Partial<IMusicDetail>) => {
         const { al, ar, id, dt } = data
-        state.id = id;
-        state.name = al.name;
-        state.picUrl = al.picUrl;
-        state.endTime = Math.floor(dt / 1000);
-        state.author = parseAuthors(ar);
+        state.id = id!;
+        state.name = al!.name;
+        state.picUrl = al!.picUrl;
+        state.endTime = Math.floor(dt! / 1000);
+        state.author = parseAuthors(ar!);
     };
 
     audioCtx.onEnded(() => {

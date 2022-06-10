@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports[Symbol.toStringTag] = "Module";
 var common_vendor = require("./common/vendor.js");
-<<<<<<< HEAD
 require("./store/audio.js");
 require("./store/playing-song.js");
 require("./store/store-search.js");
@@ -12,15 +11,6 @@ require("./store/store-music-library.js");
 require("./store/playing-song-library.js");
 var utils_localstorage = require("./utils/localstorage.js");
 require("./utils/request.js");
-=======
-var utils_localstorage = require("./utils/localstorage.js");
-require("./utils/request.js");
-require("./store/audio.js");
-require("./store/playingSong.js");
-require("./store/store-search.js");
-var store_storeUserInfo = require("./store/store-user-info.js");
-require("./store/store-music-library.js");
->>>>>>> 1a0ac77e42b6c066ca79ac2e572eb36f2e909e1d
 var api_user = require("./api/user.js");
 require("./utils/index.js");
 require("./utils/symbols.js");
@@ -57,7 +47,7 @@ const _sfc_main = {
     utils_localstorage.setLocalStorage("history-list", historyList);
   }
 };
-var App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/\u6587\u6863/\u8BFE\u7A0B/\u5C0F\u7A0B\u5E8F/cloudmusic/App.vue"]]);
+var App = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "G:/\u6848\u4F8B/\u5C0F\u7A0B\u5E8F/\u7F51\u6613\u4E91\u97F3\u4E50/wyyMusic/App.vue"]]);
 function createApp() {
   const app = common_vendor.createSSRApp(App);
   const pinia = common_vendor.createPinia();

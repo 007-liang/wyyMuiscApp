@@ -6589,12 +6589,10 @@ exports.getCurrentInstance = getCurrentInstance;
 exports.index = index;
 exports.markRaw = markRaw;
 exports.n = n;
+exports.nextTick = nextTick;
 exports.o = o;
 exports.onBeforeMount = onBeforeMount;
-<<<<<<< HEAD
-=======
 exports.onBeforeUnmount = onBeforeUnmount;
->>>>>>> 1a0ac77e42b6c066ca79ac2e572eb36f2e909e1d
 exports.onMounted = onMounted;
 exports.onUnmounted = onUnmounted;
 exports.p = p;

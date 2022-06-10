@@ -53,6 +53,7 @@ declare interface IMusicDetail {
     ar: {name: string}[],
     id: number,
     dt: number,
+    name: string;
 }
 
 declare interface IMusicTrackId {

@@ -6,7 +6,6 @@ import {
 } from '@/store'
 import { get_song_ar } from "@/utils";
 
-<<<<<<< HEAD
 const props = defineProps<{
     musics: IMusicDetail[];
 }>();
@@ -34,17 +33,6 @@ const beforePlaySong = (
         });
     }
 };
-=======
-const props = withDefaults(
-    defineProps<{
-        musics: IMusicDetail[],
-        showIndex?: boolean
-    }>(),
-    {
-        showIndex: true
-    }
-);
->>>>>>> 1a0ac77e42b6c066ca79ac2e572eb36f2e909e1d
 </script>
 
 <template>

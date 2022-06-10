@@ -10,6 +10,7 @@
     "postcss": true,
     "minified": true,
     "coverView": true,
+    "compileHotReLoad": false,
     "lazyloadPlaceholderEnable": false,
     "preloadBackgroundData": false,
     "autoAudits": false,
@@ -21,34 +22,23 @@
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
-    "useStaticServer": true,
-    "showES6CompileOption": false,
+    "disableUseStrict": false,
+    "ignoreUploadUnusedFiles": true,
     "checkInvalidKey": true,
-    "compileHotReLoad": false,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
     },
-    "disableUseStrict": false,
-    "useCompilerPlugins": false,
-    "ignoreUploadUnusedFiles": true
+    "useStaticServer": true,
+    "showES6CompileOption": false,
+    "useCompilerPlugins": false
   },
   "compileType": "miniprogram",
   "libVersion": "2.24.2",
   "appid": "wxbe602774c213318f",
   "projectname": "wyyMusic",
-  "condition": {
-    "miniprogram": {
-      "list": [
-        {
-          "name": "loading",
-          "pathName": "pages/loading/loading",
-          "query": ""
-        }
-      ]
-    }
-  },
+  "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2

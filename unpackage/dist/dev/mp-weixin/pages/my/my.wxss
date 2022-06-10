@@ -28,8 +28,6 @@ page {
 .news-songs .news-songs-pic {
   width: 220rpx;
 }
-<<<<<<< HEAD
-=======
 .my-container {
   flex: 1;
   overflow: auto;
@@ -41,7 +39,6 @@ page {
   width: 100vw;
   height: 100vh;
 }
->>>>>>> 1a0ac77e42b6c066ca79ac2e572eb36f2e909e1d
 .login-name {
   padding-left: 15rpx;
   padding-right: 5rpx;
