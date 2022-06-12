@@ -156,8 +156,8 @@ export const parseLyricData = (lyric: string, tlyric?:string) => {
 export const numToDateFormat = (num: number) => {
     let minute: any = Math.floor(num / 60);
     let second: any = Math.floor((num / 60 - minute) * 60);
-    minute < 9 ? minute = '0' + minute : null;
-    second < 9 ? second = '0' + second : null
+    minute < 10 ? minute = '0' + minute : null;
+    second < 10 ? second = '0' + second : null
     return `${minute}:${second}`;
 };
 
@@ -183,3 +183,38 @@ export const setStateIndex = (
         }
     }
 };
+
+/**
+ * 防抖函数
+ * @param func 用户回调函数
+ * @param wait 默认 200ms
+ * @param immediately 点击是否立即执行
+ * @param context this 默认 undefined
+ * @returns 代理函数
+ */
+export const debounce = <
+    T extends Function
+>( 
+    func: T, 
+    wait = 200, 
+    immediately = false,
+    context = null
+) => {
+    let timer: any;
+    let result: any;
+    return function proxy (this: any, ...args: any []) {
+        let ctx = context || this; 
+        let now = immediately && !timer;
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            if (!immediately) {
+                result = func.call(ctx, ...args) 
+            } 
+            timer = null;
+        }, wait);
+        if (now) {
+            result = func.call(ctx, ...args)
+        }
+        return result;
+    }
+}

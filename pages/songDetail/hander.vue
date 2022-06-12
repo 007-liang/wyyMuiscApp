@@ -14,7 +14,7 @@ const {
             hover-class="none"
             class="iconfont"
         > &#xe66d; </navigator>
-        <view>
+        <view class="header-main">
             <view class="title ellipsis">
                 {{ state.name }}
             </view>
@@ -38,12 +38,21 @@ const {
     }
 }
 
+.header-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .title {
+    width: 60vw;
     font-size: 28rpx;
     font-weight: 700;
 }
 
 .author {
+    width: 60vw;
     padding-top: 10rpx;
     font-size: 20rpx;
     color: #cccccc;

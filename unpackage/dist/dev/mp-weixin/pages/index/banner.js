@@ -9,6 +9,7 @@ require("../../store/store-music-library.js");
 require("../../store/playing-song-library.js");
 var utils_request = require("../../utils/request.js");
 require("../../utils/index.js");
+require("../../api/getSong.js");
 require("../../utils/localstorage.js");
 require("../../utils/symbols.js");
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({

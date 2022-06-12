@@ -5,6 +5,7 @@ import {
     usePlayingSongStore,
 } from "@/store";
 import { 
+debounce,
     numToDateFormat, setStateIndex 
 } from "@/utils";
 import { 
@@ -26,9 +27,10 @@ const {
     audioCtx,
     playPause,
     switchState,
-} = useAudioStore(); 
+    updateProgress
+} = useAudioStore();
 
-// 手指按下停止播放，并定位进度
+// 手指按下
 const jumpProgress = (e: any) => {
     const [{ pageX }] = e.touches;
     const { offsetLeft } = e.currentTarget;
@@ -36,7 +38,7 @@ const jumpProgress = (e: any) => {
     ratio = currentX / rect.value.width!;
     state.progress = +(ratio * 100).toFixed(2);
     state.currentTime = Math.floor(audioCtx.duration * ratio);
-    playPause(false);
+    audioCtx.offTimeUpdate(updateProgress);
 };
 
 // 拖拽进度
@@ -48,15 +50,15 @@ const touchmove = (e: any) => {
     ratio = currentX / rect.value.width!;
     const progress = +(ratio * 100).toFixed(2);
     state.progress = progress;
-    // 停止定时器后，在这里更新当前时间
+    // 在这里更新当前时间
     state.currentTime = Math.floor(audioCtx.duration * ratio);
 };
 
 // 手指松开按照进度继续播放
 const touchend = () => {
-    playPause(true);
     const currentTime = audioCtx.duration * ratio;
     audioCtx.seek(currentTime);
+    audioCtx.onTimeUpdate(updateProgress);
 };
 
 // 播放上一首
@@ -68,6 +70,8 @@ const switchSong = (next: boolean) => {
         switchState(list[store.index!]);
     }
 };
+
+const proxyFn = debounce(switchSong, 500, true);
 
 onMounted(() => {
     uni.createSelectorQuery().in(instance)
@@ -131,7 +135,7 @@ onMounted(() => {
             >&#xe60a;</view>
             <view 
                 class="iconfont"
-                @click="switchSong(false)"
+                @click="proxyFn(false)"
             >&#xe8f4;</view>
             <view 
                 class="iconfont play-pause"
@@ -148,7 +152,7 @@ onMounted(() => {
             </view>
             <view 
                 class="iconfont"
-                @click="switchSong(true)"
+                @click="proxyFn(true)"
             >&#xe8f5;</view>
             <view 
                 class="iconfont"

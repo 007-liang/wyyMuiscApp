@@ -9,18 +9,34 @@ export const useAudioStore = defineStore('audio-store', () => {
     const audioCtx = markRaw(wx.createInnerAudioContext());
     
     /**
+     * 切换状态，id改变自动获取数据
+     * @param param0 歌曲详情的数据
+     */
+    const switchState = (data: Partial<IMusicDetail>) => {
+        playPause(false);
+        const { al, ar, id, dt, name } = data
+        state.progress = 0;
+        state.currentTime = 0;
+        state.id = id!;
+        state.name = name!;
+        state.endTime = Math.floor(dt! / 1000);
+        state.author = `${parseAuthors(ar!)} - ${al!.name}`;
+        wx.getImageInfo({ // 加载歌词封面
+            src: al!.picUrl,
+            success() {
+                state.picUrl = al!.picUrl;
+            }
+        });
+    };
+
+    /**
      * 控制播放和暂停
      * @param isPlay 是否播放
      */
     const playPause = (isPlay: boolean) => {
         if (isPlay) {
             audioCtx.play();
-            if (state.timer === null) {
-                state.timer = setInterval(updateProgress, 1000);
-            }
         } else {
-            clearInterval(state.timer);
-            state.timer = null;
             audioCtx.pause();
         }
         state.playing = isPlay;
@@ -30,6 +46,7 @@ export const useAudioStore = defineStore('audio-store', () => {
      * 更新进度条
      */
     const updateProgress = () => {
+        if (audioCtx.paused) return;
         state.currentTime = Math.floor(audioCtx.currentTime);
         let duration = audioCtx.duration;
         if (duration) {
@@ -38,23 +55,11 @@ export const useAudioStore = defineStore('audio-store', () => {
         }
     };
 
-    /**
-     * 切换状态，id改变自动获取数据
-     * @param param0 歌曲详情的数据
-     */
-    const switchState = (data: Partial<IMusicDetail>) => {
-        const { al, ar, id, dt } = data
-        state.id = id!;
-        state.name = al!.name;
-        state.picUrl = al!.picUrl;
-        state.endTime = Math.floor(dt! / 1000);
-        state.author = parseAuthors(ar!);
-    };
-
-    audioCtx.onEnded(() => {
-        playPause(false);
-        updateProgress();
+    audioCtx.onCanplay(() => {
+        playPause(true);
     });
+    
+    audioCtx.onTimeUpdate(updateProgress);
 
     return {
         audioCtx,

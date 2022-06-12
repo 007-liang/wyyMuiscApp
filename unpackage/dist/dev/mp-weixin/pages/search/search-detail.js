@@ -9,6 +9,7 @@ require("../../store/store-music-library.js");
 require("../../store/playing-song-library.js");
 require("../../utils/index.js");
 require("../../utils/request.js");
+require("../../api/getSong.js");
 require("../../utils/localstorage.js");
 require("../../utils/symbols.js");
 if (!Array) {

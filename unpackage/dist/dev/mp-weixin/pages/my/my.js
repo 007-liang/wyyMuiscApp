@@ -11,6 +11,7 @@ require("../../store/playing-song-library.js");
 var api_songSheet = require("../../api/songSheet.js");
 var utils_navigateTo = require("../../utils/navigateTo.js");
 var utils_request = require("../../utils/request.js");
+require("../../api/getSong.js");
 require("../../utils/localstorage.js");
 require("../../utils/symbols.js");
 if (!Array) {

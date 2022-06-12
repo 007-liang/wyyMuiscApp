@@ -10,6 +10,7 @@ require("../../store/playing-song-library.js");
 var utils_request = require("../../utils/request.js");
 var utils_navigateTo = require("../../utils/navigateTo.js");
 require("../../utils/index.js");
+require("../../api/getSong.js");
 require("../../utils/localstorage.js");
 require("../../utils/symbols.js");
 if (!Array) {

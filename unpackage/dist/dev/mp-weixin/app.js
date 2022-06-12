@@ -13,6 +13,7 @@ var utils_localstorage = require("./utils/localstorage.js");
 require("./utils/request.js");
 var api_user = require("./api/user.js");
 require("./utils/index.js");
+require("./api/getSong.js");
 require("./utils/symbols.js");
 if (!Math) {
   "./pages/index/index.js";

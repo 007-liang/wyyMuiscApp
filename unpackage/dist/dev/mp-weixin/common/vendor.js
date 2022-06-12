@@ -6587,6 +6587,7 @@ exports.effect = effect;
 exports.f = f;
 exports.getCurrentInstance = getCurrentInstance;
 exports.index = index;
+exports.isRef = isRef;
 exports.markRaw = markRaw;
 exports.n = n;
 exports.nextTick = nextTick;

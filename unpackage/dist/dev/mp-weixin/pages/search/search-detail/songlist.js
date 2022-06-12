@@ -9,9 +9,10 @@ require("../../../store/store-music-library.js");
 require("../../../store/playing-song-library.js");
 var utils_index = require("../../../utils/index.js");
 var utils_navigateTo = require("../../../utils/navigateTo.js");
+require("../../../utils/request.js");
+require("../../../api/getSong.js");
 require("../../../utils/localstorage.js");
 require("../../../utils/symbols.js");
-require("../../../utils/request.js");
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   setup(__props, { expose }) {
     const searchStore = store_storeSearch.useSearchStore();

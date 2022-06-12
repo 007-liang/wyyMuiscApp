@@ -39,6 +39,7 @@ const clear = () => {
     updateTimer = null;
 };
 const instance = getCurrentInstance();
+
 // 滚动歌词的主逻辑
 const timerCallBack = () => {
     if (lyricData.value.length === 0) {
@@ -82,10 +83,12 @@ const timerCallBack = () => {
     });
     nullSapce = 0;
 };
+
 // 设置定时器滚动歌词
 const setTimer = () => {
     updateTimer = setInterval(timerCallBack, 200);
 };
+
 // 等待歌词渲染完成
 const awaiteRender = () => {
     uni.createSelectorQuery().in(instance)
@@ -186,7 +189,6 @@ watch(
 
 onUnmounted(() => {
     clear();
-    audioCtx.offCanplay(setTimer);
 });
 </script>
 
@@ -223,11 +225,11 @@ onUnmounted(() => {
                     }"
                 >
                     <view 
-                        class="elipsis"
+                        class="ellipsis"
                     >{{ item.text }}</view>
                     <text 
                         v-if="item.tText" 
-                        class="elipsis"
+                        class="ellipsis"
                     >{{ item.tText }}</text>
                 </view>
             </template>
@@ -297,7 +299,7 @@ onUnmounted(() => {
     text-align: center;
     transition: color 0.2s, font-size 0.2s;
     
-    .elipsis {
+    .ellipsis {
         width: 80vw;
     }
 }

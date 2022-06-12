@@ -5,65 +5,29 @@ import {
 } from "@/store";
 import { 
     getSongDetail, 
-    getSongUrl 
 } from "@/api";
-import { watch } from 'vue-demi';
 import handerVue from "./hander.vue";
 import footerVue from "./footer.vue";
 import lyricVue from "./lyric.vue";
 import cdVue from "./cd.vue";
 
 const { 
-    playingSongState: state 
+    playingSongState: state,
 } = usePlayingSongStore();
 const {
-    audioCtx,
-    playPause,
-    updateProgress,
     switchState,
 } = useAudioStore();
 
-const setSongUrl = async (id: number) => {
-    const { data } = await getSongUrl(id);
-    if (data.code === 200) {
-        const song = data.data[0];
-        const aop = () => {
-            if(state.playing) {
-                state.playing = false;
-            }
-            playPause(true);
-            audioCtx.offCanplay(aop);
-        };
-        audioCtx.src = song.url;
-        audioCtx.onCanplay(aop);
-    }
-};
-
-watch(
-    () => state.id,
-    async (id) => {
-        // 获取歌曲地址
-        if(id != null) {
-            state.progress = 0;
-            state.currentTime = 0;
-            await setSongUrl(id);
-        }
-    }
-);
-
 export default {
     async onLoad(options) {
-        let id = +options.id;
-        if (id && state.id !== id) {
+        let id = +options.id; 
+        if (state.id !== id) {
             state.id = id;
             const { data } = await getSongDetail(state.id);
             if (data.code === 200) {
-                const { al, ar, dt } = data.songs[0];
-                switchState({ id,  al, ar, dt, });
+                const { al, ar, dt, name } = data.songs[0];
+                switchState({ id, name,  al, ar, dt, });
             }
-        }
-        if (state.timer === null) {
-            state.timer = setInterval(updateProgress , 1000);
         }
     },
     setup() {
@@ -77,19 +41,13 @@ export default {
         lyricVue,
         cdVue,
     },
-    onUnload() {
-        if (state.timer !== null) {
-            clearInterval(state.timer);
-            state.timer = null;
-        }
-    }
 }
 </script>
 
 <template>
     <view 
         class="vague-backage" 
-        :style="{ backgroundImage: `url(${ state.picUrl }?param=375y500)` }"
+        :style="{ backgroundImage: `url(${ state.picUrl })` }"
     >
         <view class="vague-backage-mask"></view>
     </view>
@@ -111,6 +69,7 @@ page {
 .vague-backage {
     position: relative;
     height: 100%;
+    background-color: #999999;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

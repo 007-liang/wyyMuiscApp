@@ -16,61 +16,24 @@ import {
 
 let outer = false;
 let inside = false;
-const store = usePlayingLibrary();
 const {
     playPause,
     switchState,
 } = useAudioStore();
+const store = usePlayingLibrary();
 const data = ref<IMusicDetail[]>([]);
 const current = ref(1);
 const duration = ref(500);
 const invalid = ref(false);
 
-effect(() => {
-    let index = store.index || 0;
-    let state = store.state;
-    let list = state.list!;
-    // 将渲染放到下一个渲染队列，防止出现切换闪烁
-    nextTick(() => {
-        let i = 0;
-        // 添加三个元素进去
-        if (!list || !list.length) return;
-        data.value = [];
-        if (list.length === 1) {
-            for (; i < 3; i++) data.value.push(list[index]);
-        } else if (list.length === 2) {
-            for (; i < 3; i++) {
-                if (i === index) {
-                    data.value.push(list[index]);
-                    continue;
-                }
-                if (index === 0) {
-                    data.value.push(list[1]);
-                } else {
-                    data.value.push(list[0]);
-                }
-            }
-        } else {
-            let length = list.length;
-            if (index ===  length -1) {
-                data.value.push(...list.slice(index - 1), list[0]);
-            } else if (index === 0) {
-                data.value.push(list[length -1], ...list.slice(index, index + 2), );
-            } else {
-                data.value.push(...list.slice(index - 1, index + 2));
-            }
-        }
-    });
-});
-
 /**
  * 按下停止播放，并且把置零的动画时间调回来
  */
 const touchstart = () => {
+    !inside ? inside = true : null;
     if (!duration.value) {
         duration.value = 500;
     }
-    if (!inside) inside = true;
 };
 
 /**
@@ -82,8 +45,6 @@ const change = (e)=> {
         let index = e.detail.current;
         if (index === 1) return;
         current.value = index;
-    } else {
-        playPause(false);
     }
 };
 
@@ -146,9 +107,47 @@ const animationfinish = (e) => {
     nextTick().then(() => inside = false);
 };
 
+effect(() => {
+    let index = store.index || 0;
+    let state = store.state;
+    let list = state.list!;
+    // 将渲染放到下一个渲染队列，防止出现切换闪烁
+    nextTick(() => {
+        let i = 0;
+        // 添加三个元素进去
+        if (!list || !list.length) return;
+        data.value = [];
+        if (list.length === 1) {
+            for (; i < 3; i++) data.value.push(list[index]);
+        } else if (list.length === 2) {
+            for (; i < 3; i++) {
+                if (i === index) {
+                    data.value.push(list[index]);
+                    continue;
+                }
+                if (index === 0) {
+                    data.value.push(list[1]);
+                } else {
+                    data.value.push(list[0]);
+                }
+            }
+        } else {
+            let length = list.length;
+            if (index ===  length -1) {
+                data.value.push(...list.slice(index - 1), list[0]);
+            } else if (index === 0) {
+                data.value.push(list[length -1], ...list.slice(index, index + 2), );
+            } else {
+                data.value.push(...list.slice(index - 1, index + 2));
+            }
+        }
+    });
+});
+
 watch(
     () => store.index!,
     (n, o) => {
+        console.log(inside);
         if (inside || n === null) return;
         let list = store.state.list!;
         let length = list.length;
@@ -187,7 +186,9 @@ watch(
         @change="change"
         @transition="transition"
         @animationfinish="animationfinish"
-    >
+        @click="inside ? inside = false : null;"
+    > <!-- 按下去没有移动的情况需要用click事件将inside=false -->
+
         <template  v-if="!data.length">
             <view v-for="num in 3" :key="num"></view>
         </template>
@@ -203,6 +204,7 @@ watch(
                 >
                     <image 
                         class="cd-cover" 
+                        :lazy-load="true"
                         :src="itme.al.picUrl" 
                     />
                 </view>

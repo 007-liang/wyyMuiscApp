@@ -16,6 +16,7 @@ export const setIndex = (key?: number) => {
         index.value = null;
     }
 };
+
 export const usePlayingLibrary =  defineStore('playing-song-library', () => {
     // 设置当前播放的列表
     const setPlayingLibrary = (

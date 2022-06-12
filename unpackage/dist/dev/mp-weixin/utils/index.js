@@ -111,8 +111,8 @@ const parseLyricData = (lyric, tlyric) => {
 const numToDateFormat = (num) => {
   let minute = Math.floor(num / 60);
   let second = Math.floor((num / 60 - minute) * 60);
-  minute < 9 ? minute = "0" + minute : null;
-  second < 9 ? second = "0" + second : null;
+  minute < 10 ? minute = "0" + minute : null;
+  second < 10 ? second = "0" + second : null;
   return `${minute}:${second}`;
 };
 const setStateIndex = (index, maxIndex, isNext) => {
@@ -130,6 +130,26 @@ const setStateIndex = (index, maxIndex, isNext) => {
     }
   }
 };
+const debounce = (func, wait = 200, immediately = false, context = null) => {
+  let timer;
+  let result;
+  return function proxy(...args) {
+    let ctx = context || this;
+    let now = immediately && !timer;
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      if (!immediately) {
+        result = func.call(ctx, ...args);
+      }
+      timer = null;
+    }, wait);
+    if (now) {
+      result = func.call(ctx, ...args);
+    }
+    return result;
+  };
+};
+exports.debounce = debounce;
 exports.forEach = forEach;
 exports.get_song_ar = get_song_ar;
 exports.numToDateFormat = numToDateFormat;
