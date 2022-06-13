@@ -3,5 +3,6 @@ export * from "./playing-song";
 export * from "./store-search";
 export * from "./store-user-info";
 export * from "./history-library";
+export * from "./like-music-library";
 export * from "./store-music-library";
 export * from "./playing-song-library";

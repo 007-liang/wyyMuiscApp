@@ -147,7 +147,6 @@ effect(() => {
 watch(
     () => store.index!,
     (n, o) => {
-        console.log(inside);
         if (inside || n === null) return;
         let list = store.state.list!;
         let length = list.length;
@@ -205,7 +204,7 @@ watch(
                     <image 
                         class="cd-cover" 
                         :lazy-load="true"
-                        :src="itme.al.picUrl" 
+                        :src="itme.al.picUrl + '?param=500y500'" 
                     />
                 </view>
             </swiper-item>

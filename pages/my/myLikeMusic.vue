@@ -1,19 +1,21 @@
 <script setup lang='ts'>
-import { useUserInfo } from '@/store';
-import { getLikeList, getSongDetail } from '@/api';
-import { onMounted, ref } from 'vue-demi';
+import { 
+    useUserInfo,
+    useLikeMusicLibraryStore,
+} from '@/store';
+import { 
+    getLikeList, 
+    getSongDetail 
+} from '@/api';
+import { 
+    onMounted, 
+    ref 
+} from 'vue-demi';
 
-const store = useUserInfo();
-const userInfo = store.userInfo;
+const likeStore = useLikeMusicLibraryStore();
+const userInfo = useUserInfo().userInfo;
 const total = ref(0);
-const firstSong = ref({} as ISongDetail);
-
-const getFirstSong = async (mid: number) => {
-    const { data } = await getSongDetail(mid);
-    if (data.code === 200) {
-        firstSong.value = data.songs[0];
-    }
-};
+const firstSong = likeStore.firstLikeMusicInfo;
 
 const getList = async () => {
     const { data } = await getLikeList(userInfo.profile!.userId);
@@ -23,9 +25,11 @@ const getList = async () => {
         && data.ids
         && length
     ) {
+        const { 
+            pushLikeMusicId,
+        } = likeStore;
         total.value = length;
-        store.setIdList(data.ids);
-        getFirstSong(data.ids[0]);
+        pushLikeMusicId(data.ids);
     }
 };
 
@@ -40,7 +44,7 @@ onMounted(shoudleLoadList);
 
 <template>
     <navigator
-        url="/pages/songDetail/songDetail"
+        url="/pages/like-music-library/like-music-library"
         open-type="navigate"
         hover-class="none"
         class="base-shelf"

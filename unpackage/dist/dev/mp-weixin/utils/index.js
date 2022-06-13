@@ -4,9 +4,11 @@ require("../store/playing-song.js");
 require("../store/store-search.js");
 require("../store/store-user-info.js");
 require("../store/history-library.js");
+require("../store/like-music-library.js");
 require("../store/store-music-library.js");
 var store_playingSongLibrary = require("../store/playing-song-library.js");
 require("./request.js");
+require("./play-strategy.js");
 let num_unit = [
   "",
   "",

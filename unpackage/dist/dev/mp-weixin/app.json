@@ -4,6 +4,7 @@
     "pages/songDetail/songDetail",
     "pages/music-library-search/music-library-search",
     "pages/music-library/music-library",
+    "pages/like-music-library/like-music-library",
     "pages/my/my",
     "pages/login/login",
     "pages/search/search",

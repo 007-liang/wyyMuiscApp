@@ -26,6 +26,13 @@
 				"enablePullDownRefresh": false
             }
         },
+		{
+			"path": "pages/like-music-library/like-music-library",
+            "style": {
+                "navigationBarTitleText": "喜欢歌单",
+				"enablePullDownRefresh": false
+            }
+		},
         {
             "path": "pages/my/my",
             "style": {

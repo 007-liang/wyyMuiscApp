@@ -4,9 +4,11 @@ require("../store/playing-song.js");
 require("../store/store-search.js");
 var store_storeUserInfo = require("../store/store-user-info.js");
 require("../store/history-library.js");
+require("../store/like-music-library.js");
 require("../store/store-music-library.js");
 require("../store/playing-song-library.js");
 var utils_request = require("../utils/request.js");
+require("../utils/play-strategy.js");
 const getLikeList = (uid) => {
   return utils_request.wxRequest({
     url: "/likelist",

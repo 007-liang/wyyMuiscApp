@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import { useMusicLibraryStore } from '@/store';
-import SongsLists from './songs-lists.vue';
+import SongsLists from '@/components/music-library/songs-lists.vue';
 const store = useMusicLibraryStore();
 </script>
 

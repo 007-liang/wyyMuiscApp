@@ -47,7 +47,7 @@ export default {
 <template>
     <view 
         class="vague-backage" 
-        :style="{ backgroundImage: `url(${ state.picUrl })` }"
+        :style="{ backgroundImage: `url(${ state.picUrl }?param=500y500)` }"
     >
         <view class="vague-backage-mask"></view>
     </view>

@@ -37,7 +37,7 @@ export const useMusicLibraryStore = defineStore("music_library", () => {
         musics.value = playlist.value.tracks!;
         get_musics();
     }
-
+    
     const scroll_event_ponds = new Set<(scrollTop: number) => void>();
     const listener_page_scroll = (fn: (scrollTop: number) => void) => {
         scroll_event_ponds.add(fn);

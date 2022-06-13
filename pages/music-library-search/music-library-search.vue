@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import { useMusicLibraryStore } from '@/store/store-music-library';
 import { computed, onMounted, ref } from 'vue';
-import Songlist from '@/pages/music-library/songs-lists.vue';
+import Songlist from '@/components/music-library/songs-lists.vue';
 
 const store = useMusicLibraryStore();
 const keyword = ref("");

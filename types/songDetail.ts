@@ -150,6 +150,7 @@ declare interface ISongDetail {
     };
     alia: []; // 别名
     ar: IAuthor;
+    id: number;
     name: string;
     pop: number; // 歌曲热度
     dt: number;

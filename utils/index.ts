@@ -4,6 +4,7 @@ export * from "./localstorage";
 export * from "./symbols";
 export * from "./request";
 export * from "./navigateTo";
+export * from "./play-strategy";
 
 /**
  * @description 跳转到歌单页面

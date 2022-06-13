@@ -5838,6 +5838,8 @@ var MutationType;
 const IS_CLIENT = typeof window !== "undefined";
 const componentStateTypes = [];
 const getStoreType = (id) => "\u{1F34D} " + id;
+function registerPiniaDevtools(app, pinia) {
+}
 function addStoreToDevtools(app, store) {
   if (!componentStateTypes.includes(getStoreType(store.$id))) {
     componentStateTypes.push(getStoreType(store.$id));
@@ -5891,6 +5893,9 @@ function createPinia() {
         pinia._a = app;
         app.provide(piniaSymbol, pinia);
         app.config.globalProperties.$pinia = pinia;
+        if (IS_CLIENT) {
+          registerPiniaDevtools(app, pinia);
+        }
         toBeInstalled.forEach((plugin2) => _p.push(plugin2));
         toBeInstalled = [];
       }

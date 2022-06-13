@@ -4,9 +4,14 @@ import {
 } from "vue";
 import { defineStore } from "pinia";
 
-
-const state = reactive<Partial<IPlayingLibrary>>({})
-const index = ref<number | null>(null);
+/**
+ * 播放列表状态
+ */
+export const state = reactive<Partial<IPlayingLibrary>>({});
+/**
+ * 当前播放列表的索引
+ */
+export const index = ref<number | null>(null);
 
  // 设置列表播放的索引
 export const setIndex = (key?: number) => {
