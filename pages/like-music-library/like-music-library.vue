@@ -21,17 +21,3 @@ likeLibrary.playlistStateSync();
         <Songs></Songs>
     </MusicLibraryMain>
 </template>
-
-<style lang='less'>
-.container {
-    flex: 1;
-    overflow-y: scroll;
-}
-
-page {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-color: transparent;
-}
-</style>
